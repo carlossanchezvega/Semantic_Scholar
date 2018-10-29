@@ -16,15 +16,7 @@ def getInternalLinks(bsObj, includeUrl):
 
 def getArticles(bsObj, excludeUrl):
     externalLinks = []
-    #for link in bsObj.findAll("a", href=re.compile("^(http|www)((?!"+excludeUrl+").)*$")):
-    #my_links = bsObj.findAll("a", {"class": "search-result-title"})
-
-    driver = webdriver.Firefox()
-    driver.get(siteUrl)
-    html = driver.page_source
-    soup = BeautifulSoup(html)
-#    my_links = bsObj.findAll("div", {"class": "search-result-title"})
-    my_links = soup.findAll("div", {"class": "search-result-title"})
+    my_links = bsObj.findAll("div", {"class": "search-result-title"})
     for link in my_links:
             if "href" in link.attrs:
                 if link.attrs["href"] not in externalLinks:
@@ -43,6 +35,9 @@ def getAllExternalLinks(siteUrl, allExtLinks, allIntLinks):
     except ValueError:
         return None
     bsObj = BeautifulSoup(html.text, "html.parser")
+
+    f = open("html_aux.txt", "a")
+    f.write(html.text)
     articles = getArticles(bsObj, splitAddress(siteUrl)[0])
     externalLinks = getInternalLinks(bsObj, splitAddress(siteUrl)[0])
     for link in externalLinks:
