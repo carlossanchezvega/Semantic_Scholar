@@ -8,3 +8,12 @@
 (firefox:2834): Gtk-WARNING **: 17:12:43.268: Theme parsing error: <data>:1:77: Expected ')' in color definition
 1540743164132	Marionette	INFO	Listening on port 2828
 JavaScript error: chrome://browser/content/urlbarBindings.xml, line 2709: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIAutoCompleteController.getStyleAt]
+1540841795601	geckodriver	INFO	Listening on 127.0.0.1:34771
+1540841796597	mozprofile::profile	INFO	Using profile path /tmp/rust_mozprofile.CYct6kD8VwHD
+1540841796597	geckodriver::marionette	INFO	Starting browser /usr/bin/firefox
+1540841796598	geckodriver::marionette	INFO	Connecting to Marionette on localhost:39477
+
+(firefox:6048): Gtk-WARNING **: 20:36:37.365: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox:6048): Gtk-WARNING **: 20:36:37.365: Theme parsing error: <data>:1:77: Expected ')' in color definition
+1540841798231	Marionette	INFO	Listening on port 2828
