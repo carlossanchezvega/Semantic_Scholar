@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import re
-from selenium import webdriver
+import json
 
 siteUrl= 'https://www.semanticscholar.org/search?q=%22Krzysztof-Chylinski%22&sort=relevance'
 
@@ -34,10 +34,20 @@ def getAllExternalLinks(siteUrl, allExtLinks, allIntLinks):
         html = requests.get(siteUrl)
     except ValueError:
         return None
-    bsObj = BeautifulSoup(html.text, "html.parser")
+    #bsObj = BeautifulSoup(html.text, "html.parser")
+    bsObj = BeautifulSoup(html.content, "html.parser")
+
 
     f = open("html_aux.txt", "a")
     f.write(html.text)
+
+    url= 'https://www.semanticscholar.org/search?q=%22Krzysztof-Chylinski%22&sort=relevance'
+
+    r = requests.get(url)
+    jobj = json.loads(r.text)
+
+
+
     articles = getArticles(bsObj, splitAddress(siteUrl)[0])
     externalLinks = getInternalLinks(bsObj, splitAddress(siteUrl)[0])
     for link in externalLinks:
