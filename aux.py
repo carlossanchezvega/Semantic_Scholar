@@ -1,5 +1,6 @@
-
-
-r = requests.get(url)
-content = r.content.decode('utf-8')
-BeautifulSoup(content, 'html.parser')
+import dblp
+#do a simple author search for michael ley
+authors = dblp.search('michael ley')
+michael = authors[0]
+print michael.name
+print len(michael.publications)
