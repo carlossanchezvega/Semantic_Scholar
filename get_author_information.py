@@ -1,4 +1,7 @@
+import pymongo
 import sys, requests
+import time
+
 import nltk
 from CheckBestAuthorSimilarity import CheckBestAuthorSimilarity
 
@@ -165,6 +168,7 @@ def get_doi_from_publi_dblp(best_coincidence):
 
 
 def main():
+    start_time = time.time()
     best_coincidence = get_author_from_dblp()
 
     # cogemos el primer título que encontremos para ese autor
@@ -173,10 +177,7 @@ def main():
     #LLamamos a la api de semantic scholar con el DOI del título
     author_id = get_author_id(best_coincidence,title_doi )
 
-
     author_dict = {}
-    publication_dict = {}
-
     # recogemos los identificadores de los paper en Semantic Scholar, para
     # buscar por cada uno de esos Ids
     paperIds = get_all_paperIds(author_id, author_dict)
@@ -184,8 +185,19 @@ def main():
     publication_dict_list=[]
     set_topics_from_author(paperIds, author_dict, publication_dict_list)
 
-    print('HOLA')
+    url_connection = "mongodb://localhost"
+    connection = pymongo.MongoClient(url_connection)
+    db = connection.authorAndPublicationData
+    collection_authors = db.authors
+    collection_authors.insert(author_dict)
 
+    collection_publications = db.publications
+    collection_publications.insert(publication_dict_list)
+
+
+
+
+    print("The execution took: {0:0.2f} seconds".format(time.time() - start_time))
 # this is the standard boilerplate that calls the main() function
 if __name__ == '__main__':
     # sys.exit(main(sys.argv)) # used to give a better look to exists
