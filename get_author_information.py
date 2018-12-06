@@ -26,11 +26,13 @@ def get_best_coincidence(data):
     if len(data['result']['hits'])==0:
         return data['result']['hits']['hit'][0]['info']['author']
     else:
-        best_concidence = data['result']['hits']['hit'][0]['info']['author']
+        #best_concidence = data['result']['hits']['hit'][0]['info']['author']
+        best_concidence = data['result']['query']
+
         count = 1;
 
         # we go over the author list from the second author on, calculating best similarity
-        for x in range(1, len(data['result']['hits']['hit'])-1):
+        for x in range(1, len(data['result']['hits']['hit'])):
             check_similarity = CheckBestAuthorSimilarity(best_concidence, data['result']['hits']['hit'][x]['info']['author'])
             new_similarity = check_similarity.getSimilarity()
 
@@ -124,6 +126,7 @@ def set_topics_from_author(paperIds, author_dict, publication_dict_list):
     topics = set()
     author_dict['topics'] = []
 
+    #we iterate over each paperId
     for paperId in paperIds:
 
         urlPaper = 'https://api.semanticscholar.org/v1/paper/'+paperId
@@ -134,10 +137,12 @@ def set_topics_from_author(paperIds, author_dict, publication_dict_list):
         publication_dict['title'] = data['title']
 
         author_ids = []
+        # for each paperId, we get its authorsId
         for author in data['authors']:
             author_ids.append(author['authorId'])
         publication_dict['author_ids'] = author_ids
 
+        #for each paper we get its topics taking into account that the may be repeated
         for topic in data['topics']:
             topics.add(topic['topic'])
         publication_dict['topics'] = list(topics)
