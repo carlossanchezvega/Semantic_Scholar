@@ -1,6 +1,8 @@
 import pymongo
 import sys, requests
 import time
+from bs4 import BeautifulSoup
+from re import search
 
 import nltk
 from CheckBestAuthorSimilarity import CheckBestAuthorSimilarity
@@ -171,34 +173,76 @@ def get_doi_from_publi_dblp(best_coincidence):
     # cogemos el primer título que encontremos para ese autor
     return data['result']['hits']['hit'][0]['info']['doi']
 
+def get_teachers():
+    page = requests.get("http://www.masterdatascience.es/equipo/")
+    soup = BeautifulSoup(page.content, 'html.parser')
+    nombres = [directors.text.split('-')[0].rstrip() for directors in soup.findAll(attrs={"class": "title margin-clear"})] \
+              + [teacher.text for teacher in soup.findAll(attrs={"class": "small_white"})]
+    return nombres
+
+
+def get_file_name(url):
+
+    value = search('https://www.semanticscholar.org/paper/(.+)/', url)
+    if value is not None:
+        value = value.group(1)
+    return value
+
+
+def get_paper(teacher):
+
+    """con la  petición de uno de los autorees"""
+    page = requests.get("https://www.semanticscholar.org/paper/Identifying-Relations-for-Open-Information-Fader-Soderland/0796f6cd7f0403a854d67d525e9b32af3b277331")
+    soup = BeautifulSoup(page.content, 'html.parser')
+
+    """recogemmos el contenido de ese pdf en concreto"""
+    pdf_url = soup.find(attrs={"name": "citation_pdf_url"})['content']
+
+
+    # Copy a network object to a local file
+    #urllib.request.urlretrieve(pdf_url, "./papers2/fichero_prueba.pdf")
+
+    r = requests.get(pdf_url)
+    # open method to open a file on your system and write the contents
+    with open("./"+teacher+"/"+get_file_name(pdf_url)+".pdf", "wb") as code:
+        code.write(r.content)
+
+
+
+
 
 def main():
     start_time = time.time()
-    best_coincidence = get_author_from_dblp()
-
-    # cogemos el primer título que encontremos para ese autor
-    title_doi = get_doi_from_publi_dblp(best_coincidence)
-
-    #LLamamos a la api de semantic scholar con el DOI del título
-    author_id = get_author_id(best_coincidence,title_doi )
-
-    author_dict = {}
-    # recogemos los identificadores de los paper en Semantic Scholar, para
-    # buscar por cada uno de esos Ids
-    paperIds = get_all_paperIds(author_id, author_dict)
-
-    publication_dict_list=[]
-    set_topics_from_author(paperIds, author_dict, publication_dict_list)
 
     url_connection = "mongodb://localhost"
     connection = pymongo.MongoClient(url_connection)
     db = connection.authorAndPublicationData
     collection_authors = db.authors
-    collection_authors.insert(author_dict)
-
     collection_publications = db.publications
-    collection_publications.insert(publication_dict_list)
 
+
+
+    for teacher in get_teachers():
+        best_coincidence = get_author_from_dblp(teacher)
+
+        # cogemos el primer título que encontremos para ese autor
+        title_doi = get_doi_from_publi_dblp(best_coincidence)
+
+        #LLamamos a la api de semantic scholar con el DOI del título
+        author_id = get_author_id(best_coincidence,title_doi )
+
+        author_dict = {}
+        # recogemos los identificadores de los paper en Semantic Scholar, para
+        # buscar por cada uno de esos Ids
+        paperIds = get_all_paperIds(author_id, author_dict)
+
+        publication_dict_list=[]
+        set_topics_from_author(paperIds, author_dict, publication_dict_list)
+
+        collection_authors.insert(author_dict)
+        collection_publications.insert(publication_dict_list)
+
+        get_paper(teacher)
 
 
 
