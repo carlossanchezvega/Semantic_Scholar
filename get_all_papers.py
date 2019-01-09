@@ -1,34 +1,40 @@
-import pymongo
-import sys, requests
-import time
+import pdfx
+import requests
 from bs4 import BeautifulSoup
-import urllib3
+import urllib.request
+import requests
 
 
 def get_paper():
+
+    """con la  petición de uno de los autorees"""
     page = requests.get("https://www.semanticscholar.org/paper/Identifying-Relations-for-Open-Information-Fader-Soderland/0796f6cd7f0403a854d67d525e9b32af3b277331")
     soup = BeautifulSoup(page.content, 'html.parser')
-    pdf = soup.find(attrs={"name": "citation_pdf_url"})['content']
-
-    content = urllib3.request.urlopen(pdf)
-    for line in content:
-        print(line)
-
-    filename = "pdfExample.pdf"
-    fout = open(filename, "wb")
-    fout.write(content)
+    """recogemmos el contenido de ese pdf en concreto"""
+    pdf_url = soup.find(attrs={"name": "citation_pdf_url"})['content']
+    r = requests.get(pdf_url)
+    # open method to open a file on your system and write the contents
+    with open("./papers2/python1.pdf", "wb") as code:
+        code.write(r.content)
 
 
+def get_paper2():
+
+    """con la  petición de uno de los autorees"""
+    page = requests.get("https://www.semanticscholar.org/paper/Identifying-Relations-for-Open-Information-Fader-Soderland/0796f6cd7f0403a854d67d525e9b32af3b277331")
+    soup = BeautifulSoup(page.content, 'html.parser')
+
+    """recogemmos el contenido de ese pdf en concreto"""
+    pdf_url = soup.find(attrs={"name": "citation_pdf_url"})['content']
 
 
-    # region Description
-    """ pdf_file = open(pdf)
-    read_pdf = PyPDF2.PdfFileReader(pdf_file)
-    number_of_pages = read_pdf.getNumPages()
-    page = read_pdf.getPage(0)
-    page_content = page.extractText()
-    print(page_content) **/
-    # endregion"""
+    # Copy a network object to a local file
+    #urllib.request.urlretrieve(pdf_url, "./papers2/fichero_prueba.pdf")
+
+    r = requests.get(pdf_url)
+    # open method to open a file on your system and write the contents
+    with open("./papers2/python1.pdf", "wb") as code:
+        code.write(r.content)
 
 
 def get_teachers():
@@ -44,9 +50,9 @@ def get_teachers():
 
 
 def main():
-    get_paper()
+    get_paper2()
     get_teachers()
-
+    #probar_extraccion()
 
 # this is the standard boilerplate that calls the main() function
 if __name__ == '__main__':
