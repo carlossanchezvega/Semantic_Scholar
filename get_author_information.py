@@ -220,7 +220,8 @@ def main():
     collection_authors = db.authors
     collection_publications = db.publications
 
-
+    #teachers = get_teachers()
+    teachers = ['Belén Vela Sánchez', 'Felipe Ortega']
 
     for teacher in get_teachers():
         best_coincidence = get_author_from_dblp(teacher)

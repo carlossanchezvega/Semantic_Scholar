@@ -18,7 +18,7 @@ class CheckBestAuthorSimilarity:
   def getSimilarity(self):
     """
     1)Pasamos  el texto a minúscula
-    2)Tomamos los signos de puntuiación
+    2)Del texto pasado a minúscula,, eliminamos los signos de puntuiación
     3)Se calcula la distancia Jacquard para calcular la similitud entre ambos
     """
     tokens_a = [token.lower().strip(string.punctuation) for token in nltk.word_tokenize(self.author_a)    \

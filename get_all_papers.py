@@ -8,6 +8,7 @@ from tika import parser, language
 from nltk.corpus import stopwords
 import nltk
 import spacy
+import string, time
 
 
 def get_language_for_nltk(lang_request):
@@ -62,49 +63,27 @@ def extract_content():
     parsedPDF = parser.from_file("./papers2/python1.pdf")
     #print(parsedPDF['content'])
     #print(language.from_buffer(parsedPDF['content']))
-    aux =  get_language_for_nltk(language.from_buffer(parsedPDF['content']))
 
+    language_detected =  get_language_for_nltk(language.from_buffer(parsedPDF['content']))
+    stopwords = nltk.corpus.stopwords.words(language_detected)
+    stopwords.extend(string.punctuation)
+    stopwords.append('')
 
+    tokenized_text = [token.lower().strip(string.punctuation).strip() for token in nltk.word_tokenize(parsedPDF['content'])    \
+                if token.lower().strip(string.punctuation) not in stopwords]
 
+    return tokenized_text
 
-    # Obtenemos las sentencias del texto.
-    sentences = nltk.sent_tokenize(parsedPDF['content'])
-
-    nlp = spacy.load('en')
-    doc = nlp(u'This is a sentence.')
-
-
-    #print("Frases originales: ")
-    #print(sentences)
-
-    # Obtenemos las "stopwords" del inglés.
-    #stop = set(stopwords.words('english'))
-    #stopw = []
-    #for i in stop:
-    #    stopw.append(i)
-    #print("Stop words en inglés: ")
-    #print(stopw)
-    #print()
-
-    # Eliminamos las palabras que coinciden con alguna "stopword".
-    #print("Frases procesadas sin stopwords: ")
-    #for sentence in sentences:
-    #    non_stop_sentence = ""
-    #    for word in sentence.lower().split():
-    #        if word not in stop:
-    #            non_stop_sentence = non_stop_sentence + word + " "
-        # Imprimimos las sentencias procesadas.
-    #    print(non_stop_sentence)
-
-
-# end of problem
 
 
 def main():
+    start = time.time();
+    tokenized_text = extract_content()
+    print (tokenized_text)
+    end = time.time() - start
+    print(end)
     get_paper2()
     get_teachers()
-    extract_content()
-    #probar_extraccion()
 
 # this is the standard boilerplate that calls the main() function
 if __name__ == '__main__':
