@@ -7,6 +7,9 @@ from re import search
 import nltk
 from CheckBestAuthorSimilarity import CheckBestAuthorSimilarity
 
+def MAX_NUMBER_OF_ARTICLES():
+    return 5
+
 
 def get_best_coincidence(data):
     """
@@ -64,7 +67,7 @@ def get_author_from_dblp(teacher):
     return best_coincidence
 
 
-def get_author_id(author_from_dblp, title_doi):
+def get_author_id(author_from_dblp, dois):
     """
         We request, the Semantic Scholar api, the article with the "doi" received.
         Once received, we compare the name of the author to the authors of that article
@@ -78,17 +81,17 @@ get_author_id
             author_id: The author id in the Semantic Scholar database corresponding to
             the argument of "author_from_dblp"
     """
+    for doi in dois:
+        url_semantic = 'https://api.semanticscholar.org/v1/paper/' + doi
+        response_titles = requests.get(url_semantic)
+        data = response_titles.json()
+        if 'error' not in data:
+            for author in data['authors']:
+                if author_from_dblp == author['name']:
+                    return author['authorId']
 
-    url_semantic = 'https://api.semanticscholar.org/v1/paper/' + title_doi
-    response_titles = requests.get(url_semantic)
-    data = response_titles.json()
 
-    for author in data['authors']:
-        if author_from_dblp == author['name']:
-            return author['authorId']
-
-
-def get_all_paperIds(authorId,author_dict):
+def get_paperIds(authorId):
     """
         We request the Semantic Scholar API, based on the authorId, in search
          of all the paper Ids
@@ -104,12 +107,10 @@ def get_all_paperIds(authorId,author_dict):
     url_semantic_by_author = 'https://api.semanticscholar.org/v1/author/'+authorId
     response = requests.get(url_semantic_by_author)
     data = response.json()
-    author_dict['_id'] = data['authorId']
-    author_dict['name'] = data['name']
+
 
     for paper in data['papers']:
         paperIds.append(paper['paperId'])
-    author_dict['publications'] = paperIds
     return paperIds
 
 
@@ -156,7 +157,7 @@ def is_pdf_file(file):
     return (file[len(file)-4:(len(file))])=='.pdf'
 
 
-def get_doi_from_publi_dblp(best_coincidence):
+def tidy_info_from_teacher(best_coincidence):
     """
         We request the DBLP api, in search of the doi of the first title found, based on
         the name of the author od the argument
@@ -172,12 +173,21 @@ def get_doi_from_publi_dblp(best_coincidence):
     response = requests.get(url, params={'q': best_coincidence, 'format': 'json'})
     data = response.json()
 
+    list_of_articles=[]
+    list_of_dois_from_articles = []
+    tidy_info_from_author = {}
+
     # cogemos el primer título que encontremos para ese autor
     for author in data['result']['hits']['hit']:
-        #if best_coincidence in author['info']['authors']['author'] and 'doi' in author['info'].keys():
-            if best_coincidence in author['info']['authors']['author'] and is_pdf_file(author['info']['ee']):
-                return author['info']['authors']['ee']
+        if best_coincidence in author['info']['authors']['author']:
+            if 'doi' in author['info'].keys() and 'doi'not in tidy_info_from_author.keys():
+                list_of_dois_from_articles.append(author['info']['doi'])
+            if 'ee' in author['info'].keys() and is_pdf_file(author['info']['ee']) and not len(list_of_articles)>MAX_NUMBER_OF_ARTICLES():
+                list_of_articles.append(author['info']['ee'])
+    tidy_info_from_author['pdf_articles'] = list_of_articles
+    tidy_info_from_author['dois'] = list_of_dois_from_articles
 
+    return tidy_info_from_author
 
 def get_teachers():
     page = requests.get("http://www.masterdatascience.es/equipo/")
@@ -193,6 +203,16 @@ def get_file_name(url):
     if value is not None:
         value = value.group(1)
     return value
+
+
+
+def get_papers(teacher, author_dict):
+
+    for pdf in author_dict['pdf_articles']:
+        r = requests.get(pdf)
+        # open method to open a file on your system and write the contents
+        with open("./"+teacher+"/"+get_file_name(pdf)+".pdf", "wb") as code:
+            code.write(r.content)
 
 
 def get_paper(teacher):
@@ -214,7 +234,36 @@ def get_paper(teacher):
         code.write(r.content)
 
 
+def get_all_paperIds(authorId,author_dict):
+    """
+        We request the Semantic Scholar API, based on the authorId, in search
+         of all the paper Ids
 
+        Args:
+            authorId (string): identifier of the author id in the Semantic Scholar API
+
+        Returns:
+            set_of_ids_of_papers (set): we return a set of identifiers of all the papers
+            of the author in the Semantic Scholar database
+    """
+    paperIds=[]
+    url_semantic_by_author = 'https://api.semanticscholar.org/v1/author/'+authorId
+    response = requests.get(url_semantic_by_author)
+    data = response.json()
+
+    for paper in data['papers']:
+        paperIds.append(paper['paperId'])
+    author_dict['publications'] = paperIds
+    return paperIds
+
+
+def set_info_from_author(tidy_info, author_dict, author_id, best_coincidence):
+    author_dict['_id'] = author_id
+    author_dict['name'] = best_coincidence
+    ids = get_paperIds(author_id)
+    author_dict['publications'] = ids
+    author_dict['pdf_articles'] = tidy_info['pdf_articles']
+    return author_dict
 
 
 def main():
@@ -232,26 +281,24 @@ def main():
     for teacher in teachers:
         best_coincidence = get_author_from_dblp(teacher)
 
-        # cogemos el primer título que encontremos para ese autor
-        title_doi = get_doi_from_publi_dblp(best_coincidence)
+        list_of_pdf_articles = []
 
-        #LLamamos a la api de semantic scholar con el DOI del título
-        author_id = get_author_id(best_coincidence,title_doi )
+        tidy_info = tidy_info_from_teacher(best_coincidence)
 
         author_dict = {}
-        # recogemos los identificadores de los paper en Semantic Scholar, para
+
+        #LLamamos a la api de semantic scholar con el DOI del título
+        author_id = get_author_id(best_coincidence,tidy_info['dois'])
+
         # buscar por cada uno de esos Ids
-        paperIds = get_all_paperIds(author_id, author_dict)
-
+        set_info_from_author(tidy_info, author_dict, author_id, best_coincidence)
         publication_dict_list=[]
-        set_topics_from_author(paperIds, author_dict, publication_dict_list)
+        set_topics_from_author(author_dict['publications'], author_dict, publication_dict_list)
+        #collection_authors.insert(author_dict)
+        #collection_publications.insert(publication_dict_list)
+        get_papers(teacher, author_dict)
 
-        collection_authors.insert(author_dict)
-        collection_publications.insert(publication_dict_list)
-
-        get_paper(teacher)
-
-
+        #get_paper(teacher)
 
     print("The execution took: {0:0.2f} seconds".format(time.time() - start_time))
 # this is the standard boilerplate that calls the main() function
