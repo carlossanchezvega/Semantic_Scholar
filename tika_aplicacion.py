@@ -3,12 +3,17 @@ import sys, requests
 import time
 from bs4 import BeautifulSoup
 from re import search
+import unidecode
+import os
 
 import nltk
 from CheckBestAuthorSimilarity import CheckBestAuthorSimilarity
 
 def MAX_NUMBER_OF_ARTICLES():
     return 5
+
+def SUCCESS():
+    return 200
 
 
 def get_best_coincidence(data):
@@ -36,7 +41,7 @@ def get_best_coincidence(data):
 
         # we go over the author list from the second author on, calculating best similarity
         for x in range(0, len(data['result']['hits']['hit'])):
-            check_similarity = CheckBestAuthorSimilarity(best_concidence, data['result']['hits']['hit'][x]['info']['author'])
+            check_similarity = CheckBestAuthorSimilarity(data['result']['query'], data['result']['hits']['hit'][x]['info']['author'])
             new_similarity = check_similarity.getSimilarity()
 
             # in case the name of the new author has better similarity
@@ -47,7 +52,7 @@ def get_best_coincidence(data):
 
 
 
-def get_author_from_dblp(teacher):
+def get_coincidence_from_dblp(teacher):
     """
         We request the dblp api in search of the exact name of the author in dblp, based
         on the author introduced by the user
@@ -103,9 +108,16 @@ def get_paperIds(authorId):
             set_of_ids_of_papers (set): we return a set of identifiers of all the papers
             of the author in the Semantic Scholar database
     """
+    print('--------------------------------\n')
+    print('authorId===> ' + str(authorId))
+    print('--------------------------------\n')
+
+
     paperIds=[]
     url_semantic_by_author = 'https://api.semanticscholar.org/v1/author/'+authorId
     response = requests.get(url_semantic_by_author)
+    print('STATUS CODE --->' + str(response.status_code) + "\n")
+
     data = response.json()
 
 
@@ -128,29 +140,36 @@ def set_topics_from_author(paperIds, author_dict, publication_dict_list):
     topics = set()
     author_dict['topics'] = []
 
+    cont =   0
+    #papeIds2 = []
+    #papeIds2.append('fa9a46fca1398da02735097e899f70460d240044')
+    #papeIds2.append('ee556bf1cb23e300e723386b93351                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             007e1a50594')
+    #papeIds2.append('56d04117a9a441e9a95d9a825782a41900247b6b')
+
     #we iterate over each paperId
     for paperId in paperIds:
 
         urlPaper = 'https://api.semanticscholar.org/v1/paper/'+paperId
         response = requests.get(urlPaper)
-        data = response.json()
-        publication_dict={}
-        publication_dict['_id'] = data['paperId']
-        publication_dict['title'] = data['title']
+        if response.status_code == SUCCESS():
+            data = response.json()
+            publication_dict={}
+            publication_dict['_id'] = data['paperId']
+            publication_dict['title'] = data['title']
 
-        author_ids = []
-        # for each paperId, we get its authorsId
-        for author in data['authors']:
-            author_ids.append(author['authorId'])
-        publication_dict['author_ids'] = author_ids
+            author_ids = []
+            # for each paperId, we get its authorsId
+            for author in data['authors']:
+                author_ids.append(author['authorId'])
+            publication_dict['author_ids'] = author_ids
 
-        #for each paper we get its topics taking into account that the may be repeated
-        for topic in data['topics']:
-            topics.add(topic['topic'])
-        publication_dict['topics'] = list(topics)
-        publication_dict_list.append(publication_dict)
-        author_dict['topics'] = list(set(author_dict['topics']) | topics)
-
+            #for each paper we get its topics taking into account that the may be repeated
+            for topic in data['topics']:
+                topics.add(topic['topic'])
+            publication_dict['topics'] = list(topics)
+            publication_dict_list.append(publication_dict)
+            author_dict['topics'] = list(set(author_dict['topics']) | topics)
+        cont = cont + 1
     return
 
 def is_pdf_file(file):
@@ -175,18 +194,19 @@ def tidy_info_from_teacher(best_coincidence):
 
     list_of_articles=[]
     list_of_dois_from_articles = []
+    list_of_titles = {}
     tidy_info_from_author = {}
-
     # cogemos el primer título que encontremos para ese autor
     for author in data['result']['hits']['hit']:
         if best_coincidence in author['info']['authors']['author']:
-            if 'doi' in author['info'].keys() and 'doi'not in tidy_info_from_author.keys():
+            if 'doi' in author['info'].keys():
                 list_of_dois_from_articles.append(author['info']['doi'])
             if 'ee' in author['info'].keys() and is_pdf_file(author['info']['ee']) and not len(list_of_articles)>MAX_NUMBER_OF_ARTICLES():
                 list_of_articles.append(author['info']['ee'])
+                list_of_titles[author['info']['ee']]= author['info']['title'].replace(' ','-').replace('.','')
     tidy_info_from_author['pdf_articles'] = list_of_articles
+    tidy_info_from_author['titles'] = list_of_titles
     tidy_info_from_author['dois'] = list_of_dois_from_articles
-
     return tidy_info_from_author
 
 def get_teachers():
@@ -204,15 +224,32 @@ def get_file_name(url):
         value = value.group(1)
     return value
 
+def get_papers(teacher, tidy_info):
+    directorio = './' + unidecode.unidecode(teacher).replace(" ", "") + "/"
 
+    if not os.path.exists(directorio):
+        os.makedirs(directorio)
 
-def get_papers(teacher, author_dict):
-
-    for pdf in author_dict['pdf_articles']:
+    for pdf in tidy_info['pdf_articles']:
         r = requests.get(pdf)
-        # open method to open a file on your system and write the contents
-        with open("./"+teacher+"/"+get_file_name(pdf)+".pdf", "wb") as code:
+        directorio = './'+unidecode.unidecode(teacher).replace(" " ,"")+ "/"
+        titulo = tidy_info['titles'][pdf]+".pdf"
+
+
+        with open(directorio+titulo, "wb") as code:
             code.write(r.content)
+
+
+"""def get_papers(teacher, tidy_info):
+
+    for pdf in tidy_info['pdf_articles']:
+        r = requests.get(pdf)
+        # open method to open a file on your system and write the
+        nombre  = unidecode.unidecode(teacher).replace(" " ,"")
+        titulo = tidy_info['titles'][pdf]
+        todo = "./"+nombre+"/"+titulo
+        with open("./" + unidecode.unidecode(teacher).replace(" " ,"")+ "/" + tidy_info['titles'][pdf]+".pdf", "wb") as code:
+            code.write(r.content)"""
 
 
 def get_paper(teacher):
@@ -263,6 +300,7 @@ def set_info_from_author(tidy_info, author_dict, author_id, best_coincidence):
     ids = get_paperIds(author_id)
     author_dict['publications'] = ids
     author_dict['pdf_articles'] = tidy_info['pdf_articles']
+
     return author_dict
 
 
@@ -277,14 +315,12 @@ def main():
 
     #teachers = get_teachers()
     teachers = ['Belén Vela Sánchez', 'Felipe Ortega']
+    #teachers = ['Belén Vela Sánchez']
+
 
     for teacher in teachers:
-        best_coincidence = get_author_from_dblp(teacher)
-
-        list_of_pdf_articles = []
-
+        best_coincidence = get_coincidence_from_dblp(teacher)
         tidy_info = tidy_info_from_teacher(best_coincidence)
-
         author_dict = {}
 
         #LLamamos a la api de semantic scholar con el DOI del título
@@ -294,9 +330,13 @@ def main():
         set_info_from_author(tidy_info, author_dict, author_id, best_coincidence)
         publication_dict_list=[]
         set_topics_from_author(author_dict['publications'], author_dict, publication_dict_list)
-        #collection_authors.insert(author_dict)
-        #collection_publications.insert(publication_dict_list)
-        get_papers(teacher, author_dict)
+        db.collection_authors.drop()
+        db.publications.drop()
+        db.authors.drop()
+        collection_authors.insert(author_dict)
+        collection_publications.insert(publication_dict_list)
+        get_papers(teacher, tidy_info)
+
 
         #get_paper(teacher)
 
