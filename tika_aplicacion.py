@@ -312,13 +312,17 @@ def main():
     db = connection.authorAndPublicationData
     collection_authors = db.authors
     collection_publications = db.publications
+    db.collection_authors.drop()
+    db.publications.drop()
+    db.authors.drop()
 
-    #teachers = get_teachers()
-    teachers = ['Belén Vela Sánchez', 'Felipe Ortega']
-    #teachers = ['Belén Vela Sánchez']
+    teachers = get_teachers()
+    teachers = ['Belén Vela Sánchez', 'Felipe Ortega', 'Isaac Martín de Diego']
+    #teachers = ['Isaac Martín de Diego']
 
 
     for teacher in teachers:
+        print('PROCESSINB AUTHOR----------->  '+teacher+ "\n")
         best_coincidence = get_coincidence_from_dblp(teacher)
         tidy_info = tidy_info_from_teacher(best_coincidence)
         author_dict = {}
@@ -330,11 +334,11 @@ def main():
         set_info_from_author(tidy_info, author_dict, author_id, best_coincidence)
         publication_dict_list=[]
         set_topics_from_author(author_dict['publications'], author_dict, publication_dict_list)
-        db.collection_authors.drop()
-        db.publications.drop()
-        db.authors.drop()
-        collection_authors.insert(author_dict)
-        collection_publications.insert(publication_dict_list)
+        #collection_authors.insert(author_dict)
+        #collection_publications.insert(publication_dict_list)
+
+        collection_authors.update(author_dict, author_dict, True)
+        collection_publications.update_many(publication_dict_list,publication_dict_list , True)
         get_papers(teacher, tidy_info)
 
 
