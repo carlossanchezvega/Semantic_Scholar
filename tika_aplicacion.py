@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 from re import search
 import unidecode
 import os
+import bson
 
 import nltk
 from CheckBestAuthorSimilarity import CheckBestAuthorSimilarity
@@ -320,7 +321,8 @@ def main():
     teachers = ['Belén Vela Sánchez', 'Felipe Ortega', 'Isaac Martín de Diego']
     #teachers = ['Isaac Martín de Diego']
 
-
+    set_of_ids =  set()
+    first_iteration = True
     for teacher in teachers:
         print('PROCESSINB AUTHOR----------->  '+teacher+ "\n")
         best_coincidence = get_coincidence_from_dblp(teacher)
@@ -334,15 +336,18 @@ def main():
         set_info_from_author(tidy_info, author_dict, author_id, best_coincidence)
         publication_dict_list=[]
         set_topics_from_author(author_dict['publications'], author_dict, publication_dict_list)
-        #collection_authors.insert(author_dict)
-        #collection_publications.insert(publication_dict_list)
+        if first_iteration:
+            set_of_ids = set_of_ids| set(author_dict['publications'])
+            first_iteration = False
+        else:
+            set_of_ids = set_of_ids| set(author_dict['publications'])
+            publication_dict_list = [item for item in publication_dict_list if item['_id'] not in set_of_ids]
 
-        collection_authors.update(author_dict, author_dict, True)
-        collection_publications.update_many(publication_dict_list,publication_dict_list , True)
+        collection_authors.insert(author_dict)
+        collection_publications.insert(publication_dict_list)
         get_papers(teacher, tidy_info)
-
-
         #get_paper(teacher)
+
 
     print("The execution took: {0:0.2f} seconds".format(time.time() - start_time))
 # this is the standard boilerplate that calls the main() function
