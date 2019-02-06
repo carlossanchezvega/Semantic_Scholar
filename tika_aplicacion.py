@@ -34,8 +34,8 @@ def get_best_coincidence(data):
     best_similarity = 0
 
     # in caso we do not find any coincidence corresponding to that name
-    if len(data['result']['hits'])==0:
-        return data['result']['hits']['hit'][0]['info']['author']
+    if data['result']['hits']['@total']=='0':
+        return data['result']['query']
     else:
         #best_concidence = data['result']['hits']['hit'][0]['info']['author']
         best_concidence = data['result']['query']
@@ -73,7 +73,7 @@ def get_coincidence_from_dblp(teacher):
     return best_coincidence
 
 
-def get_author_id(author_from_dblp, dois):
+def get_author_id(author_from_dblp, tidy_info):
     """
         We request, the Semantic Scholar api, the article with the "doi" received.
         Once received, we compare the name of the author to the authors of that article
@@ -87,14 +87,19 @@ get_author_id
             author_id: The author id in the Semantic Scholar database corresponding to
             the argument of "author_from_dblp"
     """
-    for doi in dois:
-        url_semantic = 'https://api.semanticscholar.org/v1/paper/' + doi
-        response_titles = requests.get(url_semantic)
-        data = response_titles.json()
-        if 'error' not in data:
-            for author in data['authors']:
-                if author_from_dblp == author['name']:
-                    return author['authorId']
+
+    if len(tidy_info)==0:
+        return
+    else:
+        dois = tidy_info['dois']
+        for doi in dois:
+            url_semantic = 'https://api.semanticscholar.org/v1/paper/' + doi
+            response_titles = requests.get(url_semantic)
+            data = response_titles.json()
+            if 'error' not in data:
+                for author in data['authors']:
+                    if author_from_dblp == author['name']:
+                        return author['authorId']
 
 
 def get_paperIds(authorId):
@@ -198,16 +203,17 @@ def tidy_info_from_teacher(best_coincidence):
     list_of_titles = {}
     tidy_info_from_author = {}
     # cogemos el primer título que encontremos para ese autor
-    for author in data['result']['hits']['hit']:
-        if best_coincidence in author['info']['authors']['author']:
-            if 'doi' in author['info'].keys():
-                list_of_dois_from_articles.append(author['info']['doi'])
-            if 'ee' in author['info'].keys() and is_pdf_file(author['info']['ee']) and not len(list_of_articles)>MAX_NUMBER_OF_ARTICLES():
-                list_of_articles.append(author['info']['ee'])
-                list_of_titles[author['info']['ee']]= author['info']['title'].replace(' ','-').replace('.','')
-    tidy_info_from_author['pdf_articles'] = list_of_articles
-    tidy_info_from_author['titles'] = list_of_titles
-    tidy_info_from_author['dois'] = list_of_dois_from_articles
+    if data['result']['hits']['@total'] != '0':
+        for author in data['result']['hits']['hit']:
+            if best_coincidence in author['info']['authors']['author']:
+                if 'doi' in author['info'].keys():
+                    list_of_dois_from_articles.append(author['info']['doi'])
+                if 'ee' in author['info'].keys() and is_pdf_file(author['info']['ee']) and not len(list_of_articles)>MAX_NUMBER_OF_ARTICLES():
+                    list_of_articles.append(author['info']['ee'])
+                    list_of_titles[author['info']['ee']]= author['info']['title'].replace(' ','-').replace('.','')
+        tidy_info_from_author['pdf_articles'] = list_of_articles
+        tidy_info_from_author['titles'] = list_of_titles
+        tidy_info_from_author['dois'] = list_of_dois_from_articles
     return tidy_info_from_author
 
 def get_teachers():
@@ -305,6 +311,27 @@ def set_info_from_author(tidy_info, author_dict, author_id, best_coincidence):
     return author_dict
 
 
+'''
+    Remove duplicate elements from list
+    This method is necessay since the API returns repeated publications in the same request
+'''
+def removeDuplicates(listofElements):
+    # Create an empty list to store unique elements
+    uniqueList = []
+    set_of_ids =set()
+
+    # Iterate over the original list and for each element
+    # add it to uniqueList, if its not already there.
+    for elem in listofElements:
+        if elem['_id'] not in set_of_ids:
+            uniqueList.append(elem)
+            set_of_ids.add(elem['_id'])
+            # Return the list of unique elements
+        else:
+            print('****** ELEMENTO QUE SE REPITE ************\n')
+            print('id ----> '+elem['_id'])
+    return uniqueList
+
 def main():
     start_time = time.time()
 
@@ -318,11 +345,14 @@ def main():
     db.authors.drop()
 
     teachers = get_teachers()
+    #teachers = ['Enrique Cabello Pardos']
+
     teachers = ['Belén Vela Sánchez', 'Felipe Ortega', 'Isaac Martín de Diego']
-    #teachers = ['Isaac Martín de Diego']
+
 
     set_of_ids =  set()
     first_iteration = True
+    list = []
     for teacher in teachers:
         print('PROCESSINB AUTHOR----------->  '+teacher+ "\n")
         best_coincidence = get_coincidence_from_dblp(teacher)
@@ -330,24 +360,19 @@ def main():
         author_dict = {}
 
         #LLamamos a la api de semantic scholar con el DOI del título
-        author_id = get_author_id(best_coincidence,tidy_info['dois'])
+        author_id = get_author_id(best_coincidence,tidy_info)
 
-        # buscar por cada uno de esos Ids
-        set_info_from_author(tidy_info, author_dict, author_id, best_coincidence)
-        publication_dict_list=[]
-        set_topics_from_author(author_dict['publications'], author_dict, publication_dict_list)
-        if first_iteration:
-            set_of_ids = set_of_ids| set(author_dict['publications'])
-            first_iteration = False
-        else:
-            set_of_ids = set_of_ids| set(author_dict['publications'])
-            publication_dict_list = [item for item in publication_dict_list if item['_id'] not in set_of_ids]
-
-        collection_authors.insert(author_dict)
+        if author_id:
+            # buscar por cada uno de esos Ids
+            set_info_from_author(tidy_info, author_dict, author_id, best_coincidence)
+            publication_dict_list=[]
+            set_topics_from_author(author_dict['publications'], author_dict, publication_dict_list)
+            list = list + publication_dict_list
+            collection_authors.insert(author_dict)
+            get_papers(teacher, tidy_info)
+    if len(list) > 0:
+        publication_dict_list = removeDuplicates(list)
         collection_publications.insert(publication_dict_list)
-        get_papers(teacher, tidy_info)
-        #get_paper(teacher)
-
 
     print("The execution took: {0:0.2f} seconds".format(time.time() - start_time))
 # this is the standard boilerplate that calls the main() function
