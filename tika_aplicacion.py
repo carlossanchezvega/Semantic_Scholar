@@ -345,9 +345,9 @@ def main():
     db.authors.drop()
 
     teachers = get_teachers()
-    #teachers = ['Enrique Cabello Pardos']
+    teachers = ['Antonio Alonso Ayuso']
 
-    teachers = ['Belén Vela Sánchez', 'Felipe Ortega', 'Isaac Martín de Diego']
+    #teachers = ['Belén Vela Sánchez', 'Felipe Ortega', 'Isaac Martín de Diego']
 
 
     set_of_ids =  set()
