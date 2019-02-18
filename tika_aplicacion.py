@@ -198,7 +198,9 @@ def tidy_info_from_teacher(best_coincidence):
     response = requests.get(url, params={'q': best_coincidence, 'format': 'json'})
     data = response.json()
 
+    list_of_pdf_articles=[]
     list_of_articles=[]
+
     list_of_dois_from_articles = []
     list_of_titles = {}
     tidy_info_from_author = {}
@@ -208,10 +210,16 @@ def tidy_info_from_teacher(best_coincidence):
             if best_coincidence in author['info']['authors']['author']:
                 if 'doi' in author['info'].keys():
                     list_of_dois_from_articles.append(author['info']['doi'])
-                if 'ee' in author['info'].keys() and is_pdf_file(author['info']['ee']) and not len(list_of_articles)>MAX_NUMBER_OF_ARTICLES():
-                    list_of_articles.append(author['info']['ee'])
-                    list_of_titles[author['info']['ee']]= author['info']['title'].replace(' ','-').replace('.','')
-        tidy_info_from_author['pdf_articles'] = list_of_articles
+                if 'ee' in author['info'].keys():
+
+                    if is_pdf_file(author['info']['ee']) and not len(list_of_pdf_articles)>MAX_NUMBER_OF_ARTICLES():
+                        list_of_pdf_articles.append(author['info']['ee'])
+                        list_of_titles[author['info']['ee']]= author['info']['title'].replace(' ','-').replace('.','')
+                    else:
+                        list_of_articles.append(author['info']['ee'])
+
+        tidy_info_from_author['articles'] = list_of_articles
+        tidy_info_from_author['pdf_articles'] = list_of_pdf_articles
         tidy_info_from_author['titles'] = list_of_titles
         tidy_info_from_author['dois'] = list_of_dois_from_articles
     return tidy_info_from_author
@@ -245,6 +253,38 @@ def get_papers(teacher, tidy_info):
 
         with open(directorio+titulo, "wb") as code:
             code.write(r.content)
+
+
+
+def get_papers1(teacher, tidy_info, authorId):
+    directorio = './' + unidecode.unidecode(teacher).replace(" ", "") + "/"
+
+    if not os.path.exists(directorio):
+        os.makedirs(directorio)
+
+    url_semantic_by_author = 'https://api.semanticscholar.org/v1/author/'+authorId
+    response = requests.get(url_semantic_by_author)
+    print('STATUS CODE --->' + str(response.status_code) + "\n")
+
+    data = response.json()
+    #for article in tidy_info['articles']:
+    for article in data['papers']:
+
+        page = requests.get(article['url'])
+        soup = BeautifulSoup(page.content, 'html.parser')
+
+        """recogemmos el contenido de ese pdf en concreto"""
+        try:
+            pdf_url = soup.find(attrs={"name": "citation_pdf_url"})['content']
+            if is_pdf_file(pdf_url):
+                # Copy a network object to a local file
+                # urllib.request.urlretrieve(pdf_url, "./papers2/fichero_prueba.pdf")
+                titulo = unidecode.unidecode(article['title']).replace(" ", "")+".pdf"
+                r = requests.get(pdf_url)
+                with open(directorio + titulo, "wb") as code:
+                    code.write(r.content)
+        except:
+            pass
 
 
 """def get_papers(teacher, tidy_info):
@@ -307,7 +347,7 @@ def set_info_from_author(tidy_info, author_dict, author_id, best_coincidence):
     ids = get_paperIds(author_id)
     author_dict['publications'] = ids
     author_dict['pdf_articles'] = tidy_info['pdf_articles']
-
+    author_dict['articles'] = tidy_info['articles']
     return author_dict
 
 
@@ -345,7 +385,7 @@ def main():
     db.authors.drop()
 
     teachers = get_teachers()
-    teachers = ['Antonio Alonso Ayuso']
+    #teachers = ['Belén Vela Sánchez']
 
     #teachers = ['Belén Vela Sánchez', 'Felipe Ortega', 'Isaac Martín de Diego']
 
@@ -369,7 +409,7 @@ def main():
             set_topics_from_author(author_dict['publications'], author_dict, publication_dict_list)
             list = list + publication_dict_list
             collection_authors.insert(author_dict)
-            get_papers(teacher, tidy_info)
+            get_papers1(teacher, tidy_info, author_id)
     if len(list) > 0:
         publication_dict_list = removeDuplicates(list)
         collection_publications.insert(publication_dict_list)
