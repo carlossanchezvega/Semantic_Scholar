@@ -6,7 +6,7 @@ def get_papers1(todo):
     pdf = 'http://ceur-ws.org/Vol-2083/paper-10.pdf'
     r = requests.get(pdf)
 
-    filename = 'Using-a-NoSQL-Graph-Oriented-Database-to-Store-Accessible-Transport-Routes.pdf'
+    filename = '1.pdf'
     dirname = os.path.dirname('BelenVelaSanchez')
     if not os.path.exists(dirname):
         os.makedirs('BelenVelaSanchez')
@@ -28,7 +28,7 @@ def get_papers2():
 
 
 def main():
-    todo = './BelenVelaSanchez/Using-a-NoSQL-Graph-Oriented-Database-to-Store-Accessible-Transport-Routes.pdf'
+    todo = './BelenVelaSanchez/1.pdf'
     get_papers2()
 
 

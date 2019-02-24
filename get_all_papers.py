@@ -60,7 +60,7 @@ def get_teachers():
 
 
 def extract_content():
-    parsedPDF = parser.from_file("./papers2/python1.pdf")
+    parsedPDF = parser.from_file("./author/1.pdf")
     #print(parsedPDF['content'])
     #print(language.from_buffer(parsedPDF['content']))
 

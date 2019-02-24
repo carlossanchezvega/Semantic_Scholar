@@ -409,7 +409,7 @@ def main():
             set_topics_from_author(author_dict['publications'], author_dict, publication_dict_list)
             list = list + publication_dict_list
             collection_authors.insert(author_dict)
-            get_papers1(teacher, tidy_info, author_id)
+#            get_papers1(teacher, tidy_info, author_id)
     if len(list) > 0:
         publication_dict_list = removeDuplicates(list)
         collection_publications.insert(publication_dict_list)
