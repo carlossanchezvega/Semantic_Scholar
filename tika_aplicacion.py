@@ -5,9 +5,16 @@ from bs4 import BeautifulSoup
 from re import search
 import unidecode
 import os
-import bson
+from threading import Thread
+#from threading import Thread
+#import bson
+import logging
+
 
 import nltk
+
+# TENGO QUE EJECUTAR ESTA
+
 from CheckBestAuthorSimilarity import CheckBestAuthorSimilarity
 
 def MAX_NUMBER_OF_ARTICLES():
@@ -96,9 +103,13 @@ get_author_id
             url_semantic = 'https://api.semanticscholar.org/v1/paper/' + doi
             response_titles = requests.get(url_semantic)
             data = response_titles.json()
+
+            #it is possible we cannot find a paper with the doi provided
             if 'error' not in data:
+
                 for author in data['authors']:
                     if author_from_dblp == author['name']:
+                        # we set the author  ID
                         return author['authorId']
 
 
@@ -157,6 +168,8 @@ def set_topics_from_author(paperIds, author_dict, publication_dict_list):
 
         urlPaper = 'https://api.semanticscholar.org/v1/paper/'+paperId
         response = requests.get(urlPaper)
+
+        # We might not find the paper corresponding to the code provided
         if response.status_code == SUCCESS():
             data = response.json()
             publication_dict={}
@@ -169,7 +182,7 @@ def set_topics_from_author(paperIds, author_dict, publication_dict_list):
                 author_ids.append(author['authorId'])
             publication_dict['author_ids'] = author_ids
 
-            #for each paper we get its topics taking into account that the may be repeated
+            #for each paper we get its topics taking into account it may be repeated
             for topic in data['topics']:
                 topics.add(topic['topic'])
             publication_dict['topics'] = list(topics)
@@ -178,7 +191,18 @@ def set_topics_from_author(paperIds, author_dict, publication_dict_list):
         cont = cont + 1
     return
 
+
+
 def is_pdf_file(file):
+    """
+        We chech the name of the file to know whether a paper is a pdf file
+
+        Args:
+            file (string): the url of the file
+
+        Returns:
+            (boolean):  we return whether the file is a pdf file
+    """
     return (file[len(file)-4:(len(file))])=='.pdf'
 
 
@@ -191,7 +215,8 @@ def tidy_info_from_teacher(best_coincidence):
             best_coincidence (string): name of the author
 
         Returns:
-            strimg: we return the doi of the title
+            tidy_info_from_author(map): we fulfill the map structure with necessary information:
+
     """
 
     url = 'http://dblp.org/search/publ/api'
@@ -204,7 +229,7 @@ def tidy_info_from_teacher(best_coincidence):
     list_of_dois_from_articles = []
     list_of_titles = {}
     tidy_info_from_author = {}
-    # cogemos el primer título que encontremos para ese autor
+    # we take the first title of that author
     if data['result']['hits']['@total'] != '0':
         for author in data['result']['hits']['hit']:
             if best_coincidence in author['info']['authors']['author']:
@@ -225,6 +250,15 @@ def tidy_info_from_teacher(best_coincidence):
     return tidy_info_from_author
 
 def get_teachers():
+    """
+        We request the name of the teachers shown in the master's degree website
+
+        Args:
+
+        Returns:
+            nombres(list): name of the teachers
+
+    """
     page = requests.get("http://www.masterdatascience.es/equipo/")
     soup = BeautifulSoup(page.content, 'html.parser')
     nombres = [directors.text.split('-')[0].rstrip() for directors in soup.findAll(attrs={"class": "title margin-clear"})] \
@@ -253,6 +287,40 @@ def get_papers(teacher, tidy_info):
 
         with open(directorio+titulo, "wb") as code:
             code.write(r.content)
+
+
+
+
+def get_papers_threads(teacher, tidy_info, authorId):
+    directorio = './' + unidecode.unidecode(teacher).replace(" ", "") + "/"
+
+    if not os.path.exists(directorio):
+        os.makedirs(directorio)
+
+    url_semantic_by_author = 'https://api.semanticscholar.org/v1/author/'+authorId
+    response = requests.get(url_semantic_by_author)
+    print('STATUS CODE --->' + str(response.status_code) + "\n")
+
+    data = response.json()
+    #for article in tidy_info['articles']:
+    for article in data['papers']:
+
+        page = requests.get(article['url'])
+        soup = BeautifulSoup(page.content, 'html.parser')
+
+        """recogemmos el contenido de ese pdf en concreto"""
+        try:
+            pdf_url = soup.find(attrs={"name": "citation_pdf_url"})['content']
+            if is_pdf_file(pdf_url):
+                # Copy a network object to a local file
+                # urllib.request.urlretrieve(pdf_url, "./papers2/fichero_prueba.pdf")
+                titulo = unidecode.unidecode(article['title']).replace(" ", "")+".pdf"
+                r = requests.get(pdf_url)
+                with open(directorio + titulo, "wb") as code:
+                    code.write(r.content)
+        except:
+            pass
+
 
 
 
@@ -409,7 +477,7 @@ def main():
             set_topics_from_author(author_dict['publications'], author_dict, publication_dict_list)
             list = list + publication_dict_list
             collection_authors.insert(author_dict)
-#            get_papers1(teacher, tidy_info, author_id)
+            get_papers1(teacher, tidy_info, author_id)
     if len(list) > 0:
         publication_dict_list = removeDuplicates(list)
         collection_publications.insert(publication_dict_list)
