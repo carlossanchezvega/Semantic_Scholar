@@ -90,12 +90,14 @@ def plot_demo_1(distance_matrix):
 
 
 def tf_idif1():
-    twenty = [['documento1',['this', 'is', 'the', 'first', 'sentence', 'for', 'analysis']],
-                 ['documento2',['this', 'is', 'the', 'second', 'sentence']],
-                 ['documento3',['yet', 'another', 'sentence']],
-                 ['documento4',['one', 'more', 'sentence']],
-                 ['documento5',['and', 'the', 'final', 'sentence']],
-                 ['documento6',['bla1', 'bla2', 'bla3']]]
+    twenty = [['this', 'is', 'the', 'first', 'sentence', 'for', 'analysis'],
+              ['this', 'is', 'the', 'second', 'sentence'],
+              ['this', 'is', 'the', 'second', 'sentence'],
+              #              ['yet', 'another', 'sentence'],
+              ['one', 'more', 'sentence'],
+              ['and', 'the', 'final', 'sentence'],
+              ['bla1', 'bla2', 'bla3']]
+
 
     list_of_sentences = []
     for sentence in twenty:
