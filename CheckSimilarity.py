@@ -8,13 +8,19 @@ import seaborn as sns; sns.set()
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import pylab
 from sklearn import linear_model, manifold, decomposition, datasets
-logistic = linear_model.LogisticRegression()
+from sklearn.feature_extraction.text import TfidfVectorizer
+from scipy.spatial import distance
+
 colors = ['r', 'g', 'b', 'c','m','y','k']
 markers = ['o', 6, '*', '^', 'h', 's']
 labels = ['Documento1', 'Documento2','Documento3','Documento4','Documento5']
 import numpy as np
-from sklearn import   datasets,manifold
+from sklearn import datasets,manifold
 from sklearn.metrics.pairwise import linear_kernel
+from scipy import spatial
+from sklearn.metrics import pairwise_distances
+
+
 
 def find_similar(tfidf_matrix, index, top_n = 5):
 
@@ -90,27 +96,28 @@ def plot_demo_1(distance_matrix):
 
 
 def tf_idif1():
-    twenty = [['this', 'is', 'the', 'first', 'sentence', 'for', 'analysis'],
-              ['this', 'is', 'the', 'second', 'sentence'],
-              ['this', 'is', 'the', 'second', 'sentence'],
+    #twenty = [['documento1',['this', 'is', 'the', 'first', 'sentence', 'for', 'analysis']],
+    #          ['documento2',['this', 'is', 'the', 'second', 'sentence']],
+    #          ['documento3',['this', 'is', 'the', 'second', 'sentence']],
               #              ['yet', 'another', 'sentence'],
-              ['one', 'more', 'sentence'],
-              ['and', 'the', 'final', 'sentence'],
-              ['bla1', 'bla2', 'bla3']]
+    #          ['documento4',['one', 'more', 'sentence']],
+    #          ['documento5',['and', 'the', 'final', 'sentence']],
+    #          ['documento6',['bla1', 'bla2', 'bla3']]]
 
 
-    list_of_sentences = []
-    for sentence in twenty:
-        words = ' '.join(sentence)
-        list_of_sentences.append(words)
-    list_of_sentences = [' '.join(sentence) for sentence in twenty]
-    corpus =[]
-    corpus =  [corpus.append(sentence) for sentence in twenty]
+    twenty = [['documento1',['this', 'is', 'the', 'second', 'sentence']],
+              ['documento2',['this', 'is', 'the', 'second', 'sentence']],
+              ['documento3',['this', 'is', 'the', 'second', 'sentence']],
+              #              ['yet', 'another', 'sentence'],
+              ['documento4',['this', 'is', 'the', 'second', 'sentence']],
+              ['documento5',['this', 'is', 'the', 'second', 'sentence']],
+              ['documento6',['this', 'is', 'the', 'second', 'sentence']]]
+
 
     corpus = []
-    for document in twenty:
-        corpus.append((document, document))
-
+    for file, content in twenty:
+        sentence = ' '.join(content)
+        corpus.append((file,sentence))
 
     # fit() function in order to learn a vocabulary from one or more documents
     # transform() function on one or more documents as needed to encode each as a vector.
@@ -119,25 +126,49 @@ def tf_idif1():
     tfidf_matrix = TfidfVectorizer().fit_transform([content for file, content in corpus])
     #Get the pairwise similarity matrix (n by n) (The result is the similarity matrix)
     cosine_similarities = linear_kernel(tfidf_matrix, tfidf_matrix)
+
+
+    distance_matrix = pairwise_distances(tfidf_matrix, tfidf_matrix, metric='cosine', n_jobs=-1)
+
+
+    #        cosine_distance = 1-pairwise_distances(tfidf_matrix, metric="cosine")
+
     print(cosine_similarities)
+
+
     print('--------- MINIMO -----------\n')
     print(min([min(element) for element in cosine_similarities]))
     print('----------------------------\n')
 
-    cosine_similarities=np.matrix(cosine_similarities)
+    #cosine_similarities=np.matrix(cosine_similarities)
     # We are reducing the n dimentions to 2d
+
+    #for me_index, item in enumerate(corpus):
+    #    similar_documents =  [(corpus[index], score) for index, score in find_similar(tfidf_matrix, me_index)]
+
+
     model =manifold.TSNE(metric="precomputed")
-    distance_matrix = 1. - cosine_similarities
+
+    print('--------- DISTANCE MATRIX -----------\n')
+    print(distance_matrix)
+    print('----------------------------\n')
+
+
+
     Xpr = model.fit_transform(distance_matrix)
 
     # create a scatter plot of the projection
     pyplot.scatter(Xpr[:, 0], Xpr[:, 1])
 
 
-    for i, word in enumerate(list_of_sentences):
+
+
+
+
+    for i, item in enumerate(corpus):
 
         try:
-            pyplot.annotate(word, xy=(Xpr[i, 0], Xpr[i, 1]))
+            pyplot.annotate(item[1], xy=(Xpr[i, 0], Xpr[i, 1]))
         except IndexError:
             break
     pyplot.show()
