@@ -126,19 +126,11 @@ def tf_idif1():
     tfidf_matrix = TfidfVectorizer().fit_transform([content for file, content in corpus])
     #Get the pairwise similarity matrix (n by n) (The result is the similarity matrix)
     cosine_similarities = linear_kernel(tfidf_matrix, tfidf_matrix)
-
-
-    distance_matrix = pairwise_distances(tfidf_matrix, tfidf_matrix, metric='cosine', n_jobs=-1)
-
-
-    #        cosine_distance = 1-pairwise_distances(tfidf_matrix, metric="cosine")
-
     print(cosine_similarities)
 
-
-    print('--------- MINIMO -----------\n')
-    print(min([min(element) for element in cosine_similarities]))
-    print('----------------------------\n')
+    # TSNE needs distances in order to plot the points
+    distance_matrix = pairwise_distances(tfidf_matrix, tfidf_matrix, metric='cosine', n_jobs=-1)
+    #        cosine_distance = 1-pairwise_distances(tfidf_matrix, metric="cosine")
 
     #cosine_similarities=np.matrix(cosine_similarities)
     # We are reducing the n dimentions to 2d
@@ -160,11 +152,7 @@ def tf_idif1():
     # create a scatter plot of the projection
     pyplot.scatter(Xpr[:, 0], Xpr[:, 1])
 
-
-
-
-
-
+    # we go over the reduced points so as to plot the points
     for i, item in enumerate(corpus):
 
         try:
@@ -186,5 +174,4 @@ def main():
     tf_idif1()
 
 if __name__ == '__main__':
-    # sys.exit(main(sys.argv)) # used to give a better look to exists
     main()

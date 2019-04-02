@@ -52,7 +52,9 @@ def plot_demo_1():
     pylab.title("MDS on example data set in 2 dimensions")
 
     filename = "plot_demo_1.png"
-    pylab.savefig(os.path.join('/home/csanchez/PycharmProjects/Semantic_Scholar', filename), bbox_inches="tight")
+    #pylab.savefig(os.path.join('/home/csanchez/PycharmProjects/Semantic_Scholar', filename), bbox_inches="tight")
+    pylab.savefig(os.path.join('/home/csanchez/IdeaProjects/Semantic_Scholar', filename), bbox_inches="tight")
+
     print('HOLA')
 
 
@@ -88,7 +90,9 @@ def plot_iris_mds():
     pylab.title("MDS on Iris data set in 2 dimensions")
 
     filename = "mds_demo_iris.png"
-    pylab.savefig(os.path.join('/home/csanchez/PycharmProjects/Semantic_Scholar', filename), bbox_inches="tight")
+    #pylab.savefig(os.path.join('/home/csanchez/PycharmProjects/Semantic_Scholar', filename), bbox_inches="tight")
+    pylab.savefig(os.path.join('/home/csanchez/IdeaProjects/Semantic_Scholar', filename), bbox_inches="tight")
+
 
     # PCA
 
