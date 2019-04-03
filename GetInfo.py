@@ -5,7 +5,6 @@ from bs4 import BeautifulSoup
 from re import search
 import unidecode
 import os
-import itertools
 from threading import Thread
 #from threading import Thread
 #import bson
@@ -137,10 +136,7 @@ def get_paperIds(authorId):
     print('STATUS CODE --->' + str(response.status_code) + "\n")
 
     data = response.json()
-
-
-    for paper in data['papers']:
-        paperIds.append(paper['paperId'])
+    paperIds.extend([paper['paperId'] for paper in data['papers']])
     return paperIds
 
 
@@ -230,7 +226,7 @@ def tidy_info_from_teacher(best_coincidence):
     list_of_dois_from_articles = []
     list_of_titles = {}
     tidy_info_from_author = {}
-        # we take the first title of that author
+    # we take the first title of that author
     if data['result']['hits']['@total'] != '0':
         for author in data['result']['hits']['hit']:
             if best_coincidence in author['info']['authors']['author']:
@@ -288,6 +284,9 @@ def get_papers(teacher, tidy_info):
 
         with open(directorio+titulo, "wb") as code:
             code.write(r.content)
+
+
+
 
 
 
@@ -408,28 +407,22 @@ def removeDuplicates(listofElements):
     return uniqueList
 
 def main():
-
-
     start_time = time.time()
-
     url_connection = "mongodb://localhost"
     connection = pymongo.MongoClient(url_connection)
     db = connection.authorAndPublicationData
+
+    # we create the collectiions of our data
     collection_authors = db.authors
     collection_publications = db.publications
-    db.collection_authors.drop()
-    db.publications.drop()
-    db.authors.drop()
+    collection_authors.drop()
+    collection_publications.drop()
 
-    #teachers = get_teachers()
-    teachers = ["Felipe Ortega"]
-
-    #teachers = ['Belén Vela Sánchez', 'Felipe Ortega', 'Isaac Martín de Diego']
-
-
+    teachers = get_teachers()
+    #teachers = ['Belén Vela Sánchez']
     set_of_ids =  set()
     first_iteration = True
-    publications = []
+    list = []
     for teacher in teachers:
         print('PROCESSINB AUTHOR----------->  '+teacher+ "\n")
         best_coincidence = get_coincidence_from_dblp(teacher)
@@ -444,17 +437,11 @@ def main():
             set_info_from_author(tidy_info, author_dict, author_id, best_coincidence)
             publication_dict_list=[]
             set_topics_from_author(author_dict['publications'], author_dict, publication_dict_list)
-            list_of_publications = publications + publication_dict_list
+            list = list + publication_dict_list
             collection_authors.insert(author_dict)
             #get_papers1(teacher, tidy_info, author_id)
-
-            #ids_coauthors = [coauthor['author_ids'] for coauthor in publication_dict_list]
-            ids_coauthors = list(set(list(itertools.chain.from_iterable([coauthor['author_ids'] for coauthor in publication_dict_list]))))
-            print('Hola')
-
-
-    if len(publications) > 0:
-        publication_dict_list = removeDuplicates(publications)
+    if len(list) > 0:
+        publication_dict_list = removeDuplicates(list)
         collection_publications.insert(publication_dict_list)
 
     print("The execution took: {0:0.2f} seconds".format(time.time() - start_time))
