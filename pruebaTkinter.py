@@ -1,6 +1,7 @@
 from tkinter import *
 
 from tkinter.ttk import *
+import tika_aplicacion_OLD as tk
 
 window = Tk()
 
@@ -18,7 +19,8 @@ def clicked():
 
     print(selected.get())
 
-btn = Button(window, text="Click Me", command=clicked)
+#btn = Button(window, text="Click Me", command=clicked)
+btn = Button(window, text="Click Me", command=tk.begin())
 
 rad1.grid(column=0, row=0)
 

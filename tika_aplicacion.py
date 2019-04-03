@@ -441,6 +441,8 @@ def removeDuplicates(listofElements):
     return uniqueList
 
 def main():
+
+
     start_time = time.time()
 
     url_connection = "mongodb://localhost"

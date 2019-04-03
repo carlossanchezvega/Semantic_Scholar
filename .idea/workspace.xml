@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="548c2264-2239-4ee6-a305-3fa92d1ad669" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mds_demo_iris.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plot_demo_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pruebaPyQT.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pruebaTkinter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CheckSimilarity.py" beforeDir="false" afterPath="$PROJECT_DIR$/CheckSimilarity.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDS_prueba_copiada.py" beforeDir="false" afterPath="$PROJECT_DIR$/MDS_prueba_copiada.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/descargar_nltk.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pruebaTkinter.py" beforeDir="false" afterPath="$PROJECT_DIR$/pruebaTkinter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tika_aplicacion.py" beforeDir="false" afterPath="$PROJECT_DIR$/tika_aplicacion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tika_aplicacion_OLD.py" beforeDir="false" afterPath="$PROJECT_DIR$/tika_aplicacion_OLD.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,13 +20,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CheckSimilarity.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1498">
-              <caret line="175" column="26" lean-forward="true" selection-start-line="175" selection-start-column="26" selection-end-line="175" selection-end-column="26" />
+            <state relative-caret-position="179">
+              <caret line="169" column="30" lean-forward="true" selection-start-line="169" selection-start-column="30" selection-end-line="169" selection-end-column="30" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tika_aplicacion.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1589">
+              <caret line="158" selection-start-line="158" selection-end-line="158" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -41,11 +49,23 @@
           <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MDS_prueba_copiada.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-911">
-              <caret line="15" column="42" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="42" />
+            <state relative-caret-position="-256">
+              <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pruebaTkinter.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -62,11 +82,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/prueba_nombre_fichero.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pruebaDescargaPapers.py">
           <provider selected="true" editor-type-id="text-editor">
             <state>
@@ -80,14 +95,31 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tika_aplicacion_OLD.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-17" />
+            <state relative-caret-position="120">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pruebaPyQT.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="16" column="23" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TSNE_copia_seguridad.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-377">
+            <state>
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
               </folding>
@@ -114,6 +146,8 @@
       <find>mds_dem</find>
       <find>png</find>
       <find>intento</find>
+      <find>mds</find>
+      <find>find_similar</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -123,9 +157,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/pruebaPyQT.py" />
-        <option value="$PROJECT_DIR$/pruebaTkinter.py" />
-        <option value="$PROJECT_DIR$/CheckSimilarity.py" />
         <option value="$PROJECT_DIR$/MDS_prueba_copiada.py" />
+        <option value="$PROJECT_DIR$/tika_aplicacion.py" />
+        <option value="$PROJECT_DIR$/pruebaTkinter.py" />
+        <option value="$PROJECT_DIR$/tika_aplicacion_OLD.py" />
+        <option value="$PROJECT_DIR$/CheckSimilarity.py" />
       </list>
     </option>
   </component>
@@ -139,6 +175,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -146,12 +184,14 @@
               <item name="Semantic_Scholar" type="b2602c69:ProjectViewProjectNode" />
               <item name="Semantic_Scholar" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Semantic_Scholar" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -161,7 +201,7 @@
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -175,7 +215,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.MDS_prueba_copiada">
+  <component name="RunManager" selected="Python.CheckSimilarity">
     <configuration name="CheckSimilarity" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Semantic_Scholar" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -289,9 +329,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.MDS_prueba_copiada" />
-        <item itemvalue="Python.pruebaTkinter" />
         <item itemvalue="Python.CheckSimilarity" />
+        <item itemvalue="Python.pruebaTkinter" />
+        <item itemvalue="Python.MDS_prueba_copiada" />
       </list>
     </recent_temporary>
   </component>
@@ -313,13 +353,30 @@
       <option name="project" value="LOCAL" />
       <updated>1554134820380</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="primeras pruebas con la interfaz gráfica">
+      <created>1554202479972</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1554202479972</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25235197" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.255119" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -328,14 +385,14 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.4600432" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.41792658" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4991699" weight="0.032397408" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.4991699" visible="true" weight="0.41792658" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4991699" weight="0.32937366" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4986165" weight="0.32937366" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5008301" side_tool="true" visible="true" weight="0.41792658" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.4991699" weight="0.32937366" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -348,7 +405,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="dibuja mal las semejanzas" />
-    <option name="LAST_COMMIT_MESSAGE" value="dibuja mal las semejanzas" />
+    <MESSAGE value="primeras pruebas con la interfaz gráfica" />
+    <option name="LAST_COMMIT_MESSAGE" value="primeras pruebas con la interfaz gráfica" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -357,6 +415,16 @@
           <url>file://$PROJECT_DIR$/CheckSimilarity.py</url>
           <line>152</line>
           <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/pruebaTkinter.py</url>
+          <line>22</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/CheckSimilarity.py</url>
+          <line>173</line>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -421,35 +489,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pruebaPyQT.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="23" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pruebaTkinter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="52" lean-forward="true" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tika_aplicacion.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6121">
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CheckSimilarity2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-737">
@@ -470,9 +509,7 @@
     <entry file="file://$PROJECT_DIR$/mds_demo_2.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/descargar_nltk.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/descargar_nltk.py" />
     <entry file="file://$PROJECT_DIR$/get_author_information.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3242">
@@ -511,6 +548,40 @@
     <entry file="file://$PROJECT_DIR$/prueba_nombre_fichero.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/mds_demo_iris.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plot_demo_1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sin_leyenda.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/intento.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/distances.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pruebaTkinter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MDS.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pruebaDescargaPapers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -522,56 +593,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tika_aplicacion_OLD.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17" />
+        <state relative-caret-position="120">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pruebaPyQT.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="16" column="23" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TSNE_copia_seguridad.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-377">
-          <folding>
-            <element signature="e#0#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mds_demo_iris.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plot_demo_1.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CheckSimilarity.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1498">
-          <caret line="175" column="26" lean-forward="true" selection-start-line="175" selection-start-column="26" selection-end-line="175" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/distances.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sin_leyenda.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MDS.py">
-      <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#59#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/intento.png">
-      <provider selected="true" editor-type-id="images" />
+    <entry file="file://$PROJECT_DIR$/tika_aplicacion.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1589">
+          <caret line="158" selection-start-line="158" selection-end-line="158" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MDS_prueba_copiada.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-911">
-          <caret line="15" column="42" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="42" />
+        <state relative-caret-position="-256">
+          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CheckSimilarity.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="169" column="30" lean-forward="true" selection-start-line="169" selection-start-column="30" selection-end-line="169" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

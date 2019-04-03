@@ -36,7 +36,7 @@ def find_similar(tfidf_matrix, index, top_n = 5):
 
 
 
-def plot_demo_1(distance_matrix):
+def plot_MDS(distance_matrix, corpus):
 
     #------------------------------------------------------------------
 
@@ -69,9 +69,9 @@ def plot_demo_1(distance_matrix):
     # With the distance between every pair of points is preserved
     Xtrans = mds.fit_transform(X)
 
-    for label ,color, marker in zip( np.unique(y),colors, markers):
+    for label ,color, marker, document in zip( np.unique(y),colors, markers,corpus):
         position=y==label
-        ax.scatter(Xtrans[position,0],Xtrans[position,1], Xtrans[position,2],label="target= {0}".format(label),color=color, marker=marker, edgecolor='black')
+        ax.scatter(Xtrans[position,0],Xtrans[position,1], Xtrans[position,2],label="target= {0}".format(document[0]),color=color, marker=marker, edgecolor='black')
 
 
     pylab.title("MDS on example data set in 3 dimensions")
@@ -81,9 +81,9 @@ def plot_demo_1(distance_matrix):
     Xtrans = mds.fit_transform(X)
 
     ax = fig.add_subplot(122)
-    for label ,color, marker, document in zip( np.unique(y),colors, markers,documents):
+    for label ,color, marker, document in zip( np.unique(y),colors, markers,corpus):
         position=y==label
-        ax.scatter(Xtrans[position,0],Xtrans[position,1],label=document,color=color, marker=marker, edgecolor='black')
+        ax.scatter(Xtrans[position,0],Xtrans[position,1],label=document[0],color=color, marker=marker, edgecolor='black')
 
 #    ax.legend(loc="best")
     ax.legend(loc=4)
@@ -163,11 +163,21 @@ def tf_idif1():
 
     print('list_of_sentences[0] ------> list_of_sentences[0] \n')
     print('------ RANKING DE SIMILITUD ---------\n')
+
+
+
+
+    #for index, score in find_similar(tfidf_matrix, 1):
+    #    print(score, list_of_sentences[index])
+
+
     for index, score in find_similar(tfidf_matrix, 1):
-        print(score, list_of_sentences[index])
+        print(score, corpus[index][1])
+
+
 
     #plot_demo_1(cosine_similarities)
-    plot_demo_1(distance_matrix)
+    plot_MDS(distance_matrix, corpus)
 
 
 def main():
