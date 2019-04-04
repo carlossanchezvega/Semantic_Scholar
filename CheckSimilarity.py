@@ -13,7 +13,6 @@ from scipy.spatial import distance
 
 colors = ['r', 'g', 'b', 'c','m','y','k']
 markers = ['o', 6, '*', '^', 'h', 's']
-labels = ['Documento1', 'Documento2','Documento3','Documento4','Documento5']
 import numpy as np
 from sklearn import datasets,manifold
 from sklearn.metrics.pairwise import linear_kernel
@@ -96,15 +95,6 @@ def plot_MDS(distance_matrix, corpus):
 
 
 def tf_idif1():
-    #twenty = [['documento1',['this', 'is', 'the', 'first', 'sentence', 'for', 'analysis']],
-    #          ['documento2',['this', 'is', 'the', 'second', 'sentence']],
-    #          ['documento3',['this', 'is', 'the', 'second', 'sentence']],
-              #              ['yet', 'another', 'sentence'],
-    #          ['documento4',['one', 'more', 'sentence']],
-    #          ['documento5',['and', 'the', 'final', 'sentence']],
-    #          ['documento6',['bla1', 'bla2', 'bla3']]]
-
-
     twenty = [['documento1',['this', 'is', 'the', 'second', 'sentence']],
               ['documento2',['this', 'is', 'the', 'second', 'sentence']],
               ['documento3',['this', 'is', 'the', 'second', 'sentence']],
@@ -130,23 +120,11 @@ def tf_idif1():
 
     # TSNE needs distances in order to plot the points
     distance_matrix = pairwise_distances(tfidf_matrix, tfidf_matrix, metric='cosine', n_jobs=-1)
-    #        cosine_distance = 1-pairwise_distances(tfidf_matrix, metric="cosine")
-
-    #cosine_similarities=np.matrix(cosine_similarities)
-    # We are reducing the n dimentions to 2d
-
-    #for me_index, item in enumerate(corpus):
-    #    similar_documents =  [(corpus[index], score) for index, score in find_similar(tfidf_matrix, me_index)]
-
-
     model =manifold.TSNE(metric="precomputed")
 
     print('--------- DISTANCE MATRIX -----------\n')
     print(distance_matrix)
     print('----------------------------\n')
-
-
-
     Xpr = model.fit_transform(distance_matrix)
 
     # create a scatter plot of the projection
@@ -164,19 +142,9 @@ def tf_idif1():
     print('list_of_sentences[0] ------> list_of_sentences[0] \n')
     print('------ RANKING DE SIMILITUD ---------\n')
 
-
-
-
-    #for index, score in find_similar(tfidf_matrix, 1):
-    #    print(score, list_of_sentences[index])
-
-
     for index, score in find_similar(tfidf_matrix, 1):
         print(score, corpus[index][1])
 
-
-
-    #plot_demo_1(cosine_similarities)
     plot_MDS(distance_matrix, corpus)
 
 
