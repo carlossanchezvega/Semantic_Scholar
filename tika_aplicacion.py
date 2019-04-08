@@ -134,7 +134,7 @@ get_author_id
                     return author['authorId']
 
 
-def get_paperIds(isAuthor,authorId):
+def get_paperIds(authorId, author_dict):
     """
         We request the Semantic Scholar API, based on the authorId, in search
          of all the paper Ids
@@ -153,6 +153,7 @@ def get_paperIds(isAuthor,authorId):
     response = requests.get(url_semantic_by_author)
     print('STATUS CODE --->' + str(response.status_code) + "\n")
     data = response.json()
+    author_dict['name'] =  data['name']
     return [paper['paperId'] for paper in data['papers']]
 
 def set_topics_from_author(paperIds, author_dict, publication_dict_list):
@@ -259,8 +260,7 @@ def get_all_paperIds(authorId,author_dict):
 
 def set_info_from_author(isAuthor,tidy_info, author_dict, author_id, best_coincidence):
     author_dict['_id'] = author_id
-    author_dict['name'] = best_coincidence
-    ids = get_paperIds(isAuthor,author_id)
+    ids = get_paperIds(author_id, author_dict)
     author_dict['publications'] = ids
     author_dict['pdf_articles'] = tidy_info['pdf_articles']
     author_dict['articles'] = tidy_info['articles']
@@ -313,13 +313,13 @@ def get_seniority(years):
 
 def get_author_reputation (name,collection_authors):
 
-    author = collection_authors.find({"name": {"$eq": name}})
+    author = collection_authors.find_one({"name":  name})
 
     return COEF_NUM_PAPERS()*author['publications'] + COEF_INFLUENCIAL_CITATIONS() * author['citations'] + \
            COEF_INFLUENCIAL_CITATIONS()*author['influentialCitationCount'] + COEF_SENIORITY()*get_seniority()
 
 def get_paper_reputation(id, collection_authors, collection_publications):
-    paper = collection_publications.find({"_id": {"$eq": id}})
+    paper = collection_publications.find_one({"_id": id})
     paper_reputations=[]
     for author in paper['authorIds']:
         paper_reputations.append(get_author_reputation(id,collection_authors))
@@ -352,26 +352,25 @@ def main():
     else:
         print('NO EXISTEEEEEE\n')
 
+        set_of_ids =  set()
+        first_iteration = True
+        publication_dict_list = []
+        print('PROCESSINB AUTHOR----------->  '+teacher+ "\n")
+        author_dict = {}
+        tidy_info=tidy_info_from_teacher(best_coincidence)
+        publication_dict_list= set_total_author_info(True,teacher, tidy_info,author_dict,publication_dict_list, collection_authors)
 
-    set_of_ids =  set()
-    first_iteration = True
-    publication_dict_list = []
-    print('PROCESSINB AUTHOR----------->  '+teacher+ "\n")
-    author_dict = {}
-    tidy_info=tidy_info_from_teacher(best_coincidence)
-    publication_dict_list= set_total_author_info(True,teacher, tidy_info,author_dict,publication_dict_list, collection_authors)
+    ###        #ids_coauthors = [coauthor['author_ids'] for coauthor in publication_dict_list]
+        ids_coauthors = list(set(list(itertools.chain.from_iterable([coauthor['author_ids']
+                                                                            for coauthor in publication_dict_list if teacher != coauthor['author_ids']]))))
+        ids_coauthors = ['1800967']
+        for teacher in ids_coauthors:
+            publication_dict_list= set_total_author_info(False,teacher, tidy_info,author_dict, publication_dict_list, collection_authors)
+            print('Hola')
 
-###        #ids_coauthors = [coauthor['author_ids'] for coauthor in publication_dict_list]
-    ids_coauthors = list(set(list(itertools.chain.from_iterable([coauthor['author_ids']
-                                                                        for coauthor in publication_dict_list if teacher != coauthor['author_ids']]))))
-    ids_coauthors = ['1800967']
-    for teacher in ids_coauthors:
-        publication_dict_list= set_total_author_info(False,teacher, tidy_info,author_dict, publication_dict_list, collection_authors)
-        print('Hola')
-
-    if len(publication_dict_list) > 0:
-        publication_dict_list = removeDuplicates(publication_dict_list)
-        collection_publications.insert(publication_dict_list)
+        if len(publication_dict_list) > 0:
+            publication_dict_list = removeDuplicates(publication_dict_list)
+            collection_publications.insert(publication_dict_list)
 
     print("The execution took: {0:0.2f} seconds".format(time.time() - start_time))
 # this is the standard boilerplate that calls the main() function

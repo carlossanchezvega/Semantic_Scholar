@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/tika_aplicacion.py" description="publication_dict_list= set_total_author_info(True,..." line="361" />
+    <bookmark url="file://$PROJECT_DIR$/tika_aplicacion.py" description="publication_dict_list= set_total_author_info(True,..." line="360" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="548c2264-2239-4ee6-a305-3fa92d1ad669" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/descargar_nltk.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pymongo_pruebas.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tika_aplicacion.py" beforeDir="false" afterPath="$PROJECT_DIR$/tika_aplicacion.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tika_aplicacion_OLD.py" beforeDir="false" afterPath="$PROJECT_DIR$/tika_aplicacion_OLD.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,8 +22,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tika_aplicacion.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="349" column="50" selection-start-line="349" selection-start-column="50" selection-end-line="349" selection-end-column="50" />
+            <state relative-caret-position="97">
+              <caret line="188" column="12" selection-start-line="188" selection-start-column="12" selection-end-line="188" selection-end-column="12" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -439,7 +436,14 @@
       <option name="project" value="LOCAL" />
       <updated>1554464950553</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="PROBAR LAS REPUTACIONES">
+      <created>1554728529264</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1554728529264</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -453,9 +457,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26618704" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26618704" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -465,7 +468,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4986165" weight="0.45896327" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.4986165" visible="true" weight="0.49892008" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4986165" visible="true" weight="0.49892008" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4986165" weight="0.32937366" />
@@ -487,7 +490,8 @@
     <MESSAGE value="primeras pruebas con la interfaz gráfica" />
     <MESSAGE value="Se soluciona el problema del calculo de los campos similares y pinta bien el MDS" />
     <MESSAGE value="MAL 2 - Intentando procesar autores" />
-    <option name="LAST_COMMIT_MESSAGE" value="MAL 2 - Intentando procesar autores" />
+    <MESSAGE value="PROBAR LAS REPUTACIONES" />
+    <option name="LAST_COMMIT_MESSAGE" value="PROBAR LAS REPUTACIONES" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -504,7 +508,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tika_aplicacion.py</url>
-          <line>375</line>
+          <line>374</line>
           <option name="timeStamp" value="69" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -550,11 +554,27 @@
         <watch expression="pymongo.MongoClient() " language="Python" />
         <watch expression="collection_authors" language="Python" />
         <watch expression="collection_authors" language="Python" />
+        <watch expression="collection_authors.find({&quot;name&quot;: 'Felipe Ortega'})" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>collection_authors.find({&quot;name&quot;: 'Felipe Ortega'})</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>collection_authors.find_one({&quot;name&quot;: 'Felipe Ortega'})</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>collection_authors.find_one({&quot;name&quot;: 'perp'})</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>collection_authors</expression-string>
         <language-id>Python</language-id>
@@ -587,16 +607,6 @@
       </expression>
       <expression>
         <expression-string>collection_authors.find({&quot;name&quot;: {&quot;$eq&quot;: best_coincidence}}).limit(1)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>collection_authors.find({&quot;name&quot;: {&quot;$eq&quot;: best_coincidence}}).limit(1).size()</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>collection_authors.find({&quot;name&quot;: {&quot;$eq&quot;: best_coincidence}}).limit(1).size();</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -874,8 +884,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tika_aplicacion.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="349" column="50" selection-start-line="349" selection-start-column="50" selection-end-line="349" selection-end-column="50" />
+        <state relative-caret-position="97">
+          <caret line="188" column="12" selection-start-line="188" selection-start-column="12" selection-end-line="188" selection-end-column="12" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
