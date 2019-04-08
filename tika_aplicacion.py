@@ -10,6 +10,8 @@ from threading import Thread
 #from threading import Thread
 #import bson
 import logging
+from datetime import datetime
+import statistics
 
 
 import nltk
@@ -23,6 +25,24 @@ def MAX_NUMBER_OF_ARTICLES():
 
 def SUCCESS():
     return 200
+
+def COEF_NUM_PAPERS():
+    return 0.4
+
+def COEF_INFLUENCIAL_CITATIONS():
+    return 0.1
+
+def COEF_SENIORITY():
+    return 0.2
+
+def COEF_CITATIONS():
+    return 0.3
+
+def COEF_AVG_REPUTATION_AUTHOR():
+    return 0.5
+
+def COEF_CITATIONS_ARTICLE_REPUTATION():
+    return 0.5
 
 
 def get_best_coincidence(data):
@@ -129,27 +149,11 @@ def get_paperIds(isAuthor,authorId):
     print('--------------------------------\n')
     print('authorId===> ' + str(authorId))
     print('--------------------------------\n')
-
-
-    paperIds=[]
-
-    ####### TODOO
     url_semantic_by_author = 'https://api.semanticscholar.org/v1/author/'+authorId
-
-
     response = requests.get(url_semantic_by_author)
     print('STATUS CODE --->' + str(response.status_code) + "\n")
-
     data = response.json()
-
-
-    for paper in data['papers']:
-        paperIds.append(paper['paperId'])
-
-    ############ids_coauthors = list(set(list(itertools.chain.from_iterable([coauthor['author_ids']
-    #######                                                             for coauthor in publication_dict_list if teacher != coauthor['author_ids']]))))
-    return paperIds
-
+    return [paper['paperId'] for paper in data['papers']]
 
 def set_topics_from_author(paperIds, author_dict, publication_dict_list):
     """
@@ -177,40 +181,16 @@ def set_topics_from_author(paperIds, author_dict, publication_dict_list):
             publication_dict={}
             publication_dict['_id'] = data['paperId']
             publication_dict['title'] = data['title']
-
-            author_ids = []
-            # for each paperId, we get its authorsId
-            for author in data['authors']:
-                author_ids.append(author['authorId'])
-            publication_dict['author_ids'] = author_ids
-
-            #for each paper we get its topics taking into account it may be repeated
-            for topic in data['topics']:
-                topics.add(topic['topic'])
-            publication_dict['topics'] = list(topics)
+            publication_dict['year'] = data['year']
+            publication_dict['citations'] = len(data['citations'])
+            publication_dict['influentialCitationCount'] = data['influentialCitationCount']
+            publication_dict['author_ids'] = [author['authorId'] for author in data['authors']]
+            topics = [topic['topic'] for topic in data['topics']]
+            publication_dict['topics'] = topics
             publication_dict_list.append(publication_dict)
-            author_dict['topics'] = list(set(author_dict['topics']) | topics)
+            author_dict['topics'] = list(set(author_dict['topics']) | set(topics))
+
     return
-
-
-#def get_topics_from_coauthors(paperIds, author_dict, publication_dict_list):
-
-
-
-
-
-
-def is_pdf_file(file):
-    """
-        We chech the name of the file to know whether a paper is a pdf file
-
-        Args:
-            file (string): the url of the file
-
-        Returns:
-            (boolean):  we return whether the file is a pdf file
-    """
-    return (file[len(file)-4:(len(file))])=='.pdf'
 
 ##TODO aqui es donde tengo que controlar la seniority
 def tidy_info_from_teacher(best_coincidence):
@@ -232,23 +212,22 @@ def tidy_info_from_teacher(best_coincidence):
 
     list_of_pdf_articles=[]
     list_of_articles=[]
+    list_of_titles=[]
+
 
     list_of_dois_from_articles = []
-    list_of_titles = {}
+    list_of_titles = []
     tidy_info_from_author = {}
         # we take the first title of that author
     if data['result']['hits']['@total'] != '0':
         for author in data['result']['hits']['hit']:
             if best_coincidence in author['info']['authors']['author']:
+
                 if 'doi' in author['info'].keys():
                     list_of_dois_from_articles.append(author['info']['doi'])
                 if 'ee' in author['info'].keys():
-
-                    if is_pdf_file(author['info']['ee']) and not len(list_of_pdf_articles)>MAX_NUMBER_OF_ARTICLES():
-                        list_of_pdf_articles.append(author['info']['ee'])
-                        list_of_titles[author['info']['ee']]= author['info']['title'].replace(' ','-').replace('.','')
-                    else:
-                        list_of_articles.append(author['info']['ee'])
+                    list_of_articles.append(author['info']['ee'])
+                    list_of_titles.append(author['info']['title'])
 
         tidy_info_from_author['articles'] = list_of_articles
         tidy_info_from_author['pdf_articles'] = list_of_pdf_articles
@@ -256,107 +235,6 @@ def tidy_info_from_teacher(best_coincidence):
         tidy_info_from_author['dois'] = list_of_dois_from_articles
     return tidy_info_from_author
 
-def get_teachers():
-    """
-        We request the name of the teachers shown in the master's degree website
-
-        Args:
-
-        Returns:
-            nombres(list): name of the teachers
-
-    """
-    page = requests.get("http://www.masterdatascience.es/equipo/")
-    soup = BeautifulSoup(page.content, 'html.parser')
-    nombres = [directors.text.split('-')[0].rstrip() for directors in soup.findAll(attrs={"class": "title margin-clear"})] \
-              + [teacher.text for teacher in soup.findAll(attrs={"class": "small_white"})]
-    return nombres
-
-
-def get_file_name(url):
-
-    value = search('https://www.semanticscholar.org/paper/(.+)/', url)
-    if value is not None:
-        value = value.group(1)
-    return value
-
-def get_papers(teacher, tidy_info):
-    directorio = './' + unidecode.unidecode(teacher).replace(" ", "") + "/"
-
-    if not os.path.exists(directorio):
-        os.makedirs(directorio)
-
-    for pdf in tidy_info['pdf_articles']:
-        r = requests.get(pdf)
-        directorio = './'+unidecode.unidecode(teacher).replace(" " ,"")+ "/"
-        titulo = tidy_info['titles'][pdf]+".pdf"
-
-
-        with open(directorio+titulo, "wb") as code:
-            code.write(r.content)
-
-
-
-def get_papers1(teacher, tidy_info, authorId):
-    directorio = './' + unidecode.unidecode(teacher).replace(" ", "") + "/"
-
-    if not os.path.exists(directorio):
-        os.makedirs(directorio)
-
-    url_semantic_by_author = 'https://api.semanticscholar.org/v1/author/'+authorId
-    response = requests.get(url_semantic_by_author)
-    print('STATUS CODE --->' + str(response.status_code) + "\n")
-
-    data = response.json()
-    #for article in tidy_info['articles']:
-    for article in data['papers']:
-
-        page = requests.get(article['url'])
-        soup = BeautifulSoup(page.content, 'html.parser')
-
-        """recogemmos el contenido de ese pdf en concreto"""
-        try:
-            pdf_url = soup.find(attrs={"name": "citation_pdf_url"})['content']
-            if is_pdf_file(pdf_url):
-                # Copy a network object to a local file
-                # urllib.request.urlretrieve(pdf_url, "./papers2/fichero_prueba.pdf")
-                titulo = unidecode.unidecode(article['title']).replace(" ", "")+".pdf"
-                r = requests.get(pdf_url)
-                with open(directorio + titulo, "wb") as code:
-                    code.write(r.content)
-        except:
-            pass
-
-
-"""def get_papers(teacher, tidy_info):
-
-    for pdf in tidy_info['pdf_articles']:
-        r = requests.get(pdf)
-        # open method to open a file on your system and write the
-        nombre  = unidecode.unidecode(teacher).replace(" " ,"")
-        titulo = tidy_info['titles'][pdf]
-        todo = "./"+nombre+"/"+titulo
-        with open("./" + unidecode.unidecode(teacher).replace(" " ,"")+ "/" + tidy_info['titles'][pdf]+".pdf", "wb") as code:
-            code.write(r.content)"""
-
-
-def get_paper(teacher):
-
-    """con la  petición de uno de los autorees"""
-    page = requests.get("https://www.semanticscholar.org/paper/Identifying-Relations-for-Open-Information-Fader-Soderland/0796f6cd7f0403a854d67d525e9b32af3b277331")
-    soup = BeautifulSoup(page.content, 'html.parser')
-
-    """recogemmos el contenido de ese pdf en concreto"""
-    pdf_url = soup.find(attrs={"name": "citation_pdf_url"})['content']
-
-
-    # Copy a network object to a local file
-    #urllib.request.urlretrieve(pdf_url, "./papers2/fichero_prueba.pdf")
-
-    r = requests.get(pdf_url)
-    # open method to open a file on your system and write the contents
-    with open("./"+teacher+"/"+get_file_name(pdf_url)+".pdf", "wb") as code:
-        code.write(r.content)
 
 
 def get_all_paperIds(authorId,author_dict):
@@ -375,11 +253,8 @@ def get_all_paperIds(authorId,author_dict):
     url_semantic_by_author = 'https://api.semanticscholar.org/v1/author/'+authorId
     response = requests.get(url_semantic_by_author)
     data = response.json()
+    return list(set([paper['paperId'] for paper in data['papers']]))
 
-    for paper in data['papers']:
-        paperIds.append(paper['paperId'])
-    author_dict['publications'] = paperIds
-    return paperIds
 
 
 def set_info_from_author(isAuthor,tidy_info, author_dict, author_id, best_coincidence):
@@ -429,8 +304,29 @@ def set_total_author_info(isAuthor,best_coincidence, tidy_info,author_dict,publi
         set_topics_from_author(author_dict['publications'], author_dict, publication_dict_list)
         list_of_publications = publications + publication_dict_list
         collection_authors.insert(author_dict)
-        #get_papers1(teacher, tidy_info, author_id)
         return list_of_publications
+
+def get_seniority(years):
+    return datetime.now().year - years.sort()[:1]
+
+
+
+def get_author_reputation (name,collection_authors):
+
+    author = collection_authors.find({"name": {"$eq": name}})
+
+    return COEF_NUM_PAPERS()*author['publications'] + COEF_INFLUENCIAL_CITATIONS() * author['citations'] + \
+           COEF_INFLUENCIAL_CITATIONS()*author['influentialCitationCount'] + COEF_SENIORITY()*get_seniority()
+
+def get_paper_reputation(id, collection_authors, collection_publications):
+    paper = collection_publications.find({"_id": {"$eq": id}})
+    paper_reputations=[]
+    for author in paper['authorIds']:
+        paper_reputations.append(get_author_reputation(id,collection_authors))
+    statistics.mean(paper_reputations)
+    paper_reputation = COEF_CITATIONS_ARTICLE_REPUTATION() * paper['citations'] + \
+                       COEF_AVG_REPUTATION_AUTHOR() * statistics.mean(paper_reputations)
+    return paper_reputation
 
 def main():
 
@@ -442,14 +338,21 @@ def main():
     db = connection.authorAndPublicationData
     collection_authors = db.authors
     collection_publications = db.publications
-    db.collection_authors.drop()
-    db.publications.drop()
-    db.authors.drop()
+    #db.collection_authors.drop()
+    #db.publications.drop()
+    # db.authors.drop()
 
     #teachers = get_teachers()
     teacher = "Felipe Ortega"
     #teachers = ['Belén Vela Sánchez', 'Felipe Ortega', 'Isaac Martín de Diego']
     best_coincidence = get_coincidence_from_dblp(teacher)
+
+    if collection_authors.find_one({"name": 'perp'}):
+        print('EXISTEEEEEEEEE\n')
+    else:
+        print('NO EXISTEEEEEE\n')
+
+
     set_of_ids =  set()
     first_iteration = True
     publication_dict_list = []
@@ -458,31 +361,9 @@ def main():
     tidy_info=tidy_info_from_teacher(best_coincidence)
     publication_dict_list= set_total_author_info(True,teacher, tidy_info,author_dict,publication_dict_list, collection_authors)
 
-
-###    best_coincidence = get_coincidence_from_dblp(teacher)
-
-###    tidy_info = tidy_info_from_teacher(best_coincidence)
-    #LLamamos a la api de semantic scholar con el DOI del título
-###    author_id = get_author_id(best_coincidence,tidy_info)
-
-###    if author_id:
-        # buscar por cada uno de esos Ids
-###        set_info_from_author(tidy_info, author_dict, author_id, best_coincidence)
-###        publication_dict_list=[]
-###        set_topics_from_author(author_dict['publications'], author_dict, publication_dict_list)
-###        list_of_publications = publications + publication_dict_list
-###        collection_authors.insert(author_dict)
-###        #get_papers1(teacher, tidy_info, author_id)
-
-
-    #if len(list_of_publications) > 0:
-    #    publication_dict_list = removeDuplicates(list_of_publications)
-    #    collection_publications.insert(publication_dict_list)
-
 ###        #ids_coauthors = [coauthor['author_ids'] for coauthor in publication_dict_list]
     ids_coauthors = list(set(list(itertools.chain.from_iterable([coauthor['author_ids']
-                                                                         for coauthor in publication_dict_list if teacher != coauthor['author_ids']]))))
-
+                                                                        for coauthor in publication_dict_list if teacher != coauthor['author_ids']]))))
     ids_coauthors = ['1800967']
     for teacher in ids_coauthors:
         publication_dict_list= set_total_author_info(False,teacher, tidy_info,author_dict, publication_dict_list, collection_authors)
