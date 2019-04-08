@@ -70,7 +70,8 @@ def get_best_coincidence(data):
 
         # we go over the author list from the second author on, calculating best similarity
         for x in range(0, len(data['result']['hits']['hit'])):
-            check_similarity = CheckBestAuthorSimilarity(data['result']['query'], data['result']['hits']['hit'][x]['info']['author'])
+            check_similarity = CheckBestAuthorSimilarity(data['result']['query'],
+                                                         data['result']['hits']['hit'][x]['info']['author'])
             new_similarity = check_similarity.getSimilarity()
 
             # in case the name of the new author has better similarity
@@ -156,7 +157,7 @@ def get_paperIds(authorId, author_dict):
     author_dict['name'] =  data['name']
     return [paper['paperId'] for paper in data['papers']]
 
-def set_topics_from_author(paperIds, author_dict, publication_dict_list):
+def set_topics_from_author(paperIds, author_dict, publication_dict_list, collection_authors, collection_publications):
     """
         We request the Semantic Scholar API ,taking into account all the papersIds.
         For each of those papers we its topics.
@@ -186,11 +187,11 @@ def set_topics_from_author(paperIds, author_dict, publication_dict_list):
             publication_dict['citations'] = len(data['citations'])
             publication_dict['influentialCitationCount'] = data['influentialCitationCount']
             publication_dict['author_ids'] = [author['authorId'] for author in data['authors']]
-            topics = [topic['topic'] for topic in data['topics']]
-            publication_dict['topics'] = topics
+            publication_dict['topics'] = [topic['topic'] for topic in data['topics']]
+            #publication_dict['reputation'] = get_paper_reputation(publication_dict['id'], collection_authors,
+            #                                                      collection_publications)
             publication_dict_list.append(publication_dict)
-            author_dict['topics'] = list(set(author_dict['topics']) | set(topics))
-
+            author_dict['topics'] = list(set(author_dict['topics']) | set(publication_dict['topics']))
     return
 
 ##TODO aqui es donde tengo que controlar la seniority
@@ -262,7 +263,6 @@ def set_info_from_author(isAuthor,tidy_info, author_dict, author_id, best_coinci
     author_dict['_id'] = author_id
     ids = get_paperIds(author_id, author_dict)
     author_dict['publications'] = ids
-    author_dict['pdf_articles'] = tidy_info['pdf_articles']
     author_dict['articles'] = tidy_info['articles']
     return author_dict
 
@@ -290,7 +290,8 @@ def removeDuplicates(listofElements):
 
 
 
-def set_total_author_info(isAuthor,best_coincidence, tidy_info,author_dict,publications, collection_authors):
+def set_total_author_info(isAuthor,best_coincidence, tidy_info,author_dict,publications, collection_authors,
+                          collection_publications ):
     #LLamamos a la api de semantic scholar con el DOI del título
     if isAuthor:
         author_id = get_author_id(best_coincidence,tidy_info)
@@ -301,8 +302,12 @@ def set_total_author_info(isAuthor,best_coincidence, tidy_info,author_dict,publi
         # buscar por cada uno de esos Ids
         set_info_from_author(isAuthor,tidy_info, author_dict, author_id, best_coincidence)
         publication_dict_list=[]
-        set_topics_from_author(author_dict['publications'], author_dict, publication_dict_list)
+        #author_dict['reputation'] = get_author_reputation(author_dict['name'],collection_authors)
+
+        set_topics_from_author(author_dict['publications'], author_dict, publication_dict_list, collection_authors,
+                               collection_publications)
         list_of_publications = publications + publication_dict_list
+
         collection_authors.insert(author_dict)
         return list_of_publications
 
@@ -316,17 +321,22 @@ def get_author_reputation (name,collection_authors):
     author = collection_authors.find_one({"name":  name})
 
     return COEF_NUM_PAPERS()*author['publications'] + COEF_INFLUENCIAL_CITATIONS() * author['citations'] + \
-           COEF_INFLUENCIAL_CITATIONS()*author['influentialCitationCount'] + COEF_SENIORITY()*get_seniority()
+           COEF_INFLUENCIAL_CITATIONS()*author['influentialCitationCount'] +\
+           COEF_SENIORITY()*get_seniority(author['years'])
 
 def get_paper_reputation(id, collection_authors, collection_publications):
     paper = collection_publications.find_one({"_id": id})
-    paper_reputations=[]
-    for author in paper['authorIds']:
-        paper_reputations.append(get_author_reputation(id,collection_authors))
-    statistics.mean(paper_reputations)
+    authors_reputation=[]
+    for id in paper['authorIds']:
+        authors_reputation.append(get_author_reputation(id,collection_authors))
+    statistics.mean(authors_reputation)
     paper_reputation = COEF_CITATIONS_ARTICLE_REPUTATION() * paper['citations'] + \
-                       COEF_AVG_REPUTATION_AUTHOR() * statistics.mean(paper_reputations)
+                       COEF_AVG_REPUTATION_AUTHOR() * statistics.mean(authors_reputation)
     return paper_reputation
+
+def set_author_and_publication_reputations(name,author_dict, collection_authors, collection_publications):
+    author_dict['reputation'] = get_author_reputation(author_dict['name'], collection_authors)
+
 
 def main():
 
@@ -343,11 +353,12 @@ def main():
     # db.authors.drop()
 
     #teachers = get_teachers()
-    teacher = "Felipe Ortega"
+    #teacher = "Felipe Ortega"
+    teacher = 'Alberto Fernández-Isabel'.strip()
     #teachers = ['Belén Vela Sánchez', 'Felipe Ortega', 'Isaac Martín de Diego']
     best_coincidence = get_coincidence_from_dblp(teacher)
 
-    if collection_authors.find_one({"name": 'perp'}):
+    if collection_authors.find_one({"name": teacher}):
         print('EXISTEEEEEEEEE\n')
     else:
         print('NO EXISTEEEEEE\n')
@@ -358,14 +369,17 @@ def main():
         print('PROCESSINB AUTHOR----------->  '+teacher+ "\n")
         author_dict = {}
         tidy_info=tidy_info_from_teacher(best_coincidence)
-        publication_dict_list= set_total_author_info(True,teacher, tidy_info,author_dict,publication_dict_list, collection_authors)
+        publication_dict_list= set_total_author_info(True,teacher, tidy_info,author_dict,publication_dict_list,
+                                                     collection_authors, collection_publications)
 
     ###        #ids_coauthors = [coauthor['author_ids'] for coauthor in publication_dict_list]
         ids_coauthors = list(set(list(itertools.chain.from_iterable([coauthor['author_ids']
-                                                                            for coauthor in publication_dict_list if teacher != coauthor['author_ids']]))))
+                         for coauthor in publication_dict_list if teacher != coauthor['author_ids']]))))
+
         ids_coauthors = ['1800967']
         for teacher in ids_coauthors:
-            publication_dict_list= set_total_author_info(False,teacher, tidy_info,author_dict, publication_dict_list, collection_authors)
+            publication_dict_list= set_total_author_info(False,teacher, tidy_info,author_dict, publication_dict_list,
+                                                         collection_authors, collection_publications)
             print('Hola')
 
         if len(publication_dict_list) > 0:
