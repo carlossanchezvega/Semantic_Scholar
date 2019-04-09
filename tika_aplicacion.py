@@ -12,7 +12,10 @@ from threading import Thread
 import logging
 from datetime import datetime
 import statistics
-
+from bson.objectid import ObjectId
+import pandas as pd
+from bson import CodecOptions
+from bson.raw_bson import RawBSONDocument
 
 import nltk
 
@@ -169,6 +172,7 @@ def set_topics_from_author(paperIds, author_dict, publication_dict_list):
     """
     topics = set()
     author_dict['topics'] = []
+    author_dict['topicsId'] = []
 
     #we iterate over each paperId
     for paperId in paperIds:
@@ -187,10 +191,12 @@ def set_topics_from_author(paperIds, author_dict, publication_dict_list):
             publication_dict['influentialCitationCount'] = data['influentialCitationCount']
             publication_dict['author_ids'] = [author['authorId'] for author in data['authors']]
             topics = [topic['topic'] for topic in data['topics']]
+            topicsId = [topic['topicId'] for topic in data['topics']]
             publication_dict['topics'] = topics
+            publication_dict['topicsId'] = topicsId
             publication_dict_list.append(publication_dict)
             author_dict['topics'] = list(set(author_dict['topics']) | set(topics))
-
+            author_dict['topicsId'] = list(set(author_dict['topicsId']) | set(topicsId))
     return
 
 ##TODO aqui es donde tengo que controlar la seniority
@@ -219,7 +225,7 @@ def tidy_info_from_teacher(best_coincidence):
     list_of_dois_from_articles = []
     list_of_titles = []
     tidy_info_from_author = {}
-        # we take the first title of that author
+    # we take the first title of that author
     if data['result']['hits']['@total'] != '0':
         for author in data['result']['hits']['hit']:
             if best_coincidence in author['info']['authors']['author']:
@@ -231,7 +237,6 @@ def tidy_info_from_teacher(best_coincidence):
                     list_of_titles.append(author['info']['title'])
 
         tidy_info_from_author['articles'] = list_of_articles
-        tidy_info_from_author['pdf_articles'] = list_of_pdf_articles
         tidy_info_from_author['titles'] = list_of_titles
         tidy_info_from_author['dois'] = list_of_dois_from_articles
     return tidy_info_from_author
@@ -262,7 +267,6 @@ def set_info_from_author(isAuthor,tidy_info, author_dict, author_id, best_coinci
     author_dict['_id'] = author_id
     ids = get_paperIds(author_id, author_dict)
     author_dict['publications'] = ids
-    author_dict['pdf_articles'] = tidy_info['pdf_articles']
     author_dict['articles'] = tidy_info['articles']
     return author_dict
 
@@ -306,27 +310,52 @@ def set_total_author_info(isAuthor,best_coincidence, tidy_info,author_dict,publi
         collection_authors.insert(author_dict)
         return list_of_publications
 
-def get_seniority(years):
-    return datetime.now().year - years.sort()[:1]
+def get_seniority(first_year_of_publication):
+    valor_seniority =  datetime.now().year - first_year_of_publication
+    return datetime.now().year - first_year_of_publication
+
+def get_influencial_citation_count(publications):
+    return sum([publication['influentialCitationCount'] for publication in publications])
+
+def get_citations (publications):
+    return sum([publication['citations'] for publication in publications])
 
 
 
-def get_author_reputation (name,collection_authors):
+def get_author_reputation (author, collection_publications):
+    publications = list(collection_publications.find({"_id": {"$in": author['publications']}}))
+    first_year_of_publication = sorted([publication['year'] for publication in publications])[0]
 
-    author = collection_authors.find_one({"name":  name})
+    return COEF_NUM_PAPERS()*len(author['publications']) + COEF_INFLUENCIAL_CITATIONS() * get_citations(publications) + \
+           COEF_INFLUENCIAL_CITATIONS()*get_influencial_citation_count(publications) +\
+           COEF_SENIORITY()*get_seniority(first_year_of_publication)
 
-    return COEF_NUM_PAPERS()*author['publications'] + COEF_INFLUENCIAL_CITATIONS() * author['citations'] + \
-           COEF_INFLUENCIAL_CITATIONS()*author['influentialCitationCount'] + COEF_SENIORITY()*get_seniority()
-
-def get_paper_reputation(id, collection_authors, collection_publications):
-    paper = collection_publications.find_one({"_id": id})
+def get_paper_reputation(publication, collection_authors):
     paper_reputations=[]
-    for author in paper['authorIds']:
-        paper_reputations.append(get_author_reputation(id,collection_authors))
-    statistics.mean(paper_reputations)
-    paper_reputation = COEF_CITATIONS_ARTICLE_REPUTATION() * paper['citations'] + \
-                       COEF_AVG_REPUTATION_AUTHOR() * statistics.mean(paper_reputations)
+    for author_id in publication['author_ids']:
+        author = collection_authors.find_one({"_id": author_id})
+        try:
+            paper_reputations.append(author['reputation'])
+        except:
+            pass
+
+        #paper_reputations.append(get_author_reputation(author,collection_authors))
+    paper_reputation = COEF_CITATIONS_ARTICLE_REPUTATION() * publication['citations'] \
+                       + COEF_AVG_REPUTATION_AUTHOR() * statistics.mean(paper_reputations)
+    return paper_reputations
+
     return paper_reputation
+
+def set_reputations(collection_authors, collection_publications):
+
+    for author in collection_authors.find():
+        author_reputation = get_author_reputation(author, collection_publications)
+        collection_authors.update_one({"_id": author['_id']}, {"$set": {"reputation": author_reputation}}, upsert=False)
+
+    for publication in collection_publications.find():
+        publication_reputation = get_paper_reputation(publication, collection_authors)
+        collection_authors.update_one({"_id": publication['_id']}, {"$set": {"reputation": publication_reputation}},
+                                      upsert=False)
 
 def main():
 
@@ -338,39 +367,39 @@ def main():
     db = connection.authorAndPublicationData
     collection_authors = db.authors
     collection_publications = db.publications
-    #db.collection_authors.drop()
-    #db.publications.drop()
-    # db.authors.drop()
+    db.collection_authors.drop()
+    db.publications.drop()
+    db.authors.drop()
 
-    #teachers = get_teachers()
-    teacher = "Felipe Ortega"
-    #teachers = ['Belén Vela Sánchez', 'Felipe Ortega', 'Isaac Martín de Diego']
-    best_coincidence = get_coincidence_from_dblp(teacher)
+    teacher = "Alberto Fernández-Isabel"
+    best_coincidence = get_coincidence_from_dblp(teacher.strip())
+    #result = collection_authors.update({"_id": "37318854"}, {"$set": {"patatas": "fritas"}})
 
     if collection_authors.find_one({"name": 'perp'}):
         print('EXISTEEEEEEEEE\n')
     else:
         print('NO EXISTEEEEEE\n')
 
-        set_of_ids =  set()
-        first_iteration = True
         publication_dict_list = []
         print('PROCESSINB AUTHOR----------->  '+teacher+ "\n")
         author_dict = {}
         tidy_info=tidy_info_from_teacher(best_coincidence)
         publication_dict_list= set_total_author_info(True,teacher, tidy_info,author_dict,publication_dict_list, collection_authors)
 
-    ###        #ids_coauthors = [coauthor['author_ids'] for coauthor in publication_dict_list]
         ids_coauthors = list(set(list(itertools.chain.from_iterable([coauthor['author_ids']
-                                                                            for coauthor in publication_dict_list if teacher != coauthor['author_ids']]))))
+                                                                     for coauthor in publication_dict_list if teacher != coauthor['author_ids']]))))
         ids_coauthors = ['1800967']
         for teacher in ids_coauthors:
             publication_dict_list= set_total_author_info(False,teacher, tidy_info,author_dict, publication_dict_list, collection_authors)
             print('Hola')
-
         if len(publication_dict_list) > 0:
             publication_dict_list = removeDuplicates(publication_dict_list)
             collection_publications.insert(publication_dict_list)
+
+        set_reputations(collection_authors, collection_publications)
+
+
+
 
     print("The execution took: {0:0.2f} seconds".format(time.time() - start_time))
 # this is the standard boilerplate that calls the main() function
