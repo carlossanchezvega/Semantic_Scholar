@@ -33,6 +33,10 @@ def SUCCESS():
     return 200
 
 
+def FAILURE(code):
+    return code!=200
+
+
 def COEF_NUM_PAPERS():
     return 0.4
 
@@ -160,15 +164,22 @@ def get_paperIds(authorId, author_dict):
     print('--------------------------------\n')
     print('authorId===> ' + str(authorId))
     print('--------------------------------\n')
+
+
     url_semantic_by_author = 'https://api.semanticscholar.org/v1/author/' + authorId
+
+
     response = requests.get(url_semantic_by_author)
-    print('STATUS CODE --->' + str(response.status_code) + "\n")
-    data = response.json()
-    author_dict['name'] = data['name']
-    return [paper['paperId'] for paper in data['papers']]
+    if response.status_code == SUCCESS():
+        print('STATUS CODE --->' + str(response.status_code) + "\n")
+        data = response.json()
+        author_dict['name'] = data['name']
+        author_dict['_id'] = data['authorId']
+        author_dict['titles'] = [paper['title'] for paper in data['papers']]
+    else:
+        return
 
-
-def set_topics_from_author(paperIds, author_dict, publication_dict_list):
+def set_topics_from_author(paperIds, author_dict, collection_publications):
     """
         We request the Semantic Scholar API ,taking into account all the papersIds.
         For each of those papers we its topics.
@@ -203,13 +214,13 @@ def set_topics_from_author(paperIds, author_dict, publication_dict_list):
             topicsId = [topic['topicId'] for topic in data['topics']]
             publication_dict['topics'] = topics
             publication_dict['topicsId'] = topicsId
-            publication_dict_list.append(publication_dict)
+            collection_publications.replace_one ({"_id":publication_dict['_id']}, publication_dict, upsert=True)
             author_dict['topics'] = list(set(author_dict['topics']) | set(topics))
             author_dict['topicsId'] = list(set(author_dict['topicsId']) | set(topicsId))
     return
 
 
-def tidy_info_from_teacher(best_coincidence):
+def get_dois_from_dblp(best_coincidence):
     """
         We request the DBLP api, in search of the doi of the first title found, based on
         the name of the author od the argument
@@ -225,25 +236,14 @@ def tidy_info_from_teacher(best_coincidence):
     url = 'http://dblp.org/search/publ/api'
     response = requests.get(url, params={'q': best_coincidence, 'format': 'json'})
     data = response.json()
-
-    list_of_articles = []
-    list_of_titles = []
     list_of_dois_from_articles = []
-    list_of_titles = []
     tidy_info_from_author = {}
     # we take the first title of that author
     if data['result']['hits']['@total'] != '0':
         for author in data['result']['hits']['hit']:
             if best_coincidence in author['info']['authors']['author']:
-
                 if 'doi' in author['info'].keys():
                     list_of_dois_from_articles.append(author['info']['doi'])
-                if 'ee' in author['info'].keys():
-                    list_of_articles.append(author['info']['ee'])
-                    list_of_titles.append(author['info']['title'])
-
-        tidy_info_from_author['articles'] = list_of_articles
-        tidy_info_from_author['titles'] = list_of_titles
         tidy_info_from_author['dois'] = list_of_dois_from_articles
     return tidy_info_from_author
 
@@ -266,7 +266,7 @@ def get_all_paperIds(authorId):
     return list(set([paper['paperId'] for paper in data['papers']]))
 
 
-def set_info_from_author(tidy_info, author_dict, author_id):
+def set_info_from_author(author_dict, author_id, collection_publications):
     """
         We set important information from a auhot
 
@@ -278,11 +278,24 @@ def set_info_from_author(tidy_info, author_dict, author_id):
         Returns:
             author_dict (set): variable containing relevant information for next steps in our calculations
     """
-    author_dict['_id'] = author_id
-    author_dict['publications'] = get_paperIds(author_id, author_dict)
-    author_dict['articles'] = tidy_info['articles']
-    return author_dict
+    print('--------------------------------\n')
+    print('authorId===> ' + str(author_id))
+    print('--------------------------------\n')
 
+
+    url_semantic_by_author = 'https://api.semanticscholar.org/v1/author/' + author_id
+
+
+    response = requests.get(url_semantic_by_author)
+    if response.status_code == SUCCESS():
+        print('STATUS CODE --->' + str(response.status_code) + "\n")
+        data = response.json()
+        author_dict['name'] = data['name']
+        author_dict['_id'] = data['authorId']
+        author_dict['publications'] = [paper['paperId'] for paper in data['papers']]
+        author_dict['titles'] = [paper['title'] for paper in data['papers']]
+        set_topics_from_author(author_dict['publications'], author_dict, collection_publications)
+    return
 
 def removeDuplicates(listofElements):
     """
@@ -313,7 +326,7 @@ def removeDuplicates(listofElements):
     return uniqueList
 
 
-def set_total_author_info(isAuthor, best_coincidence, tidy_info, author_dict, publications, collection_authors):
+def set_total_author_info(isAuthor, best_coincidence, dois, author_dict,  collection_authors, collection_publications):
     """
         Sets important information about and author and returns publications from that author
         Args:
@@ -328,19 +341,16 @@ def set_total_author_info(isAuthor, best_coincidence, tidy_info, author_dict, pu
 
     # LLamamos a la api de semantic scholar con el DOI del título
     if isAuthor:
-        author_id = get_author_id(best_coincidence, tidy_info)
+        author_id = get_author_id(best_coincidence, dois)
     else:
         author_id = best_coincidence
 
     # if that author existed previously
     if author_id:
         # buscar por cada uno de esos Ids
-        set_info_from_author(isAuthor, tidy_info, author_dict, author_id, best_coincidence)
-        publication_dict_list = []
-        set_topics_from_author(author_dict['publications'], author_dict, publication_dict_list)
-        list_of_publications = publications + publication_dict_list
-        collection_authors.insert(author_dict)
-        return list_of_publications
+        set_info_from_author(author_dict, author_id, collection_publications)
+        collection_authors.replace_one ({"_id":author_dict['_id']}, author_dict, upsert=True)
+        return
 
 
 def get_seniority(first_year_of_publication):
@@ -459,25 +469,21 @@ def main():
     else:
         print('NO EXISTEEEEEE\n')
 
-        publication_dict_list = []
         print('PROCESSINB AUTHOR----------->  ' + teacher + "\n")
         author_dict = {}
-        tidy_info = tidy_info_from_teacher(best_coincidence)
-        publication_dict_list = set_total_author_info(True, teacher, tidy_info, author_dict, publication_dict_list,
-                                                      collection_authors)
+        dois = get_dois_from_dblp(best_coincidence)
+        set_total_author_info(True, teacher, dois, author_dict,collection_authors, collection_publications)
 
         # we get the total list of coathors
-        ids_coauthors = list(set(list(itertools.chain.from_iterable([coauthor['author_ids']
-                                                                     for coauthor in publication_dict_list if
-                                                                     teacher != coauthor['author_ids']]))))
+        ids_coauthors = list(collection_publications.find({"_id": {"$in": author_dict['publications']}},{'authors'}))
 
-        ids_coauthors = ['1800967']
+        ids_coauthors = list(itertools.chain.from_iterable(['_id']
+                            for coauthor in list(collection_publications.find({"_id": {"$in":
+                                                author_dict['publications']}},{'authors'}))))
+
+        #ids_coauthors = ['1800967']
         for teacher in ids_coauthors:
-            publication_dict_list = set_total_author_info(False, teacher, tidy_info, author_dict, publication_dict_list,
-                                                          collection_authors)
-        if len(publication_dict_list) > 0:
-            publication_dict_list = removeDuplicates(publication_dict_list)
-            collection_publications.insert(publication_dict_list)
+            set_total_author_info(False, teacher, dois, author_dict,collection_authors, collection_publications)
 
         set_reputations(collection_authors, collection_publications)
 
