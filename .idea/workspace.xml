@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/tika_aplicacion.py" description="publication_dict_list= set_total_author_info(True,..." line="386" />
+    <bookmark url="file://$PROJECT_DIR$/tika_aplicacion.py" description="publication_dict_list= set_total_author_info(True,..." line="452" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="548c2264-2239-4ee6-a305-3fa92d1ad669" name="Default Changelist" comment="">
@@ -22,8 +22,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tika_aplicacion.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2422">
-              <caret line="334" selection-start-line="334" selection-end-line="334" />
+            <state relative-caret-position="378">
+              <caret line="340" column="43" selection-start-line="340" selection-start-column="31" selection-end-line="340" selection-end-column="43" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -34,7 +34,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pruebaTkinter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
+            <state relative-caret-position="315">
               <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
@@ -46,7 +46,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pruebaPyQT.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
+            <state relative-caret-position="180">
               <caret line="16" column="23" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="23" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
@@ -66,7 +66,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>cont</find>
       <find>author_ids</find>
       <find>author_id</find>
       <find>get_author_id</find>
@@ -96,6 +95,7 @@
       <find>pdf_articles</find>
       <find>year</find>
       <find>TRY</find>
+      <find>reputation</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -125,8 +125,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -142,6 +140,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -384,7 +384,14 @@
       <option name="project" value="LOCAL" />
       <updated>1554742343075</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="ya calcula las reputaciones de publicaciones y autores">
+      <created>1554825827991</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1554825827991</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView">
@@ -399,7 +406,7 @@
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26618704" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26950747" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -414,7 +421,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4986165" weight="0.32937366" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4975097" weight="0.32937366" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50249034" side_tool="true" visible="true" weight="0.49892008" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50249034" side_tool="true" visible="true" weight="0.12419006" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.4975097" weight="0.32937366" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -432,7 +439,8 @@
     <MESSAGE value="Se soluciona el problema del calculo de los campos similares y pinta bien el MDS" />
     <MESSAGE value="MAL 2 - Intentando procesar autores" />
     <MESSAGE value="PROBAR LAS REPUTACIONES" />
-    <option name="LAST_COMMIT_MESSAGE" value="PROBAR LAS REPUTACIONES" />
+    <MESSAGE value="ya calcula las reputaciones de publicaciones y autores" />
+    <option name="LAST_COMMIT_MESSAGE" value="ya calcula las reputaciones de publicaciones y autores" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -791,19 +799,19 @@
     <entry file="file://$PROJECT_DIR$/intento.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/pruebaPyQT.py">
+    <entry file="file://$PROJECT_DIR$/tika_aplicacion.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="23" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="23" />
+        <state relative-caret-position="378">
+          <caret line="340" column="43" selection-start-line="340" selection-start-column="31" selection-end-line="340" selection-end-column="43" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pruebaTkinter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
+        <state relative-caret-position="315">
           <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
@@ -811,12 +819,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tika_aplicacion.py">
+    <entry file="file://$PROJECT_DIR$/pruebaPyQT.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2422">
-          <caret line="334" selection-start-line="334" selection-end-line="334" />
+        <state relative-caret-position="180">
+          <caret line="16" column="23" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="23" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
