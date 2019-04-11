@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="548c2264-2239-4ee6-a305-3fa92d1ad669" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/distances.png" beforeDir="false" afterPath="$PROJECT_DIR$/distances.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tika_aplicacion.py" beforeDir="false" afterPath="$PROJECT_DIR$/tika_aplicacion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tika_aplicacion_OLD.py" beforeDir="false" afterPath="$PROJECT_DIR$/tika_aplicacion_OLD.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +24,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tika_aplicacion.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="481" column="94" lean-forward="true" selection-start-line="479" selection-start-column="24" selection-end-line="481" selection-end-column="94" />
+            <state relative-caret-position="3">
+              <caret line="466" column="53" lean-forward="true" selection-start-line="466" selection-start-column="53" selection-end-line="466" selection-end-column="53" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -32,54 +34,37 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_PLUGINS_DIR$/python-ce/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+        <entry file="file://$PROJECT_DIR$/CheckSimilarity.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/pymongo/helpers.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="197" selection-start-line="197" selection-end-line="197" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pruebaTkinter.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="22" column="54" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="54" />
+            <state relative-caret-position="303">
+              <caret line="149" lean-forward="true" selection-end-line="155" />
               <folding>
-                <element signature="e#0#21#0" expanded="true" />
+                <element signature="e#0#59#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tika_aplicacion_OLD.py">
+        <entry file="file://$PROJECT_DIR$/MDS_prueba_copiada.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3495">
-              <caret line="154" column="26" selection-start-line="154" selection-start-column="4" selection-end-line="154" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-882">
+              <caret line="43" selection-start-line="43" selection-end-line="43" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pruebaPyQT.py">
+        <entry file="file://$PROJECT_DIR$/plot_demo_1.png">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TSNE_copia_seguridad.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="23" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="23" />
+            <state relative-caret-position="-1782">
               <folding>
-                <element signature="e#0#10#0" expanded="true" />
+                <element signature="e#0#59#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -96,8 +81,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>author_from_dblp</find>
-      <find>tidy_info_from_teacher</find>
       <find>get_best</find>
       <find>insetr</find>
       <find>TODO</find>
@@ -126,6 +109,8 @@
       <find>get_author_re</find>
       <find>update</find>
       <find>list</find>
+      <find>pa darl</find>
+      <find>find_one</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -136,12 +121,12 @@
       <list>
         <option value="$PROJECT_DIR$/pruebaPyQT.py" />
         <option value="$PROJECT_DIR$/MDS_prueba_copiada.py" />
-        <option value="$PROJECT_DIR$/CheckSimilarity.py" />
         <option value="$PROJECT_DIR$/descargar_nltk.py" />
-        <option value="$PROJECT_DIR$/tika_aplicacion_OLD.py" />
         <option value="$PROJECT_DIR$/pymongo_pruebas.py" />
         <option value="$PROJECT_DIR$/pruebaTkinter.py" />
+        <option value="$PROJECT_DIR$/tika_aplicacion_OLD.py" />
         <option value="$PROJECT_DIR$/tika_aplicacion.py" />
+        <option value="$PROJECT_DIR$/CheckSimilarity.py" />
       </list>
     </option>
   </component>
@@ -155,6 +140,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -170,7 +156,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -428,7 +413,14 @@
       <option name="project" value="LOCAL" />
       <updated>1554888675865</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="REFACTORIZANDO EL CóDIGO (AÚN NO FUNCIONA)">
+      <created>1554905409376</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1554905409376</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView">
@@ -442,8 +434,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26950747" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2728279" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -453,12 +446,12 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4975097" weight="0.45896327" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.66906476" visible="true" weight="0.49892008" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.66851133" visible="true" weight="0.42224622" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4986165" weight="0.32937366" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4975097" weight="0.32937366" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.33093524" side_tool="true" visible="true" weight="0.49892008" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.33148867" side_tool="true" visible="true" weight="0.42224622" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.4975097" weight="0.32937366" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -478,7 +471,8 @@
     <MESSAGE value="PROBAR LAS REPUTACIONES" />
     <MESSAGE value="ya calcula las reputaciones de publicaciones y autores" />
     <MESSAGE value="Se han añadido comentarios" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se han añadido comentarios" />
+    <MESSAGE value="REFACTORIZANDO EL CóDIGO (AÚN NO FUNCIONA)" />
+    <option name="LAST_COMMIT_MESSAGE" value="REFACTORIZANDO EL CóDIGO (AÚN NO FUNCIONA)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -490,7 +484,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tika_aplicacion_OLD.py</url>
-          <line>198</line>
+          <line>220</line>
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -500,28 +494,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tika_aplicacion.py</url>
-          <line>342</line>
-          <option name="timeStamp" value="88" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tika_aplicacion.py</url>
-          <line>285</line>
-          <option name="timeStamp" value="89" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tika_aplicacion.py</url>
-          <line>477</line>
-          <option name="timeStamp" value="90" />
+          <line>385</line>
+          <option name="timeStamp" value="102" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="url_semantic_by_author" language="Python" />
-        <watch expression="[paper['paperId'] for paper in data['papers']]" language="Python" />
-        <watch expression="list(collection_publications.find({&quot;_id&quot;: {&quot;$in&quot;: author_dict['publications']}},{'authors'}))" language="Python" />
-        <watch expression="'https://api.semanticscholar.org/v1/author/' + author_id" language="Python" />
-        <watch expression="list(collection_publications.find({&quot;_id&quot;: {&quot;$in&quot;: author_dict['publications']}},'authors'))" language="Python" />
+        <watch expression="ids_coauthors" language="Python" />
+        <watch expression="set(list(itertools.chain.from_iterable([coauthor['author_ids'] for coauthor in                         (collection_publications.find({&quot;_id&quot;: {&quot;$in&quot;: author_dict['publications']}},{'author_ids'}))])))" language="Python" />
+        <watch expression="[coauthor for coauthor in (collection_publications.find({&quot;_id&quot;: {&quot;$in&quot;: author_dict['publications']}}))]" language="Python" />
+        <watch expression="[coauthor for coauthor in (collection_publications.find({&quot;_id&quot;: {&quot;$in&quot;: author_dict['publications']}}))]" language="Python" />
+        <watch expression="len(author['publications'])" language="Python" />
+        <watch expression="COEF_CITATIONS * get_citations(publications)" language="Python" />
       </configuration>
     </watches-manager>
   </component>
@@ -535,52 +520,52 @@
     </expressions>
     <expressions id="watch">
       <expression>
-        <expression-string>list(collection_publications.find({&quot;_id&quot;: {&quot;$in&quot;: author_dict['publications']}},'authors'))</expression-string>
+        <expression-string>COEF_CITATIONS * get_citations(publications)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>'https://api.semanticscholar.org/v1/author/' + author_id</expression-string>
+        <expression-string>len(author['publications'])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>list(collection_publications.find({&quot;_id&quot;: {&quot;$in&quot;: author_dict['publications']}},{'authors'}))</expression-string>
+        <expression-string>[coauthor for coauthor in (collection_publications.find({&quot;_id&quot;: {&quot;$in&quot;: author_dict['publications']}}))]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>[paper['paperId'] for paper in data['papers']]</expression-string>
+        <expression-string>[coauthor for coauthor in (collection_publications.find({&quot;_id&quot;: {&quot;$in&quot;: author_dict['publications']}},{'author_ids'}))]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>url_semantic_by_author</expression-string>
+        <expression-string>set(list(itertools.chain.from_iterable([coauthor['author_ids'] for coauthor in                         (collection_publications.find({&quot;_id&quot;: {&quot;$in&quot;: author_dict['publications']}},{'author_ids'}))])))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>data['name']</expression-string>
+        <expression-string>list(itertools.chain.from_iterable([coauthor['author_ids'] for coauthor in                         (collection_publications.find({&quot;_id&quot;: {&quot;$in&quot;: author_dict['publications']}},{'author_ids'}))]))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>publication['_id']</expression-string>
+        <expression-string>list(itertools.chain.from_iterable([coauthor['author_ids'] for coauthor in (collection_publications.find({&quot;_id&quot;: {&quot;$in&quot;: author_dict['publications']}},{'author_ids'}))]))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>paper_reputations</expression-string>
+        <expression-string>list(itertools.chain.from_iterable([coauthor['author_ids'] for coauthor in (collection_publications.find({&quot;_id&quot;: {&quot;$in&quot;: author_dict['publications']}},{'author_ids'}))])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>statistics.mean(paper_reputations)</expression-string>
+        <expression-string>list(itertools.chain.from_iterable(list(list(collection_publications.find({&quot;_id&quot;: {&quot;$in&quot;: author_dict['publications']}},{'author_ids'})))))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>COEF_AVG_REPUTATION_AUTHOR()</expression-string>
+        <expression-string>[coauthor['author_ids'] for coauthor in (collection_publications.find({&quot;_id&quot;: {&quot;$in&quot;: author_dict['publications']}},{'author_ids'}))]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -634,9 +619,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CheckSimilarity2.py" />
     <entry file="file://$PROJECT_DIR$/CheckSimilarity3.py" />
-    <entry file="file://$PROJECT_DIR$/mds_demo_2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/get_author_information.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3242">
@@ -666,67 +648,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cosine.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/prueba_expresion_regular.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/prueba_nombre_fichero.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/mds_demo_iris.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plot_demo_1.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sin_leyenda.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CheckSimilarity.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="99" column="35" selection-start-line="99" selection-start-column="35" selection-end-line="99" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/distances.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MDS_prueba_copiada.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MDS.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pruebaDescargaPapers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TSNE_copia_seguridad.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#59#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -775,23 +707,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib/python3.6/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="310" selection-start-line="310" selection-end-line="310" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/aux.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="144" column="7" lean-forward="true" selection-start-line="144" selection-start-column="7" selection-end-line="144" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pymongo_pruebas.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -799,23 +714,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CheckBestAuthorSimilarity.py">
+    <entry file="file://$USER_HOME$/.IdeaIC2019.1/system/python_stubs/-1103080184/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="9" column="54" selection-start-line="9" selection-start-column="54" selection-end-line="9" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="145">
+          <caret line="2871" column="8" selection-start-line="2871" selection-start-column="8" selection-end-line="2871" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/intento.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/pymongo/helpers.py">
+    <entry file="file://$APPLICATION_PLUGINS_DIR$/python-ce/helpers/pydev/_pydev_imps/_pydev_execfile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="197" selection-start-line="197" selection-end-line="197" />
+        <state relative-caret-position="255">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pruebaTkinter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="54" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -829,44 +748,117 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pruebaTkinter.py">
+    <entry file="file://$USER_HOME$/.IdeaIC2019.1/system/python_stubs/-1103080184/itertools.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="22" column="54" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="54" />
+        <state relative-caret-position="203">
+          <caret line="87" column="8" selection-start-line="87" selection-start-column="8" selection-end-line="87" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MDS.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aux.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2160">
+          <caret line="144" column="7" selection-start-line="144" selection-start-column="7" selection-end-line="144" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CheckBestAuthorSimilarity.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tika_aplicacion_OLD.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3495">
-          <caret line="154" column="26" selection-start-line="154" selection-start-column="4" selection-end-line="154" selection-end-column="26" />
+        <state relative-caret-position="318">
+          <caret line="488" selection-start-line="488" selection-end-line="488" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_PLUGINS_DIR$/python-ce/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+    <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/pymongo/helpers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="137">
+          <caret line="197" selection-start-line="197" selection-end-line="197" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.IdeaIC2019.1/system/python_stubs/-1103080184/builtins.py">
+    <entry file="file:///usr/lib/python3.6/codecs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="2871" column="8" selection-start-line="2871" selection-start-column="8" selection-end-line="2871" selection-end-column="8" />
+        <state relative-caret-position="252">
+          <caret line="310" selection-start-line="310" selection-end-line="310" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MDS_prueba_copiada.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-882">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plot_demo_1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TSNE_copia_seguridad.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1782">
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/intento.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/distances.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cosine.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mds_demo_2.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mds_demo_iris.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sin_leyenda.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CheckSimilarity.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="149" lean-forward="true" selection-end-line="155" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tika_aplicacion.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="481" column="94" lean-forward="true" selection-start-line="479" selection-start-column="24" selection-end-line="481" selection-end-column="94" />
+        <state relative-caret-position="3">
+          <caret line="466" column="53" lean-forward="true" selection-start-line="466" selection-start-column="53" selection-end-line="466" selection-end-column="53" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>

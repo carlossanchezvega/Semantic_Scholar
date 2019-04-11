@@ -399,7 +399,7 @@ def get_author_reputation(author, collection_publications):
     publications = list(collection_publications.find({"_id": {"$in": author['publications']}}))
     return COEF_NUM_PAPERS() * len(author['publications']) + COEF_CITATIONS * get_citations(publications) + \
            COEF_INFLUENTIAL_CITATIONS() * get_influencial_citation_count(publications) + \
-           COEF_SENIORITY() * get_seniority(sorted([publication['year'] for publication in publications])[0])
+           COEF_SENIORITY() * get_seniority(sorted  ([publication['year'] for publication in publications])[0])
 
 
 def get_paper_reputation(publication, collection_authors):
@@ -438,11 +438,11 @@ def set_reputations(collection_authors, collection_publications):
             int: publications reputation calculation
     """
 
-    for author in collection_authors.find():
+    for author in list(collection_authors.find()):
         author_reputation = get_author_reputation(author, collection_publications)
         collection_authors.update_one({"_id": author['_id']}, {"$set": {"reputation": author_reputation}}, upsert=False)
 
-    for publication in collection_publications.find():
+    for publication in list(collection_publications.find()):
         publication_reputation = get_paper_reputation(publication, collection_authors)
         collection_authors.update_one({"_id": publication['_id']}, {"$set": {"reputation": publication_reputation}},
                                       upsert=False)
@@ -474,12 +474,9 @@ def main():
         dois = get_dois_from_dblp(best_coincidence)
         set_total_author_info(True, teacher, dois, author_dict,collection_authors, collection_publications)
 
-        # we get the total list of coathors
-        ids_coauthors = list(collection_publications.find({"_id": {"$in": author_dict['publications']}},{'authors'}))
 
-        ids_coauthors = list(itertools.chain.from_iterable(['_id']
-                            for coauthor in list(collection_publications.find({"_id": {"$in":
-                                                author_dict['publications']}},{'authors'}))))
+        ids_coauthors = list(set(list(itertools.chain.from_iterable([coauthor['author_ids'] for coauthor in
+                        (collection_publications.find({"_id": {"$in": author_dict['publications']}},{'author_ids'}))]))))
 
         #ids_coauthors = ['1800967']
         for teacher in ids_coauthors:
