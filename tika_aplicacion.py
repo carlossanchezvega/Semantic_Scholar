@@ -396,10 +396,12 @@ def get_author_reputation(author, collection_publications):
         Returns:
             int: author reputation calculation
     """
+    if author['_id']=='1895694':
+        print('HOLA')
     publications = list(collection_publications.find({"_id": {"$in": author['publications']}}))
-    return COEF_NUM_PAPERS() * len(author['publications']) + COEF_CITATIONS * get_citations(publications) + \
+    return COEF_NUM_PAPERS() * len(author['publications']) + COEF_CITATIONS() * get_citations(publications) + \
            COEF_INFLUENTIAL_CITATIONS() * get_influencial_citation_count(publications) + \
-           COEF_SENIORITY() * get_seniority(sorted  ([publication['year'] for publication in publications])[0])
+           COEF_SENIORITY() * get_seniority(sorted ([publication['year'] for publication in publications if publication['year']])[0])
 
 
 def get_paper_reputation(publication, collection_authors):
@@ -444,7 +446,7 @@ def set_reputations(collection_authors, collection_publications):
 
     for publication in list(collection_publications.find()):
         publication_reputation = get_paper_reputation(publication, collection_authors)
-        collection_authors.update_one({"_id": publication['_id']}, {"$set": {"reputation": publication_reputation}},
+        collection_publications.update_one({"_id": publication['_id']}, {"$set": {"reputation": publication_reputation}},
                                       upsert=False)
 
 
