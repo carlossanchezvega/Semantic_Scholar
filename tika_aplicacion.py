@@ -424,7 +424,7 @@ def get_paper_reputation(publication, collection_authors):
         # paper_reputations.append(get_author_reputation(author,collection_authors))
     paper_reputation = COEF_CITATIONS_ARTICLE_REPUTATION() * publication['citations'] \
                        + COEF_AVG_REPUTATION_AUTHOR() * statistics.mean(paper_reputations)
-    return paper_reputations
+    return paper_reputation
 
 
 def set_reputations(collection_authors, collection_publications):
