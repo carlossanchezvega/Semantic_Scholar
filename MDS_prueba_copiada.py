@@ -1,129 +1,33 @@
-# This code is supporting material for the book
-# Building Machine Learning Systems with Python
-# by Willi Richert and Luis Pedro Coelho
-# published by PACKT Publishing
-#
-# It is made available under the MIT License
+# -*- coding: utf-8 -*-
+import matplotlib.pyplot as plt
 
-import os
+fig = plt.figure()
+fig.suptitle('bold figure suptitle', fontsize=14, fontweight='bold')
 
-import numpy as np
-from matplotlib import pylab
-from mpl_toolkits.mplot3d import Axes3D
+ax = fig.add_subplot(111)
+fig.subplots_adjust(top=0.85)
+ax.set_title('axes title')
 
-from sklearn import linear_model, manifold, decomposition, datasets
+ax.set_xlabel('xlabel')
+ax.set_ylabel('ylabel')
 
-logistic = linear_model.LogisticRegression()
+ax.text(3, 8, 'boxed italics text in data coords', style='italic',
+        bbox={'facecolor':'red', 'alpha':0.5, 'pad':10})
 
+ax.text(2, 6, r'an equation: $E=mc^2$', fontsize=15)
 
-np.random.seed(3)
+ax.text(3, 2, u'unicode: Institut f\374r Festk\366rperphysik')
 
-# all examples will have three classes in this file
-colors = ['r', 'g', 'b']
-markers = ['o', 6, '*']
-
-
-def plot_demo_1():
-    X = np.c_[np.ones(5), 2 * np.ones(5), 10 * np.ones(5)].T
-    y = np.array([0, 1, 2])
-
-    fig = pylab.figure(figsize=(10, 4))
-
-    ax = fig.add_subplot(121, projection='3d')
-    ax.set_facecolor('white')
-
-    mds = manifold.MDS(n_components=3)
-    Xtrans = mds.fit_transform(X)
-
-    for cl, color, marker in zip(np.unique(y), colors, markers):
-        ax.scatter(
-            Xtrans[y == cl][:, 0], Xtrans[y == cl][:, 1], Xtrans[y == cl][:, 2], c=color, marker=marker,
-            edgecolor='black')
-    pylab.title("MDS on example data set in 3 dimensions")
-    ax.view_init(10, -15)
-
-    mds = manifold.MDS(n_components=2)
-    Xtrans = mds.fit_transform(X)
-
-    ax = fig.add_subplot(122)
-    for cl, color, marker in zip(np.unique(y), colors, markers):
-        ax.scatter(
-            Xtrans[y == cl][:, 0], Xtrans[y == cl][:, 1], c=color, marker=marker, edgecolor='black')
-    pylab.title("MDS on example data set in 2 dimensions")
-
-    filename = "plot_demo_1.png"
-    #pylab.savefig(os.path.join('/home/csanchez/PycharmProjects/Semantic_Scholar', filename), bbox_inches="tight")
-    pylab.savefig(os.path.join('/home/csanchez/IdeaProjects/Semantic_Scholar', filename), bbox_inches="tight")
-
-    print('HOLA')
+ax.text(0.95, 0.01, 'colored text in axes coords',
+        verticalalignment='bottom', horizontalalignment='right',
+        transform=ax.transAxes,
+        color='green', fontsize=15)
 
 
-def plot_iris_mds():
-    iris = datasets.load_iris()
-    X = iris.data
-    y = iris.target
+ax.plot([2], [1], 'o')
+ax.annotate('annotate', xy=(2, 1), xytext=(3, 4),
+            arrowprops=dict(facecolor='black', shrink=0.05))
 
-    # MDS
+ax.axis([0, 10, 0, 10])
 
-    fig = pylab.figure(figsize=(10, 4))
-
-    ax = fig.add_subplot(121, projection='3d')
-    ax.set_facecolor('white')
-
-    mds = manifold.MDS(n_components=3)
-    Xtrans = mds.fit_transform(X)
-
-    for cl, color, marker in zip(np.unique(y), colors, markers):
-        ax.scatter(
-            Xtrans[y == cl][:, 0], Xtrans[y == cl][:, 1], Xtrans[y == cl][:, 2], c=color, marker=marker,
-            edgecolor='black')
-    pylab.title("MDS on Iris data set in 3 dimensions")
-    ax.view_init(10, -15)
-
-    mds = manifold.MDS(n_components=2)
-    Xtrans = mds.fit_transform(X)
-
-    ax = fig.add_subplot(122)
-    for cl, color, marker in zip(np.unique(y), colors, markers):
-        ax.scatter(
-            Xtrans[y == cl][:, 0], Xtrans[y == cl][:, 1], c=color, marker=marker, edgecolor='black')
-    pylab.title("MDS on Iris data set in 2 dimensions")
-
-    filename = "mds_demo_iris.png"
-    #pylab.savefig(os.path.join('/home/csanchez/PycharmProjects/Semantic_Scholar', filename), bbox_inches="tight")
-    pylab.savefig(os.path.join('/home/csanchez/IdeaProjects/Semantic_Scholar', filename), bbox_inches="tight")
-
-
-    # PCA
-
-    fig = pylab.figure(figsize=(10, 4))
-
-    ax = fig.add_subplot(121, projection='3d')
-    ax.set_facecolor('white')
-
-    pca = decomposition.PCA(n_components=3)
-    Xtrans = pca.fit(X).transform(X)
-
-    for cl, color, marker in zip(np.unique(y), colors, markers):
-        ax.scatter(
-            Xtrans[y == cl][:, 0], Xtrans[y == cl][:, 1], Xtrans[y == cl][:, 2], c=color, marker=marker,
-            edgecolor='black')
-    pylab.title("PCA on Iris data set in 3 dimensions")
-    ax.view_init(50, -35)
-
-    pca = decomposition.PCA(n_components=2)
-    Xtrans = pca.fit_transform(X)
-
-    ax = fig.add_subplot(122)
-    for cl, color, marker in zip(np.unique(y), colors, markers):
-        ax.scatter(
-            Xtrans[y == cl][:, 0], Xtrans[y == cl][:, 1], c=color, marker=marker, edgecolor='black')
-    pylab.title("PCA on Iris data set in 2 dimensions")
-
-    filename = "pca_demo_iris.png"
-    pylab.savefig(os.path.join('/home/csanchez/PycharmProjects/Semantic_Scholar', filename), bbox_inches="tight")
-
-
-if __name__ == '__main__':
-    plot_demo_1()
-    plot_iris_mds()
+plt.show()
