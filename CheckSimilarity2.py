@@ -18,6 +18,20 @@ from sklearn import datasets,manifold
 from sklearn.metrics.pairwise import linear_kernel
 from scipy import spatial
 from sklearn.metrics import pairwise_distances
+import matplotlib as mpl
+import io
+
+try:
+    import tornado
+except ImportError:
+    raise RuntimeError("This example requires tornado.")
+import tornado.web
+import tornado.httpserver
+import tornado.ioloop
+import tornado.websocket
+
+
+
 
 
 
@@ -35,8 +49,10 @@ def find_similar(tfidf_matrix, index, top_n = 5):
 
 
 
-def plot_MDS(distance_matrix, corpus):
+def plot_MDS(distance_matrix, corpus, tfidf_matrix):
 
+
+    mpl.use('WebAgg')
     #------------------------------------------------------------------
 
     twenty = [['this', 'is', 'the', 'first', 'sentence', 'for', 'analysis'],
@@ -59,8 +75,7 @@ def plot_MDS(distance_matrix, corpus):
     y = np.arange(len(distance_matrix))
     fig = pylab.figure(figsize=(30, 12))
 
-
-    ax = fig.add_subplot(121, projection='3d')
+    ax = fig.add_subplot(221, projection='3d')
     ax.set_facecolor('white')
 
     # using the precomputed dissimilarity to specify that we are passing a distance matrix:
@@ -80,7 +95,7 @@ def plot_MDS(distance_matrix, corpus):
     mds = manifold.MDS(n_components=2, dissimilarity='precomputed', random_state=1)
     Xtrans = mds.fit_transform(X)
 
-    ax = fig.add_subplot(122)
+    ax = fig.add_subplot(222)
     for label ,color, marker, document in zip( np.unique(y),colors, markers,corpus):
         position=y==label
         ax.scatter(Xtrans[position,0],Xtrans[position,1],label=document[0],color=color, marker=marker, edgecolor='black')
@@ -90,10 +105,40 @@ def plot_MDS(distance_matrix, corpus):
 
     pylab.title("MDS on example data set in 2 dimensions")
 
-    filename = "distances.png"
-    #pylab.savefig(os.path.join('/home/csanchez/IdeaProjects/Semantic_Scholar', filename), bbox_inches="tight")
-    pylab.show()
 
+    # -----------------------------     TSNE       -----------------------------
+    model =manifold.TSNE(metric="precomputed")
+    Xtrans = model.fit_transform(distance_matrix)
+    ax = fig.add_subplot(223)
+    for label ,color, marker, document in zip( np.unique(y),colors, markers,corpus):
+        position=y==label
+        ax.scatter(Xtrans[position,0],Xtrans[position,1],label=document[0],color=color, marker=marker, edgecolor='black')
+    ax.legend(loc=4)
+
+    pylab.title("TSNE on example data set in 2 dimensions")
+
+
+    ax = fig.add_subplot(224)
+    string_auxiliar = ''
+    for index, score in find_similar(tfidf_matrix, 1):
+        string_auxiliar = string_auxiliar + str(score) + ':' + corpus[index][1] + '\n'
+    ax.axis('off')
+
+    left, width = .25, .5
+    bottom, height = .25, .5
+    right = left + width
+    top = bottom + height
+    pylab.title("MDS on example data set in 2 dimensions")
+
+    ax.title.set_text('Masked line demo')
+    ax.text(0.5 * (left + right), 0.5 * (bottom + top), string_auxiliar,
+            horizontalalignment='center',
+            verticalalignment='center',
+            color='green', fontsize=15)
+
+    filename = "distances.png"
+    pylab.savefig(os.path.join('/home/csanchez/IdeaProjects/Semantic_Scholar', filename), bbox_inches="tight")
+    ax.show()
 
 
 def tf_idif1():
@@ -114,40 +159,18 @@ def tf_idif1():
     # fit() function in order to learn a vocabulary from one or more documents
     # transform() function on one or more documents as needed to encode each as a vector.
     #if you want to extract count features and apply TF-IDF normalization and row-wise euclidean normalization you can do it in one operation
-    #tfidf_matrix = TfidfVectorizer().fit_transform(list_of_sentences)
+
     tfidf_matrix = TfidfVectorizer().fit_transform([content for file, content in corpus])
+
     #Get the pairwise similarity matrix (n by n) (The result is the similarity matrix)
     cosine_similarities = linear_kernel(tfidf_matrix, tfidf_matrix)
     print(cosine_similarities)
 
     # TSNE needs distances in order to plot the points
     distance_matrix = pairwise_distances(tfidf_matrix, tfidf_matrix, metric='cosine', n_jobs=-1)
-    model =manifold.TSNE(metric="precomputed")
 
-    print('--------- DISTANCE MATRIX -----------\n')
-    print(distance_matrix)
-    print('----------------------------\n')
-    Xpr = model.fit_transform(distance_matrix)
 
-    # create a scatter plot of the projection
-    pyplot.scatter(Xpr[:, 0], Xpr[:, 1])
-
-    # we go over the reduced points so as to plot the points
-    for i, item in enumerate(corpus):
-
-        try:
-            pyplot.annotate(item[1], xy=(Xpr[i, 0], Xpr[i, 1]))
-        except IndexError:
-            break
-    pyplot.show()
-
-    print('list_of_sentences[0] ------> list_of_sentences[0] \n')
-    print('------ RANKING DE SIMILITUD ---------\n')
-
-    for index, score in find_similar(tfidf_matrix, 1):
-        print(score, corpus[index][1])
-
-    plot_MDS(distance_matrix, corpus)
+    plot_MDS(distance_matrix, corpus,tfidf_matrix)
 
 
 def main():

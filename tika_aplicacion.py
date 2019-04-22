@@ -458,9 +458,9 @@ def main():
     db = connection.authorAndPublicationData
     collection_authors = db.authors
     collection_publications = db.publications
-    db.collection_authors.drop()
-    db.publications.drop()
-    db.authors.drop()
+    #db.collection_authors.drop()
+    #db.publications.drop()
+    #db.authors.drop()
 
     teacher = "Alberto Fernández-Isabel"
     best_coincidence = get_coincidence_from_dblp(teacher.strip())
