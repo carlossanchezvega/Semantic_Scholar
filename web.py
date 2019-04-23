@@ -328,26 +328,43 @@ def most_similar(corpus, tfidf_matrix, param):
 
 def plot(distance_matrix, corpus, tfidf_matrix, fig):
 
-    # -----------------------------     MDS ON 3D       -----------------------------
+    # -----------------------------     RANKING       -----------------------------
+    ax = fig.add_subplot(221)
 
+    similarities = n_most_similar_for_each(corpus, tfidf_matrix)
+    print(similarities)
+
+
+    ax.axis('off')
+    ax.set_title("Ranking of the most similar document to each one")
+    left, width = .25, .5
+    bottom, height = .25, .5
+    right = left + width
+    top = bottom + height
+
+    #ax.title.set_text('Masked line demo')
+    ax.text(0.5 * (left + right), 0.5 * (bottom + top), similarities,horizontalalignment='center',
+            verticalalignment='center',color='green', fontsize=15)
     y = np.arange(len(distance_matrix))
 
-    ax = fig.add_subplot(221, projection='3d')
-    ax.set_facecolor('white')
 
-    # using the precomputed dissimilarity to specify that we are passing a distance matrix:
-    mds = manifold.MDS(n_components=3, dissimilarity='precomputed', random_state=1)
-
-    # With the distance between every pair of points is preserved
-    Xtrans = mds.fit_transform(distance_matrix)
-
-    for label ,color, marker, document in zip( np.unique(y),colors, markers,corpus):
-        position=y==label
-        ax.scatter(Xtrans[position,0],Xtrans[position,1], Xtrans[position,2],label="target= {0}".format(document[0]),color=color, marker=marker, edgecolor='black')
-
-
-    pylab.title("MDS on example data set in 3 dimensions")
-    ax.view_init(10, -15)
+    # -----------------------------     MDS ON 3D       -----------------------------
+    # ax = fig.add_subplot(222, projection='3d')
+    # ax.set_facecolor('white')
+    #
+    # # using the precomputed dissimilarity to specify that we are passing a distance matrix:
+    # mds = manifold.MDS(n_components=3, dissimilarity='precomputed', random_state=1)
+    #
+    # # With the distance between every pair of points is preserved
+    # Xtrans = mds.fit_transform(distance_matrix)
+    #
+    # for label ,color, marker, document in zip( np.unique(y),colors, markers,corpus):
+    #     position=y==label
+    #     ax.scatter(Xtrans[position,0],Xtrans[position,1], Xtrans[position,2],label="target= {0}".format(document[0]),color=color, marker=marker, edgecolor='black')
+    #
+    #
+    # pylab.title("MDS on example data set in 3 dimensions")
+    # ax.view_init(10, -15)
 
 
     # -----------------------------     MDS ON 2D       -----------------------------
@@ -355,7 +372,7 @@ def plot(distance_matrix, corpus, tfidf_matrix, fig):
     mds = manifold.MDS(n_components=2, dissimilarity='precomputed', random_state=1)
     Xtrans = mds.fit_transform(distance_matrix)
 
-    ax = fig.add_subplot(222)
+    ax = fig.add_subplot(223)
 
     for label ,color, marker, document in zip( np.unique(y),colors, markers,corpus):
         position=y==label
@@ -363,43 +380,21 @@ def plot(distance_matrix, corpus, tfidf_matrix, fig):
 
     #    ax.legend(loc="best")
     #ax.legend(loc=4)
-    ax.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+    #ax.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
 
-    pylab.title("MDS on example data set in 2 dimensions")
+    ax.set_title("Similarity representation by MDS dimensionality reduction")
 
 
     # -----------------------------     TSNE       -----------------------------
     model =manifold.TSNE(metric="precomputed")
     Xtrans = model.fit_transform(distance_matrix)
-    ax = fig.add_subplot(223)
+    ax = fig.add_subplot(224)
     for label ,color, marker, document in zip( np.unique(y),colors, markers,corpus):
         position=y==label
         ax.scatter(Xtrans[position,0],Xtrans[position,1],label=document[0],color=color, marker=marker, edgecolor='black')
-    #ax.legend(loc=4)
-    ax.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+    ax.legend(loc=9, bbox_to_anchor=(0.5, 2))
 
-    pylab.title("TSNE on example data set in 2 dimensions")
-
-
-    ax = fig.add_subplot(224)
-    similarities = most_similar(corpus,tfidf_matrix,0)
-    similarities = n_most_similar_for_each(corpus, tfidf_matrix)
-    print(similarities)
-
-
-    ax.axis('off')
-
-    left, width = .25, .5
-    bottom, height = .25, .5
-    right = left + width
-    top = bottom + height
-    pylab.title("MDS on example data set in 2 dimensions")
-
-    ax.title.set_text('Masked line demo')
-    ax.text(0.5 * (left + right), 0.5 * (bottom + top), similarities,
-            horizontalalignment='center',
-            verticalalignment='center',
-            color='green', fontsize=15)
+    ax.set_title("Similarity representation by TSNE dimensionality reduction")
 
     filename = "distances.png"
     pylab.savefig(os.path.join('/home/csanchez/IdeaProjects/Semantic_Scholar', filename), bbox_inches="tight")
