@@ -11,5 +11,12 @@
         </value>
       </option>
     </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="matplotlib.backends.backend_webagg_core.new_figure_manager_given_figure" />
+        </list>
+      </option>
+    </inspection_tool>
   </profile>
 </component>

@@ -2,26 +2,12 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/tika_aplicacion.py" description="publication_dict_list= set_total_author_info(True,..." line="464" />
-    <bookmark url="file://$PROJECT_DIR$/../proyectoDePrueba/prueba_similaridad.py" description="plot_MDS(distance_matrix, corpus)" line="129" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="548c2264-2239-4ee6-a305-3fa92d1ad669" name="Default Changelist" comment="EXTRACCIÓN DE DATOS Y REPUTACIÓN -&gt; OK">
-      <change afterPath="$PROJECT_DIR$/COPIA_SEGURIDAD.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CheckSimilarity2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/betweenness_all_nodes_reputation.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/allInfo.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/allInfo_copia_seguridad.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/leyenda.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/leyenda.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/grafo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/interfazGrafica.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/proyectoDePrueba.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web2.py" afterDir="false" />
+    <list default="true" id="548c2264-2239-4ee6-a305-3fa92d1ad669" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CheckSimilarity.py" beforeDir="false" afterPath="$PROJECT_DIR$/CheckSimilarity.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/distances.png" beforeDir="false" afterPath="$PROJECT_DIR$/distances.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tika_aplicacion.py" beforeDir="false" afterPath="$PROJECT_DIR$/tika_aplicacion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web.py" beforeDir="false" afterPath="$PROJECT_DIR$/web.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,8 +26,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tika_aplicacion.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="453" selection-start-line="453" selection-end-line="458" selection-end-column="35" />
+            <state relative-caret-position="227">
+              <caret line="488" column="43" selection-start-line="488" selection-end-line="489" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -50,19 +36,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="224" column="26" lean-forward="true" selection-start-line="224" selection-start-column="26" selection-end-line="224" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CheckSimilarity.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="870">
-              <caret line="58" column="39" lean-forward="true" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
+            <state relative-caret-position="855">
+              <caret line="58" column="39" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
               </folding>
@@ -73,8 +50,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grafo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="128" column="10" selection-start-line="128" selection-start-column="9" selection-end-line="128" selection-end-column="10" />
+            <state relative-caret-position="45">
+              <caret line="72" column="62" selection-start-line="72" selection-start-column="62" selection-end-line="72" selection-end-column="62" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -83,19 +60,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/allInfo.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114624">
-              <caret line="7662" column="24" lean-forward="true" selection-start-line="7662" selection-start-column="24" selection-end-line="7662" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/allInfo_copia_seguridad.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
-              <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+              <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -103,8 +71,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CheckSimilarity2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1401">
-              <caret line="61" column="42" lean-forward="true" selection-start-line="61" selection-start-column="42" selection-end-line="61" selection-end-column="42" />
+            <state relative-caret-position="900">
+              <caret line="61" column="42" selection-start-line="61" selection-start-column="42" selection-end-line="61" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -123,8 +91,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/betweenness_all_nodes_reputation.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="21" column="31" lean-forward="true" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+            <state relative-caret-position="315">
+              <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -132,8 +100,29 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="348" selection-start-line="348" selection-end-line="348" />
+            <state relative-caret-position="358">
+              <caret line="374" selection-start-line="374" selection-end-line="374" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_PLUGINS_DIR$/python-ce/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/pymongo/helpers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="154" selection-start-line="154" selection-end-line="154" />
             </state>
           </provider>
         </entry>
@@ -149,14 +138,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>pdf_articles</find>
-      <find>year</find>
-      <find>TRY</find>
-      <find>get_author_re</find>
-      <find>update</find>
-      <find>list</find>
-      <find>pa darl</find>
-      <find>find_one</find>
       <find>py</find>
       <find>tsne</find>
       <find>show</find>
@@ -164,7 +145,6 @@
       <find>d</find>
       <find>rec</find>
       <find>X</find>
-      <find>find</find>
       <find>list_of_sentences</find>
       <find>documents</find>
       <find>d.</find>
@@ -179,6 +159,15 @@
       <find>reputation</find>
       <find>name</find>
       <find>twenty</find>
+      <find>collection</find>
+      <find>find</find>
+      <find>index</find>
+      <find>find</find>
+      <find>print</find>
+      <find>1</find>
+      <find>most_similar</find>
+      <find>legend</find>
+      <find>3D</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -205,16 +194,17 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="67" />
-    <option name="y" value="25" />
-    <option name="width" value="1213" />
-    <option name="height" value="999" />
+    <option name="x" value="-8" />
+    <option name="width" value="975" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -235,8 +225,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -267,7 +255,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.grafo">
+  <component name="RunManager" selected="Python.web">
     <configuration name="CheckSimilarity2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Semantic_Scholar" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -425,9 +413,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.web" />
         <item itemvalue="Python.grafo" />
         <item itemvalue="Python.tika_aplicacion" />
-        <item itemvalue="Python.web" />
         <item itemvalue="Python.web2" />
         <item itemvalue="Python.CheckSimilarity2" />
       </list>
@@ -528,7 +516,14 @@
       <option name="project" value="LOCAL" />
       <updated>1555067427833</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="ya se pinta el grafo">
+      <created>1555949936636</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1555949936636</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView">
@@ -542,24 +537,25 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.75665396" visible="true" weight="0.27946874" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7566462" visible="true" weight="0.15495296" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" sideWeight="0.243346" side_tool="true" visible="true" weight="0.27946874" />
+      <window_info id="Favorites" order="6" sideWeight="0.24335378" side_tool="true" weight="0.27946874" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49142224" visible="true" weight="0.43196544" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.6635307" weight="0.47192225" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.84726065" visible="true" weight="0.43196544" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.86496955" weight="0.47192225" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4986165" weight="0.32937366" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4975097" weight="0.32937366" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50857776" side_tool="true" visible="true" weight="0.43196544" />
-      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.4969563" weight="0.32937366" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.15273935" side_tool="true" visible="true" weight="0.43196544" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.4964029" weight="0.32937366" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -618,7 +614,8 @@
     <MESSAGE value="REFACTORIZANDO EL CóDIGO (AÚN NO FUNCIONA)" />
     <MESSAGE value="REFACTORIZANDO EL CóDIGO  - JUEVES TARDE" />
     <MESSAGE value="EXTRACCIÓN DE DATOS Y REPUTACIÓN -&gt; OK" />
-    <option name="LAST_COMMIT_MESSAGE" value="EXTRACCIÓN DE DATOS Y REPUTACIÓN -&gt; OK" />
+    <MESSAGE value="ya se pinta el grafo" />
+    <option name="LAST_COMMIT_MESSAGE" value="ya se pinta el grafo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -634,19 +631,9 @@
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pymongo_pruebas.py</url>
-          <line>1</line>
-          <option name="timeStamp" value="72" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tika_aplicacion.py</url>
           <line>399</line>
           <option name="timeStamp" value="106" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/web.py</url>
-          <line>277</line>
-          <option name="timeStamp" value="108" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/grafo.py</url>
@@ -668,18 +655,32 @@
           <line>60</line>
           <option name="timeStamp" value="133" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/web.py</url>
+          <line>272</line>
+          <option name="timeStamp" value="149" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/web.py</url>
+          <line>298</line>
+          <option name="timeStamp" value="151" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/web.py</url>
+          <line>314</line>
+          <option name="timeStamp" value="162" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="list(dict_nodes.keys()).index(&quot;1697222&quot;)" language="Python" />
-        <watch expression="dict_nodes" language="Python" />
-        <watch expression="node['reputation']" language="Python" />
-        <watch expression="(node['reputation']-0.1)/(200-0.1)" language="Python" />
-        <watch expression="node['reputation']" language="Python" />
-        <watch expression="(new_max - new_min) / (old_max - old_min) * (value - old_min) + new_min" language="Python" />
-        <watch expression="old_max" language="Python" />
-        <watch expression="(new_max - new_min) / (old_max - old_min) * (value - old_min) + new_min" language="Python" />
+        <watch expression="[document_id, me[1], similar_document_id, title, score]" language="Python" />
+        <watch expression="los_mas_similares" language="Python" />
+        <watch expression="[document_id, me[1], similar_document_id[0], title, score]" language="Python" />
+        <watch expression="find_similar(tfidf_matrix, searched_similarity_index)" language="Python" />
+        <watch expression="corpus[index][0]" language="Python" />
+        <watch expression="me[1]" language="Python" />
+        <watch expression="title" language="Python" />
       </configuration>
     </watches-manager>
   </component>
@@ -693,47 +694,52 @@
     </expressions>
     <expressions id="watch">
       <expression>
-        <expression-string>(new_max - new_min) / (old_max - old_min) * (value - old_min) + new_min</expression-string>
+        <expression-string>title</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>old_max</expression-string>
+        <expression-string>me[1]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>node['reputation']</expression-string>
+        <expression-string>los_mas_similares</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>(node['reputation']-0.1)/(200-0.1)</expression-string>
+        <expression-string>corpus[index][0]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>list(dict_nodes.keys()).index(&quot;1697222&quot;)</expression-string>
+        <expression-string>find_similar(tfidf_matrix, searched_similarity_index)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>dict_nodes</expression-string>
+        <expression-string>[document_id, me[1], similar_document_id, title, score]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>list(nodes.keys()).index(&quot;1697222&quot;)</expression-string>
+        <expression-string>[document_id, me[1], similar_document_id[0], title, score]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>list(x.keys()).index(&quot;c&quot;)</expression-string>
+        <expression-string>[document_id, me[1], similar_document_id, title, score][0]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>dict_nodes.keys().index('1697222')</expression-string>
+        <expression-string>item</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>string_auxiliar</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -763,15 +769,7 @@
     <entry file="file://$PROJECT_DIR$/prueba_nombre_fichero.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/pruebaDescargaPapers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/pruebaDescargaPapers.py" />
     <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/pymongo/topology.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="530">
@@ -816,13 +814,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pymongo_pruebas.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="36" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/pymongo_pruebas.py" />
     <entry file="file://$USER_HOME$/.IdeaIC2019.1/system/python_stubs/-1103080184/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="145">
@@ -893,13 +885,6 @@
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/pymongo/helpers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="197" selection-start-line="197" selection-end-line="197" />
         </state>
       </provider>
     </entry>
@@ -1002,13 +987,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_PLUGINS_DIR$/python-ce/helpers/pydev/_pydev_imps/_pydev_execfile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/COPIA_SEGURIDAD.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-900" />
@@ -1021,19 +999,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/betweenness_all_nodes_reputation.html">
+    <entry file="file://$PROJECT_DIR$/web2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="21" column="31" lean-forward="true" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+        <state relative-caret-position="3420">
+          <caret line="228" column="51" selection-start-line="228" selection-start-column="51" selection-end-line="228" selection-end-column="51" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grafo.py">
+    <entry file="file://$PROJECT_DIR$/CheckSimilarity.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="128" column="10" selection-start-line="128" selection-start-column="9" selection-end-line="128" selection-end-column="10" />
+        <state relative-caret-position="855">
+          <caret line="58" column="39" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
           <folding>
-            <element signature="e#0#17#0" expanded="true" />
+            <element signature="e#0#59#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1041,34 +1019,14 @@
     <entry file="file://$PROJECT_DIR$/data/allInfo_copia_seguridad.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CheckSimilarity.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="58" column="39" lean-forward="true" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#59#0" expanded="true" />
-          </folding>
+          <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CheckSimilarity2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1401">
-          <caret line="61" column="42" lean-forward="true" selection-start-line="61" selection-start-column="42" selection-end-line="61" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tika_aplicacion.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="453" selection-start-line="453" selection-end-line="458" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="900">
+          <caret line="61" column="42" selection-start-line="61" selection-start-column="42" selection-end-line="61" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -1081,17 +1039,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web2.py">
+    <entry file="file://$PROJECT_DIR$/betweenness_all_nodes_reputation.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="224" column="26" lean-forward="true" selection-start-line="224" selection-start-column="26" selection-end-line="224" selection-end-column="26" />
+        <state relative-caret-position="315">
+          <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/pymongo/helpers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="154" selection-start-line="154" selection-end-line="154" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grafo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="72" column="62" selection-start-line="72" selection-start-column="62" selection-end-line="72" selection-end-column="62" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tika_aplicacion.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="488" column="43" selection-start-line="488" selection-end-line="489" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_PLUGINS_DIR$/python-ce/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="348" selection-start-line="348" selection-end-line="348" />
+        <state relative-caret-position="358">
+          <caret line="374" selection-start-line="374" selection-end-line="374" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

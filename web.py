@@ -1,4 +1,7 @@
 import io
+import time
+
+import pymongo
 
 try:
     import tornado
@@ -258,17 +261,69 @@ class MyApplication(tornado.web.Application):
             (r'/download.([a-z0-9.]+)', self.Download),
         ])
 
+    #
+    # def find_similar(tfidf_matrix, index, top_n = 5):
+    #     # we calculare cosine similarity to know similarities between documents
+    #     cosine_similarities = linear_kernel(tfidf_matrix[index:index+1], tfidf_matrix).flatten()
+    #
+    #     # we order similarities in desc way (we do not include similarity corresponding to each sentence
+    #     # since its similarity is equal to "1"
+    #     related_docs_indices = [i for i in cosine_similarities.argsort()[::-1] if i != index]zº
+    #     # we return that order
+    #     return [(index, cosine_similarities[index]) for index in related_docs_indices][0:top_n]
+
+
 def find_similar(tfidf_matrix, index, top_n = 5):
-
-    # we calculare cosine similarity to know similarities between documents
     cosine_similarities = linear_kernel(tfidf_matrix[index:index+1], tfidf_matrix).flatten()
-
-    # we order similarities in desc way (we do not include similarity corresponding to each sentence
-    # since its similarity is equal to "1"
     related_docs_indices = [i for i in cosine_similarities.argsort()[::-1] if i != index]
-
-    # we return that order
     return [(index, cosine_similarities[index]) for index in related_docs_indices][0:top_n]
+# if we want to show
+# def find_similar(tfidf_matrix, index, top_n = 5):
+#
+#
+#
+#         # we calculare cosine similarity to know similarities between documents
+#         cosine_similarities = linear_kernel(tfidf_matrix[index:index+1], tfidf_matrix).flatten()
+#
+#         # we order similarities in desc way (we do not include similarity corresponding to each sentence
+#         # since its similarity is equal to "1"
+#         related_docs_indices = [i for i in cosine_similarities.argsort()[::-1] if i != index]
+
+#         related_docs_indices = [i for i in cosine_similarities.argsort()[::-1]]
+#
+#     # we return that order
+#     return [(index, cosine_similarities[index]) for index in related_docs_indices][0:top_n]
+
+
+# def find_similar(tfidf_matrix, index):
+#     top_n=5
+#     cosine_similarities = linear_kernel(tfidf_matrix[index:index+1], tfidf_matrix).flatten()
+#     related_docs_indices = [i for i in cosine_similarities.argsort()[::-1] if i != index]
+#     return [(index, cosine_similarities[index]) for index in related_docs_indices][0:top_n]
+#
+
+
+def n_most_similar_for_each(corpus, tfidf_matrix):
+    string_auxiliar=''
+    for me_index, item in enumerate(corpus):
+        similar_documents =  [(corpus[index], score) for index, score in find_similar(tfidf_matrix, me_index, top_n=1)]
+        me = corpus[me_index]
+
+        document_id = me[0]
+        for ((raw_similar_document_id, title), score) in similar_documents:
+            similar_document_id = raw_similar_document_id
+            print([document_id, me[1], similar_document_id, title, score])
+            print(str(([document_id, me[1], similar_document_id, title, score])))
+            string_auxiliar = string_auxiliar + str([document_id, similar_document_id, score]) + '\n'
+    return string_auxiliar
+
+
+def most_similar(corpus, tfidf_matrix, param):
+    string_auxiliar=''
+    for index, score in find_similar(tfidf_matrix, param,top_n=1):
+        #string_auxiliar = string_auxiliar + str(score) + ':' + corpus[index][1] + '\n'
+        string_auxiliar = string_auxiliar + str(score) + ':' + corpus[index][0] + '\n'
+    return string_auxiliar
 
 
 def plot(distance_matrix, corpus, tfidf_matrix, fig):
@@ -301,12 +356,14 @@ def plot(distance_matrix, corpus, tfidf_matrix, fig):
     Xtrans = mds.fit_transform(distance_matrix)
 
     ax = fig.add_subplot(222)
+
     for label ,color, marker, document in zip( np.unique(y),colors, markers,corpus):
         position=y==label
         ax.scatter(Xtrans[position,0],Xtrans[position,1],label=document[0],color=color, marker=marker, edgecolor='black')
 
     #    ax.legend(loc="best")
-    ax.legend(loc=4)
+    #ax.legend(loc=4)
+    ax.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
 
     pylab.title("MDS on example data set in 2 dimensions")
 
@@ -318,15 +375,18 @@ def plot(distance_matrix, corpus, tfidf_matrix, fig):
     for label ,color, marker, document in zip( np.unique(y),colors, markers,corpus):
         position=y==label
         ax.scatter(Xtrans[position,0],Xtrans[position,1],label=document[0],color=color, marker=marker, edgecolor='black')
-    ax.legend(loc=4)
+    #ax.legend(loc=4)
+    ax.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
 
     pylab.title("TSNE on example data set in 2 dimensions")
 
 
     ax = fig.add_subplot(224)
-    string_auxiliar = ''
-    for index, score in find_similar(tfidf_matrix, 1):
-        string_auxiliar = string_auxiliar + str(score) + ':' + corpus[index][1] + '\n'
+    similarities = most_similar(corpus,tfidf_matrix,0)
+    similarities = n_most_similar_for_each(corpus, tfidf_matrix)
+    print(similarities)
+
+
     ax.axis('off')
 
     left, width = .25, .5
@@ -336,7 +396,7 @@ def plot(distance_matrix, corpus, tfidf_matrix, fig):
     pylab.title("MDS on example data set in 2 dimensions")
 
     ax.title.set_text('Masked line demo')
-    ax.text(0.5 * (left + right), 0.5 * (bottom + top), string_auxiliar,
+    ax.text(0.5 * (left + right), 0.5 * (bottom + top), similarities,
             horizontalalignment='center',
             verticalalignment='center',
             color='green', fontsize=15)
@@ -346,20 +406,42 @@ def plot(distance_matrix, corpus, tfidf_matrix, fig):
 
 def fill_information(fig):
 
+    start_time = time.time()
 
-    twenty = [['documento1',['this', 'is', 'the', 'second', 'sentence']],
-              ['documento2',['this', 'is', 'the', 'second', 'sentence']],
-              ['documento3',['this', 'is', 'the', 'second', 'sentence']],
+    url_connection = "mongodb://localhost"
+    connection = pymongo.MongoClient(url_connection)
+    db = connection.authorAndPublicationData
+    collection_authors = db.authors
+    collection_publications= db.publications
+
+    ids_publications = collection_authors.find_one ({"name": 'Alberto Fernández-Isabel'},{'_id':False,'publications':True})['publications']
+
+    publications = list((collection_publications.find({"_id": {"$in": ids_publications}},{'_id':False,'title':True,'topicsId':True})))
+
+
+
+    twenty = [['documento1',['this', 'is', 'the', 'documento1', 'sentence']],
+              ['documento2',['this', 'is', 'the', 'documento2', 'sentence']],
+              ['documento3',['this', 'is', 'the', 'documento3', 'sentence']],
               #              ['yet', 'another', 'sentence'],
-              ['documento4',['this', 'is', 'the', 'second', 'sentence']],
-              ['documento5',['this', 'is', 'the', 'second', 'sentence']],
-              ['documento6',['this', 'is', 'the', 'second', 'sentence']]]
+              ['documento4',['this', 'is', 'the', 'documento4', 'sentence']],
+              ['documento5',['this', 'is', 'the', 'documento5', 'sentence']],
+              ['documento6',['this', 'is', 'the', 'documento6', 'sentence']]]
 
+    #twenty = list((collection_publications.find({"_id": {"$in": ids_publications}},{'_id':False,'title':True,'topicsId':True})))
+
+    #
+    # corpus = []
+    #
+    # for paper in twenty:
+    #     sentence = ' '.join(paper['topicsId'])
+    #     corpus.append((paper['title'],sentence))
 
     corpus = []
     for file, content in twenty:
         sentence = ' '.join(content)
         corpus.append((file,sentence))
+
 
     # fit() function in order to learn a vocabulary from one or more documents
     # transform() function on one or more documents as needed to encode each as a vector.
@@ -378,6 +460,8 @@ def fill_information(fig):
 
 
 if __name__ == "__main__":
+    start_time = time.time()
+
     figure = create_figure()
     application = MyApplication(figure)
 
@@ -387,5 +471,5 @@ if __name__ == "__main__":
 
     print("http://127.0.0.1:8080/")
     print("Press Ctrl+C to quit")
-
+    print("The execution took: {0:0.2f} seconds".format(time.time() - start_time))
     tornado.ioloop.IOLoop.instance().start()
