@@ -15,6 +15,7 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="matplotlib.backends.backend_webagg_core.new_figure_manager_given_figure" />
+          <option value="CheckBestAuthorSimilarity.get_best_coincidence" />
         </list>
       </option>
     </inspection_tool>
