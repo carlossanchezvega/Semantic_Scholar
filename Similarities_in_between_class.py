@@ -13,6 +13,7 @@ import tornado.ioloop
 import tornado.websocket
 import itertools
 
+from operator import itemgetter
 
 from matplotlib.backends.backend_webagg_core import (
     FigureManagerWebAgg, new_figure_manager_given_figure)
@@ -129,7 +130,8 @@ class Similarities_in_between:
 
         #We will be able to represent, at maximum, elements
         self.colors = ['r', 'g', 'b', 'c','m','y','k', 'r', 'g', 'b', 'c','m','y','k', 'r']
-        self.markers = ['o', 'v', '^', '6', '>', '8', 's', 'p', '*', 'h', 'H', 'D', 'd', 'P', 'X', '>']
+        self.markers = ['o', 'v', '^', '4', '>', '8', 's', 'p', '*', 'h', 'H', 'D', 'd', 'P', 'X', '>']
+
         self.id = id
 
 
@@ -148,9 +150,70 @@ class Similarities_in_between:
 
     class MyApplication(tornado.web.Application):
         class MainPage(tornado.web.RequestHandler):
-            """
-            Serves the main HTML page.
-            """
+            def __init__(self):
+
+                # The following is the content of the web page.  You would normally
+                # generate this using some sort of template facility in your web
+                # framework, but here we just use Python string formatting.
+
+                self. html_content ="""<html>
+                                          <head>
+                                            <!-- TODO: There should be a way to include all of the required javascript
+                                                       and CSS so matplotlib can add to the set in the future if it
+                                                       needs to. -->
+                                            <link rel="stylesheet" href="_static/css/page.css" type="text/css">
+                                            <link rel="stylesheet" href="_static/css/boilerplate.css" type="text/css" />
+                                            <link rel="stylesheet" href="_static/css/fbm.css" type="text/css" />
+                                            <link rel="stylesheet" href="_static/jquery-ui-1.12.1/jquery-ui.min.css" >
+                                            <script src="_static/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+                                            <script src="_static/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+                                            <script src="mpl.js"></script>
+                                        
+                                            <script>
+                                              /* This is a callback that is called when the user saves
+                                                 (downloads) a file.  Its purpose is really to map from a
+                                                 figure and file format to a url in the application. */
+                                              function ondownload(figure, format) {
+                                                window.open('download.' + format, '_blank');
+                                              };
+                                        
+                                              $(document).ready(
+                                                function() {
+                                                  /* It is up to the application to provide a websocket that the figure
+                                                     will use to communicate to the server.  This websocket object can
+                                                     also be a "fake" websocket that underneath multiplexes messages
+                                                     from multiple figures, if necessary. */
+                                                  var websocket_type = mpl.get_websocket_type();
+                                                  var websocket = new websocket_type("%(ws_uri)sws");
+                                        
+                                                  // mpl.figure creates a new figure on the webpage.
+                                                  var fig = new mpl.figure(
+                                                      // A unique numeric identifier for the figure
+                                                      %(fig_id)s,
+                                                      // A websocket object (or something that behaves like one)
+                                                      websocket,
+                                                      // A function called when a file type is selected for download
+                                                      ondownload,
+                                                      // The HTML element in which to place the figure
+                                                      $('div#figure'));
+                                                }
+                                              );
+                                            </script>
+                                        
+                                            <title>matplotlib</title>
+                                          </head>
+                                        
+                                          <body>
+                                            <div id="figure">
+                                            </div>
+                                          </body>
+                                        </html>
+                                        """
+
+
+
+
+
 
             def get(self):
                 manager = self.application.manager
@@ -425,34 +488,51 @@ class Similarities_in_between:
 
     def get_vocabulary_from_authors(self, author):
         ids_coauthors = list(set(list(itertools.chain.from_iterable([coauthor['author_ids'] for coauthor in
-        (self.collection_publications.find({"_id": {"$in": author['publications']}},{'author_ids'}))]))))
+                    (self.collection_publications.find({"_id": {"$in": author['publications']}},{'author_ids'}))]))))
         vocabulary_from_authors = []
         for id in ids_coauthors:
             author = self.collection_authors.find_one({"_id": id})
-            list_from_author = [self.collection_authors.find_one({"_id": id}, {'_id':False,'name':True}),
-                                list((self.collection_publications.find({"_id": {"$in": author['publications']}},
-                                    {'_id':False,'title':False,'topicsId':True}))) ]
-            vocabulary_from_authors.append(list_from_author)
-        return vocabulary_from_authors
+            list_from_author = [self.collection_authors.find_one({"_id": id}, {'_id':False,'name':True})['name'],
+                        list(set(list(itertools.chain.from_iterable([topicId['topicsId'] for topicId in
+                        (self.collection_publications.find({"_id": {"$in": author['publications']}},
+                                                                {'_id':False, 'topicsId':True}))]))))]
+            if author['name']=='Hektor Jacynycz':
+                print('hola')
+            if len(list_from_author[1])>0: vocabulary_from_authors.append(list_from_author)
+
+
+        #corpus = " ".join(list(set(list(itertools.chain.from_iterable([topics for author, topics
+        #                                                               in vocabulary_from_authors])))))
+
+        corpus = []
+        for author, topics in vocabulary_from_authors:
+            sentence = ' '.join(topics)
+            corpus.append((author, sentence))
+
+        return corpus
 
     def get_vocabulary_all_pubs_by_1_author(self, author):
-        vocabulary_from_authors = []
-        return list((self.collection_publications.find({"_id":
-                                    {"$in": author['publications']}},{'_id':False,'title':True,'topicsId':True})))
+
+        vocabulary_from_author = list((self.collection_publications.find({"_id":
+                                {"$in": author['publications']}},{'_id':False,'title':True,'topicsId':True})))
+
+        corpus = []
+        for publication in vocabulary_from_author:
+            if len(publication['topicsId'])>0 :corpus.append((publication['title'], ' '.join(publication['topicsId'])))
+        return corpus
+
 
     def get_vocabulary_from_all_authors_and_pubs(self, author):
         ids_coauthors = list(set(list(itertools.chain.from_iterable([coauthor['author_ids'] for coauthor in
                     (self.collection_publications.find({"_id": {"$in": author['publications']}},{'author_ids'}))]))))
 
-        vocabulary_from_authors = []
-        for id in ids_coauthors:
-            author = self.collection_authors.find_one({"_id": id})
+        vocabulary_from_author = list((self.collection_publications.find({"_id":
+                                                                              {"$in": author['publications']}},{'_id':False,'title':True,'topicsId':True})))
 
-            for pub in author['publications']:
-                vocabulary_from_authors.append([self.collection_authors.find_one({"_id": id}, {'_id':False,'name':True}),
-                                                list((self.collection_publications.find({"_id": {"$eq":pub}},
-                                                {'_id':False,'title':True,'topicsId':True}))) ])
-        return vocabulary_from_authors
+        corpus = []
+        for publication in vocabulary_from_author:
+            if len(publication['topicsId'])>0 :corpus.append((publication['title'], ' '.join(publication['topicsId'])))
+        return corpus
 
 
     def get_corpus(self,optionSelected,id):
@@ -476,14 +556,22 @@ class Similarities_in_between:
         # transform() function on one or more documents as needed to encode each as a vector.
         #if you want to extract count features and apply TF-IDF normalization and row-wise euclidean normalization you can do it in one operation
 
+        for file, content in corpus:
+            print(file)
+            print(corpus)
+
         tfidf_matrix = TfidfVectorizer().fit_transform([content for file, content in corpus])
+
 
         #Get the pairwise similarity matrix (n by n) (The result is the similarity matrix)
         cosine_similarities = linear_kernel(tfidf_matrix, tfidf_matrix)
         print(cosine_similarities)
 
         # TSNE needs distances in order to plot the points
-        distance_matrix = pairwise_distances(tfidf_matrix, tfidf_matrix, metric='cosine', n_jobs=-1)
+        #distance_matrix = pairwise_distances(tfidf_matrix, tfidf_matrix, "cosine").ravel()
+        distance_matrix = pairwise_distances(tfidf_matrix, tfidf_matrix, "cosine")
+
+        #distance_matrix = pairwise_distances(tfidf_matrix, tfidf_matrix, metric='cosine', n_jobs=-1)
         self.plot(distance_matrix, corpus,tfidf_matrix, fig)
 
 
@@ -502,4 +590,4 @@ class Similarities_in_between:
         print("http://127.0.0.1:8080/")
         print("Press Ctrl+C to quit")
         print("The execution took: {0:0.2f} seconds".format(time.time() - start_time))
-        tornado.ioloop.IOLoop.instance().start()
+        #tornado.ioloop.IOLoop.instance().start()
