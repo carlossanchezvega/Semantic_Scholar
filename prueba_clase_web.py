@@ -1,4 +1,5 @@
 import io
+import itertools
 import time
 
 import pymongo
@@ -11,9 +12,7 @@ import tornado.web
 import tornado.httpserver
 import tornado.ioloop
 import tornado.websocket
-import itertools
 
-from operator import itemgetter
 
 from matplotlib.backends.backend_webagg_core import (
     FigureManagerWebAgg, new_figure_manager_given_figure)
@@ -37,10 +36,8 @@ from sklearn import linear_model, manifold, decomposition, datasets
 from sklearn.feature_extraction.text import TfidfVectorizer
 from scipy.spatial import distance
 
-#colors = ['r', 'g', 'b', 'c','m','y','k']
-#markers = ['o', 6, '*', '^', 'h', 's']
-
-
+colors = ['r', 'g', 'b', 'c','m','y','k']
+markers = ['o', 6, '*', '^', 'h', 's']
 import numpy as np
 from sklearn import datasets,manifold
 from sklearn.metrics.pairwise import linear_kernel
@@ -58,81 +55,8 @@ import tornado.httpserver
 import tornado.ioloop
 import tornado.websocket
 
+class prueba_clase_web:
 
-class Similarities_in_between:
-
-    def __init__(self, option_selected, teacher,id,  collection_authors, collection_publications,
-                 max_number_to_plot):
-        self.option_selected = option_selected
-
-        # The following is the content of the web page.  You would normally
-        # generate this using some sort of template facility in your web
-        # framework, but here we just use Python string formatting.
-
-        self.html_content ="""<html>
-                                  <head>
-                                    <!-- TODO: There should be a way to include all of the required javascript
-                                               and CSS so matplotlib can add to the set in the future if it
-                                               needs to. -->
-                                    <link rel="stylesheet" href="_static/css/page.css" type="text/css">
-                                    <link rel="stylesheet" href="_static/css/boilerplate.css" type="text/css" />
-                                    <link rel="stylesheet" href="_static/css/fbm.css" type="text/css" />
-                                    <link rel="stylesheet" href="_static/jquery-ui-1.12.1/jquery-ui.min.css" >
-                                    <script src="_static/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
-                                    <script src="_static/jquery-ui-1.12.1/jquery-ui.min.js"></script>
-                                    <script src="mpl.js"></script>
-                                
-                                    <script>
-                                      /* This is a callback that is called when the user saves
-                                         (downloads) a file.  Its purpose is really to map from a
-                                         figure and file format to a url in the application. */
-                                      function ondownload(figure, format) {
-                                        window.open('download.' + format, '_blank');
-                                      };
-                                
-                                      $(document).ready(
-                                        function() {
-                                          /* It is up to the application to provide a websocket that the figure
-                                             will use to communicate to the server.  This websocket object can
-                                             also be a "fake" websocket that underneath multiplexes messages
-                                             from multiple figures, if necessary. */
-                                          var websocket_type = mpl.get_websocket_type();
-                                          var websocket = new websocket_type("%(ws_uri)sws");
-                                
-                                          // mpl.figure creates a new figure on the webpage.
-                                          var fig = new mpl.figure(
-                                              // A unique numeric identifier for the figure
-                                              %(fig_id)s,
-                                              // A websocket object (or something that behaves like one)
-                                              websocket,
-                                              // A function called when a file type is selected for download
-                                              ondownload,
-                                              // The HTML element in which to place the figure
-                                              $('div#figure'));
-                                        }
-                                      );
-                                    </script>
-                                
-                                    <title>matplotlib</title>
-                                  </head>
-                                
-                                  <body>
-                                    <div id="figure">
-                                    </div>
-                                  </body>
-                                </html>
-                                """
-
-        self.teacher = teacher
-        self.collection_authors = collection_authors
-        self.collection_publications = collection_publications
-        self.max_number_to_plot =max_number_to_plot
-
-        #We will be able to represent, at maximum, elements
-        self.colors = ['r', 'g', 'b', 'c','m','y','k', 'r', 'g', 'b', 'c','m','y','k', 'r']
-        self.markers = ['o', 'v', '^', '4', '>', '8', 's', 'p', '*', 'h', 'H', 'D', 'd', 'P', 'X', '>']
-
-        self.id = id
 
 
     def create_figure(self):
@@ -146,73 +70,201 @@ class Similarities_in_between:
 
         self.fill_information(fig)
         #a.plot(t, s)
+
+
         return fig
+
+
+    # The following is the content of the web page.  You would normally
+    # generate this using some sort of template facility in your web
+    # framework, but here we just use Python string formatting.
+    html_content = """
+    <html>
+      <head>
+        <!-- TODO: There should be a way to include all of the required javascript
+                   and CSS so matplotlib can add to the set in the future if it
+                   needs to. -->
+        <link rel="stylesheet" href="_static/css/page.css" type="text/css">
+        <link rel="stylesheet" href="_static/css/boilerplate.css" type="text/css" />
+        <link rel="stylesheet" href="_static/css/fbm.css" type="text/css" />
+        <link rel="stylesheet" href="_static/jquery-ui-1.12.1/jquery-ui.min.css" >
+        <script src="_static/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+        <script src="_static/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+        <script src="mpl.js"></script>
+    
+        <script>
+          /* This is a callback that is called when the user saves
+             (downloads) a file.  Its purpose is really to map from a
+             figure and file format to a url in the application. */
+          function ondownload(figure, format) {
+            window.open('download.' + format, '_blank');
+          };
+    
+          $(document).ready(
+            function() {
+              /* It is up to the application to provide a websocket that the figure
+                 will use to communicate to the server.  This websocket object can
+                 also be a "fake" websocket that underneath multiplexes messages
+                 from multiple figures, if necessary. */
+              var websocket_type = mpl.get_websocket_type();
+              var websocket = new websocket_type("%(ws_uri)sws");
+    
+              // mpl.figure creates a new figure on the webpage.
+              var fig = new mpl.figure(
+                  // A unique numeric identifier for the figure
+                  %(fig_id)s,
+                  // A websocket object (or something that behaves like one)
+                  websocket,
+                  // A function called when a file type is selected for download
+                  ondownload,
+                  // The HTML element in which to place the figure
+                  $('div#figure'));
+            }
+          );
+        </script>
+    
+        <title>matplotlib</title>
+      </head>
+    
+      <body>
+        <div id="figure">
+        </div>
+      </body>
+    </html>
+    """
+
 
     class MyApplication(tornado.web.Application):
         class MainPage(tornado.web.RequestHandler):
+
+            # The following is the content of the web page.  You would normally
+            # generate this using some sort of template facility in your web
+            # framework, but here we just use Python string formatting.
             def __init__(self, *args, **kwargs):
+
                 super().__init__(*args, **kwargs)
+                self.html_content ="""<html>
+                                                  <head>
+                                                    <!-- TODO: There should be a way to include all of the required javascript
+                                                               and CSS so matplotlib can add to the set in the future if it
+                                                               needs to. -->
+                                                    <link rel="stylesheet" href="_static/css/page.css" type="text/css">
+                                                    <link rel="stylesheet" href="_static/css/boilerplate.css" type="text/css" />
+                                                    <link rel="stylesheet" href="_static/css/fbm.css" type="text/css" />
+                                                    <link rel="stylesheet" href="_static/jquery-ui-1.12.1/jquery-ui.min.css" >
+                                                    <script src="_static/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+                                                    <script src="_static/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+                                                    <script src="mpl.js"></script>
+                                                
+                                                    <script>
+                                                      /* This is a callback that is called when the user saves
+                                                         (downloads) a file.  Its purpose is really to map from a
+                                                         figure and file format to a url in the application. */
+                                                      function ondownload(figure, format) {
+                                                        window.open('download.' + format, '_blank');
+                                                      };
+                                                
+                                                      $(document).ready(
+                                                        function() {
+                                                          /* It is up to the application to provide a websocket that the figure
+                                                             will use to communicate to the server.  This websocket object can
+                                                             also be a "fake" websocket that underneath multiplexes messages
+                                                             from multiple figures, if necessary. */
+                                                          var websocket_type = mpl.get_websocket_type();
+                                                          var websocket = new websocket_type("%(ws_uri)sws");
+                                                
+                                                          // mpl.figure creates a new figure on the webpage.
+                                                          var fig = new mpl.figure(
+                                                              // A unique numeric identifier for the figure
+                                                              %(fig_id)s,
+                                                              // A websocket object (or something that behaves like one)
+                                                              websocket,
+                                                              // A function called when a file type is selected for download
+                                                              ondownload,
+                                                              // The HTML element in which to place the figure
+                                                              $('div#figure'));
+                                                        }
+                                                      );
+                                                    </script>
+                                                
+                                                    <title>matplotlib</title>
+                                                  </head>
+                                                
+                                                  <body>
+                                                    <div id="figure">
+                                                    </div>
+                                                  </body>
+                                                </html>
+                                                """
 
-                # The following is the content of the web page.  You would normally
-                # generate this using some sort of template facility in your web
-                # framework, but here we just use Python string formatting.
 
-                self. html_content ="""<html>
-                                          <head>
-                                            <!-- TODO: There should be a way to include all of the required javascript
-                                                       and CSS so matplotlib can add to the set in the future if it
-                                                       needs to. -->
-                                            <link rel="stylesheet" href="_static/css/page.css" type="text/css">
-                                            <link rel="stylesheet" href="_static/css/boilerplate.css" type="text/css" />
-                                            <link rel="stylesheet" href="_static/css/fbm.css" type="text/css" />
-                                            <link rel="stylesheet" href="_static/jquery-ui-1.12.1/jquery-ui.min.css" >
-                                            <script src="_static/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
-                                            <script src="_static/jquery-ui-1.12.1/jquery-ui.min.js"></script>
-                                            <script src="mpl.js"></script>
-                                        
-                                            <script>
-                                              /* This is a callback that is called when the user saves
-                                                 (downloads) a file.  Its purpose is really to map from a
-                                                 figure and file format to a url in the application. */
-                                              function ondownload(figure, format) {
-                                                window.open('download.' + format, '_blank');
-                                              };
-                                        
-                                              $(document).ready(
-                                                function() {
-                                                  /* It is up to the application to provide a websocket that the figure
-                                                     will use to communicate to the server.  This websocket object can
-                                                     also be a "fake" websocket that underneath multiplexes messages
-                                                     from multiple figures, if necessary. */
-                                                  var websocket_type = mpl.get_websocket_type();
-                                                  var websocket = new websocket_type("%(ws_uri)sws");
-                                        
-                                                  // mpl.figure creates a new figure on the webpage.
-                                                  var fig = new mpl.figure(
-                                                      // A unique numeric identifier for the figure
-                                                      %(fig_id)s,
-                                                      // A websocket object (or something that behaves like one)
-                                                      websocket,
-                                                      // A function called when a file type is selected for download
-                                                      ondownload,
-                                                      // The HTML element in which to place the figure
-                                                      $('div#figure'));
-                                                }
-                                              );
-                                            </script>
-                                        
-                                            <title>matplotlib</title>
-                                          </head>
-                                        
-                                          <body>
-                                            <div id="figure">
-                                            </div>
-                                          </body>
-                                        </html>
-                                        """
+
             def get(self):
                 manager = self.application.manager
                 ws_uri = "ws://{req.host}/".format(req=self.request)
+                # html_content ="""<html>
+                #                           <head>
+                #                             <!-- TODO: There should be a way to include all of the required javascript
+                #                                        and CSS so matplotlib can add to the set in the future if it
+                #                                        needs to. -->
+                #                             <link rel="stylesheet" href="_static/css/page.css" type="text/css">
+                #                             <link rel="stylesheet" href="_static/css/boilerplate.css" type="text/css" />
+                #                             <link rel="stylesheet" href="_static/css/fbm.css" type="text/css" />
+                #                             <link rel="stylesheet" href="_static/jquery-ui-1.12.1/jquery-ui.min.css" >
+                #                             <script src="_static/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+                #                             <script src="_static/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+                #                             <script src="mpl.js"></script>
+                #
+                #                             <script>
+                #                               /* This is a callback that is called when the user saves
+                #                                  (downloads) a file.  Its purpose is really to map from a
+                #                                  figure and file format to a url in the application. */
+                #                               function ondownload(figure, format) {
+                #                                 window.open('download.' + format, '_blank');
+                #                               };
+                #
+                #                               $(document).ready(
+                #                                 function() {
+                #                                   /* It is up to the application to provide a websocket that the figure
+                #                                      will use to communicate to the server.  This websocket object can
+                #                                      also be a "fake" websocket that underneath multiplexes messages
+                #                                      from multiple figures, if necessary. */
+                #                                   var websocket_type = mpl.get_websocket_type();
+                #                                   var websocket = new websocket_type("%(ws_uri)sws");
+                #
+                #                                   // mpl.figure creates a new figure on the webpage.
+                #                                   var fig = new mpl.figure(
+                #                                       // A unique numeric identifier for the figure
+                #                                       %(fig_id)s,
+                #                                       // A websocket object (or something that behaves like one)
+                #                                       websocket,
+                #                                       // A function called when a file type is selected for download
+                #                                       ondownload,
+                #                                       // The HTML element in which to place the figure
+                #                                       $('div#figure'));
+                #                                 }
+                #                               );
+                #                             </script>
+                #
+                #                             <title>matplotlib</title>
+                #                           </head>
+                #
+                #                           <body>
+                #                             <div id="figure">
+                #                             </div>
+                #                           </body>
+                #                         </html>
+                #                         """
+                #
+                #
+                #
+                # """
+                # Serves the main HTML page.
+                # """
+
+
+
+
                 content = self.html_content % {
                     "ws_uri": ws_uri, "fig_id": manager.num}
                 self.write(content)
@@ -386,8 +438,11 @@ class Similarities_in_between:
             document_id = me[0]
             for ((raw_similar_document_id, title), score) in similar_documents:
                 similar_document_id = raw_similar_document_id
-                string_auxiliar = string_auxiliar + str([(document_id)[0:40], (similar_document_id)[0:40], "%.4f" % round(score,4)]) + '\n'
-                if string_auxiliar.count('\n')==self.max_number_to_plot: return string_auxiliar
+                print([document_id, me[1], similar_document_id, title, score])
+                print(str(([document_id, me[1], similar_document_id, title, score])))
+                string_auxiliar = string_auxiliar + str([document_id, similar_document_id, score])[0:45] + '\n'
+                if string_auxiliar.count('\n')==5:
+                    return string_auxiliar
         return string_auxiliar
 
 
@@ -447,12 +502,6 @@ class Similarities_in_between:
 
         ax = fig.add_subplot(223)
 
-        if len(corpus)> self.max_number_to_plot:
-            corpus  = corpus[:self.max_number_to_plot]
-            colors = self.colors[:self.max_number_to_plot]
-            markers = self.markers[:self.max_number_to_plot]
-
-
         for label ,color, marker, document in zip( np.unique(y),colors, markers,corpus):
             position=y==label
             ax.scatter(Xtrans[position,0],Xtrans[position,1],label=document[0],color=color, marker=marker, edgecolor='black')
@@ -478,97 +527,75 @@ class Similarities_in_between:
         filename = "distances.png"
         pylab.savefig(os.path.join('/home/csanchez/IdeaProjects/Semantic_Scholar', filename), bbox_inches="tight")
 
-
-
-    def get_vocabulary_from_authors(self, author):
-        ids_coauthors = list(set(list(itertools.chain.from_iterable([coauthor['author_ids'] for coauthor in
-                    (self.collection_publications.find({"_id": {"$in": author['publications']}},{'author_ids'}))]))))
-        vocabulary_from_authors = []
-        for id in ids_coauthors:
-            author = self.collection_authors.find_one({"_id": id})
-            list_from_author = [self.collection_authors.find_one({"_id": id}, {'_id':False,'name':True})['name'],
-                        list(set(list(itertools.chain.from_iterable([topicId['topicsId'] for topicId in
-                        (self.collection_publications.find({"_id": {"$in": author['publications']}},
-                                                                {'_id':False, 'topicsId':True}))]))))]
-            if len(list_from_author[1])>0: vocabulary_from_authors.append(list_from_author)
-
-
-        #corpus = " ".join(list(set(list(itertools.chain.from_iterable([topics for author, topics
-        #                                                               in vocabulary_from_authors])))))
-
-        corpus = []
-        for author, topics in vocabulary_from_authors:
-            sentence = ' '.join(topics)
-            corpus.append((author, sentence))
-
-        return corpus
-
-    def get_vocabulary_all_pubs_by_1_author(self, author):
-
-        vocabulary_from_author = list((self.collection_publications.find({"_id":
-                                {"$in": author['publications']}},{'_id':False,'title':True,'topicsId':True})))
-
-        corpus = []
-        for publication in vocabulary_from_author:
-            if len(publication['topicsId'])>0 :corpus.append((publication['title'], ' '.join(publication['topicsId'])))
-        return corpus
-
-
-    def get_vocabulary_from_all_authors_and_pubs(self, author):
-        ids_coauthors = list(set(list(itertools.chain.from_iterable([coauthor['author_ids'] for coauthor in
-                    (self.collection_publications.find({"_id": {"$in": author['publications']}},{'author_ids'}))]))))
-
-        corpus = []
-        for id in ids_coauthors:
-            author = self.collection_authors.find_one({"_id": id})
-            for pub in author['publications']:
-                publication = self.collection_publications.find_one({"_id": pub},
-                                                                    {'_id':False,'title':True,'topicsId':True})
-                if len(publication['topicsId'])>0 :
-                    corpus.append((author['name']+': "'+publication['title']+'"', ' '.join(publication['topicsId'])))
-        return corpus
-
-
-    def get_corpus(self,optionSelected,id):
-        author = self.collection_authors.find_one({"name": self.teacher})
-
-        if optionSelected =='Comparador del autor con otros coautores':
-            corpus = self.get_vocabulary_from_authors(author)
-        elif optionSelected =='Comparador obras del autor':
-            corpus = self.get_vocabulary_all_pubs_by_1_author(author)
-        elif optionSelected =='Comparador de obras entre autor y coautores':
-            corpus = self.get_vocabulary_from_all_authors_and_pubs(author)
-        return corpus
-
-
-
     def fill_information(self, fig):
 
         start_time = time.time()
-        corpus = self.get_corpus(self.option_selected, self.id)
+
+        url_connection = "mongodb://localhost"
+        connection = pymongo.MongoClient(url_connection)
+        db = connection.authorAndPublicationData
+        collection_authors = db.authors
+        collection_publications= db.publications
+
+
+        #########################################
+
+        author = collection_authors.find_one({"_id": '3018657'})
+
+        ids_coauthors = list(set(list(itertools.chain.from_iterable([coauthor['author_ids'] for coauthor in
+                                                                     (collection_publications.find({"_id": {"$in": author['publications']}},{'author_ids'}))]))))
+
+        corpus = []
+        for id in ids_coauthors:
+            author = collection_authors.find_one({"_id": id})
+            for pub in author['publications']:
+                publication = collection_publications.find_one({"_id": pub},
+                                                               {'_id':False,'title':True,'topicsId':True})
+                if len(publication['topicsId'])>0 :
+                    corpus.append(((author['name']+': "'+publication['title']+'"')[0:65], ' '.join(publication['topicsId'])))
+
+
+
+
+
+        #ids_publications = collection_authors.find_one ({"name": 'Alberto Fernández-Isabel'},{'_id':False,'publications':True})['publications']
+        #publications = list((collection_publications.find({"_id": {"$in": ids_publications}},{'_id':False,'title':True,'topicsId':True})))
+        #twenty = [['documento1',['this', 'is', 'the', 'documento1', 'sentence']],
+        #          ['documento2',['this', 'is', 'the', 'documento2', 'sentence']],
+        #          ['documento3',['this', 'is', 'the', 'documento3', 'sentence']],
+        #          #              ['yet', 'another', 'sentence'],
+        #          ['documento4',['this', 'is', 'the', 'documento4', 'sentence']],
+        #          ['documento5',['this', 'is', 'the', 'documento5', 'sentence']],
+        #          ['documento6',['this', 'is', 'the', 'documento6', 'sentence']]]
+
+
+
+
+        #corpus = []
+        #for file, content in twenty:
+        #    sentence = ' '.join(content)
+        #    corpus.append((file,sentence))
+
+
         # fit() function in order to learn a vocabulary from one or more documents
         # transform() function on one or more documents as needed to encode each as a vector.
         #if you want to extract count features and apply TF-IDF normalization and row-wise euclidean normalization you can do it in one operation
 
         tfidf_matrix = TfidfVectorizer().fit_transform([content for file, content in corpus])
 
-
         #Get the pairwise similarity matrix (n by n) (The result is the similarity matrix)
         cosine_similarities = linear_kernel(tfidf_matrix, tfidf_matrix)
         print(cosine_similarities)
 
         # TSNE needs distances in order to plot the points
-        #distance_matrix = pairwise_distances(tfidf_matrix, tfidf_matrix, "cosine").ravel()
-        distance_matrix = pairwise_distances(tfidf_matrix, tfidf_matrix, "cosine")
-
-        #distance_matrix = pairwise_distances(tfidf_matrix, tfidf_matrix, metric='cosine', n_jobs=-1)
+        distance_matrix = pairwise_distances(tfidf_matrix, tfidf_matrix, metric='cosine', n_jobs=-1)
         self.plot(distance_matrix, corpus,tfidf_matrix, fig)
-
 
 
 
     def create_similarity_plot(self):
         start_time = time.time()
+
         figure = self.create_figure()
         application = self.MyApplication(figure)
 

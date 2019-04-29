@@ -6,8 +6,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="548c2264-2239-4ee6-a305-3fa92d1ad669" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/prueba_clase_web.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/prueba_ejecucion_prueba_clase_web.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GetInfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/GetInfo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Similarities_in_between_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/Similarities_in_between_class.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interfazGrafica_copiaSeguridad.py" beforeDir="false" afterPath="$PROJECT_DIR$/interfazGrafica_copiaSeguridad.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web.py" beforeDir="false" afterPath="$PROJECT_DIR$/web.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,8 +31,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tika_aplicacion.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="32">
-              <caret line="475" column="51" lean-forward="true" selection-start-line="475" selection-start-column="51" selection-end-line="475" selection-end-column="51" />
+            <state relative-caret-position="317">
+              <caret line="494" selection-end-line="494" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -50,8 +55,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4881">
-              <caret line="444" column="89" lean-forward="true" selection-start-line="444" selection-end-line="445" />
+            <state relative-caret-position="647">
+              <caret line="473" column="28" selection-start-line="469" selection-end-line="484" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -62,10 +67,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/interfazGrafica_copiaSeguridad.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="138" column="43" lean-forward="true" selection-start-line="138" selection-start-column="43" selection-end-line="138" selection-end-column="43" />
+            <state relative-caret-position="255">
+              <caret line="136" selection-start-line="136" selection-end-line="136" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GetInfo.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="466" selection-start-line="466" selection-end-line="466" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -74,53 +91,41 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Similarities_in_between_class.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="534" column="21" selection-start-line="534" selection-start-column="21" selection-end-line="534" selection-end-column="21" />
+            <state relative-caret-position="825">
+              <caret line="455" column="88" lean-forward="true" selection-start-line="455" selection-start-column="88" selection-end-line="455" selection-end-column="88" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file:///usr/lib/python3.6/operator.py">
+        <entry file="file://$PROJECT_DIR$/prueba_clase_web.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="272" column="8" selection-start-line="272" selection-start-column="8" selection-end-line="272" selection-end-column="8" />
+            <state relative-caret-position="75">
+              <caret line="554" column="82" lean-forward="true" selection-start-line="554" selection-start-column="82" selection-end-line="554" selection-end-column="88" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/sklearn/externals/joblib/externals/cloudpickle/cloudpickle.py">
+        <entry file="file://$PROJECT_DIR$/prueba_ejecucion_prueba_clase_web.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="600" selection-start-line="600" selection-end-line="600" />
+            <state relative-caret-position="165">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/sklearn/externals/joblib/parallel.py">
+        <entry file="file://$PROJECT_DIR$/grafo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="753" selection-start-line="753" selection-end-line="753" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file:///usr/lib/python3.6/tkinter/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1704" selection-start-line="1704" selection-end-line="1704" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/sklearn/metrics/pairwise.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="1431" selection-start-line="1431" selection-end-line="1431" />
+            <state relative-caret-position="252">
+              <caret line="120" column="38" lean-forward="true" selection-start-line="120" selection-end-line="121" />
+              <folding>
+                <element signature="e#0#17#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -136,28 +141,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>get_influencial_citation_count</find>
-      <find>get_author_reputation</find>
-      <find>get_coincide</find>
-      <find>Chech</find>
-      <find>CheckBestAuthorSimilarity</find>
-      <find>fill_information</find>
-      <find>html_content</find>
-      <find>aux</find>
-      <find>itertt</find>
-      <find>colors</find>
-      <find>json</find>
-      <find>all</find>
-      <find>init</find>
-      <find>info</find>
-      <find>local</find>
-      <find>author_dict</find>
       <find>grafo</find>
       <find>albe</find>
       <find>cor</find>
       <find>markers</find>
       <find>corpu</find>
-      <find>Alberto</find>
       <find>cosine_similarities</find>
       <find>alber</find>
       <find>corpus</find>
@@ -166,6 +154,23 @@
       <find>albert</find>
       <find>alberto</find>
       <find>html</find>
+      <find>Alberto</find>
+      <find>\n</find>
+      <find>find</find>
+      <find>auxi</find>
+      <find>auxiliar</find>
+      <find>main</find>
+      <find>print</find>
+      <find>auxili</find>
+      <find>similarities</find>
+      <find>init</find>
+      <find>fill_information</find>
+      <find>most_similar</find>
+      <find>plot</find>
+      <find>most</find>
+      <find>mainç</find>
+      <find>super</find>
+      <find>0:20</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -185,7 +190,6 @@
         <option value="$PROJECT_DIR$/betweenness_all_nodes_reputation.html" />
         <option value="$PROJECT_DIR$/data/allInfo.json" />
         <option value="$PROJECT_DIR$/grafo.py" />
-        <option value="$PROJECT_DIR$/web.py" />
         <option value="$PROJECT_DIR$/interfazGrafica2.py" />
         <option value="$PROJECT_DIR$/interfazGrafica.py" />
         <option value="$PROJECT_DIR$/animacion.py" />
@@ -195,9 +199,12 @@
         <option value="$PROJECT_DIR$/CheckBestAuthorSimilarity.py" />
         <option value="$PROJECT_DIR$/graph_class.py" />
         <option value="$PROJECT_DIR$/tika_aplicacion_OLD.py" />
-        <option value="$PROJECT_DIR$/interfazGrafica_copiaSeguridad.py" />
-        <option value="$PROJECT_DIR$/GetInfo.py" />
         <option value="$PROJECT_DIR$/Graph_class.py" />
+        <option value="$PROJECT_DIR$/web.py" />
+        <option value="$PROJECT_DIR$/prueba_ejecucion_prueba_clase_web.py" />
+        <option value="$PROJECT_DIR$/prueba_clase_web.py" />
+        <option value="$PROJECT_DIR$/GetInfo.py" />
+        <option value="$PROJECT_DIR$/interfazGrafica_copiaSeguridad.py" />
         <option value="$PROJECT_DIR$/Similarities_in_between_class.py" />
       </list>
     </option>
@@ -307,48 +314,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="animacion" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Semantic_Scholar" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="$PROJECT_DIR$/../computer-science-papers/venv/bin/python" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/animacion.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="interfazGrafica" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Semantic_Scholar" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="$PROJECT_DIR$/../computer-science-papers/venv/bin/python" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/interfazGrafica.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="interfazGrafica_copiaSeguridad" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Semantic_Scholar" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -362,6 +327,48 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/interfazGrafica_copiaSeguridad.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="prueba_clase_web" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Semantic_Scholar" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/../computer-science-papers/venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/prueba_clase_web.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="prueba_ejecucion_prueba_clase_web" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Semantic_Scholar" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/../computer-science-papers/venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/prueba_ejecucion_prueba_clase_web.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -414,19 +421,19 @@
     </configuration>
     <list>
       <item itemvalue="Python.Unnamed" />
-      <item itemvalue="Python.interfazGrafica" />
       <item itemvalue="Python.interfazGrafica_copiaSeguridad" />
-      <item itemvalue="Python.animacion" />
       <item itemvalue="Python.prueba_waiting" />
       <item itemvalue="Python.web" />
+      <item itemvalue="Python.prueba_ejecucion_prueba_clase_web" />
+      <item itemvalue="Python.prueba_clase_web" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.interfazGrafica_copiaSeguridad" />
+        <item itemvalue="Python.prueba_ejecucion_prueba_clase_web" />
+        <item itemvalue="Python.prueba_clase_web" />
         <item itemvalue="Python.web" />
         <item itemvalue="Python.prueba_waiting" />
-        <item itemvalue="Python.animacion" />
-        <item itemvalue="Python.interfazGrafica" />
       </list>
     </recent_temporary>
   </component>
@@ -569,7 +576,7 @@
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7505112" visible="true" weight="0.2872164" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7505112" weight="0.2905368" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -578,7 +585,7 @@
       <window_info id="Favorites" order="6" sideWeight="0.24948876" side_tool="true" weight="0.28389597" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4997233" weight="0.32937366" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.84117323" weight="0.20842333" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.84117323" weight="0.41576675" />
       <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.9203099" visible="true" weight="0.47192225" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -663,72 +670,87 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/web.py</url>
-          <line>272</line>
+          <line>273</line>
           <option name="timeStamp" value="149" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/web.py</url>
-          <line>298</line>
+          <line>299</line>
           <option name="timeStamp" value="151" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
+          <line>552</line>
+          <option name="timeStamp" value="226" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
+          <line>528</line>
+          <option name="timeStamp" value="227" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
+          <line>380</line>
+          <option name="timeStamp" value="230" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
+          <line>572</line>
+          <option name="timeStamp" value="231" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/web.py</url>
-          <line>314</line>
-          <option name="timeStamp" value="162" />
+          <line>476</line>
+          <option name="timeStamp" value="232" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/prueba_clase_web.py</url>
+          <line>518</line>
+          <option name="timeStamp" value="233" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/prueba_clase_web.py</url>
+          <line>583</line>
+          <option name="timeStamp" value="235" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/prueba_clase_web.py</url>
+          <line>531</line>
+          <option name="timeStamp" value="236" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/prueba_clase_web.py</url>
+          <line>599</line>
+          <option name="timeStamp" value="238" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
-          <line>574</line>
-          <option name="timeStamp" value="204" />
+          <line>406</line>
+          <option name="timeStamp" value="240" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/GetInfo.py</url>
+          <line>463</line>
+          <option name="timeStamp" value="243" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
-          <line>410</line>
-          <option name="timeStamp" value="205" />
+          <line>532</line>
+          <option name="timeStamp" value="244" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
-          <line>220</line>
-          <option name="timeStamp" value="206" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
-          <line>473</line>
-          <option name="timeStamp" value="207" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
-          <line>540</line>
-          <option name="timeStamp" value="208" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
-          <line>562</line>
-          <option name="timeStamp" value="219" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
-          <line>521</line>
-          <option name="timeStamp" value="220" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
-          <line>525</line>
-          <option name="timeStamp" value="221" />
+          <url>file://$PROJECT_DIR$/interfazGrafica_copiaSeguridad.py</url>
+          <line>136</line>
+          <option name="timeStamp" value="245" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="vocabulary_from_author" language="Python" />
-        <watch expression="list((self.collection_publications.find({&quot;_id&quot;:                                 {&quot;$in&quot;: author['publications']}},{'_id':False,'title':True,'topicsId':True})))" language="Python" />
-        <watch expression="publication['title']" language="Python" />
-        <watch expression="[getter(item) for item in corpus]" language="Python" />
-        <watch expression="[getter(item) for item in corpus]" language="Python" />
-        <watch expression="[content for file, content in corpus]" language="Python" />
-        <watch expression="[self.collection_authors.find_one({&quot;_id&quot;: id}, {'_id':False,'name':True})]" language="Python" />
-        <watch expression="list((self.collection_publications.find({&quot;_id&quot;: {&quot;$eq&quot;:pub}},{'_id':False,'title':True,'topicsId':True})))" language="Python" />
-        <watch expression="[self.collection_authors.find_one({&quot;_id&quot;: id}, {'_id':False,'name':True}),                                                 list((self.collection_publications.find({&quot;_id&quot;: {&quot;$eq&quot;:pub}},                                                 {'_id':False,'title':True,'topicsId':True}))) ]" language="Python" />
+        <watch expression="corpus" language="Python" />
+        <watch expression="len(corpus[0][0])" language="Python" />
+        <watch expression="(author['name']+': &quot;'+publication['title']+'&quot;')[0:45]" language="Python" />
+        <watch expression="string_auxiliar" language="Python" />
       </configuration>
     </watches-manager>
   </component>
@@ -742,52 +764,52 @@
     </expressions>
     <expressions id="watch">
       <expression>
-        <expression-string>[self.collection_authors.find_one({&quot;_id&quot;: id}, {'_id':False,'name':True}),                                                 list((self.collection_publications.find({&quot;_id&quot;: {&quot;$eq&quot;:pub}},                                                 {'_id':False,'title':True,'topicsId':True}))) ]</expression-string>
+        <expression-string>string_auxiliar</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>list((self.collection_publications.find({&quot;_id&quot;: {&quot;$eq&quot;:pub}},{'_id':False,'title':True,'topicsId':True})))</expression-string>
+        <expression-string>(author['name']+': &quot;'+publication['title']+'&quot;')[0:45]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>[self.collection_authors.find_one({&quot;_id&quot;: id}, {'_id':False,'name':True})]</expression-string>
+        <expression-string>author['name']+': &quot;'+publication['title']+'&quot;'[0:45]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>[self.collection_authors.find_one({&quot;_id&quot;: id}, {'_id':False,'name':True}]</expression-string>
+        <expression-string>len(corpus[0][0])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>[content for file, content in corpus]</expression-string>
+        <expression-string>corpus[0][0]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>[getter(item) for item in corpus]</expression-string>
+        <expression-string>corpus[0]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>publication['title']</expression-string>
+        <expression-string>corpus</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>list((self.collection_publications.find({&quot;_id&quot;:                                 {&quot;$in&quot;: author['publications']}},{'_id':False,'title':True,'topicsId':True})))</expression-string>
+        <expression-string>figure</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>lis((self.collection_publications.find({&quot;_id&quot;:                                 {&quot;$in&quot;: author['publications']}},{'_id':False,'title':True,'topicsId':True})))</expression-string>
+        <expression-string>html_content</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>(self.collection_publications.find({&quot;_id&quot;:                                 {&quot;$in&quot;: author['publications']}},{'_id':False,'title':True,'topicsId':True}))</expression-string>
+        <expression-string>self</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -801,18 +823,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/intento.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cosine.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mds_demo_2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mds_demo_iris.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/sin_leyenda.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -1029,26 +1039,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grafo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1815">
-          <caret line="127" column="20" selection-start-line="127" selection-start-column="20" selection-end-line="127" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GetInfo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="465" lean-forward="true" selection-start-line="465" selection-end-line="465" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/interfazGrafica_nosetoca.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="107">
@@ -1073,6 +1063,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/lib/python3.6/operator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4080">
+          <caret line="272" column="8" selection-start-line="272" selection-start-column="8" selection-end-line="272" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/sklearn/externals/joblib/externals/cloudpickle/cloudpickle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8775">
+          <caret line="600" selection-start-line="600" selection-end-line="600" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tika_aplicacion_OLD.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1083,34 +1087,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/sklearn/feature_extraction/text.py">
+    <entry file="file://$USER_HOME$/.IdeaIC2019.1/system/python_stubs/-1103080184/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="812">
-          <caret line="1595" column="8" selection-start-line="1595" selection-start-column="8" selection-end-line="1595" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tika_aplicacion.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="475" column="51" lean-forward="true" selection-start-line="475" selection-start-column="51" selection-end-line="475" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="235">
+          <caret line="5243" column="8" selection-start-line="5243" selection-start-column="8" selection-end-line="5243" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/sklearn/metrics/pairwise.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="1431" selection-start-line="1431" selection-end-line="1431" />
+        <state relative-caret-position="-1610">
+          <caret line="1315" column="4" selection-start-line="1315" selection-start-column="4" selection-end-line="1315" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/sklearn/externals/joblib/externals/cloudpickle/cloudpickle.py">
+    <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/sklearn/feature_extraction/text.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="145">
-          <caret line="600" selection-start-line="600" selection-end-line="600" />
+          <caret line="1612" selection-start-line="1612" selection-end-line="1612" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python3.6/tkinter/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-215">
+          <caret line="1282" selection-start-line="1282" selection-end-line="1282" />
         </state>
       </provider>
     </entry>
@@ -1121,44 +1122,84 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/grafo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="120" column="38" lean-forward="true" selection-start-line="120" selection-end-line="121" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4881">
-          <caret line="444" column="89" lean-forward="true" selection-start-line="444" selection-end-line="445" />
+        <state relative-caret-position="647">
+          <caret line="473" column="28" selection-start-line="469" selection-end-line="484" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib/python3.6/tkinter/__init__.py">
+    <entry file="file://$PROJECT_DIR$/tika_aplicacion.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1704" selection-start-line="1704" selection-end-line="1704" />
+        <state relative-caret-position="317">
+          <caret line="494" selection-end-line="494" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/tornado/web.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="2426" column="12" selection-start-line="2426" selection-start-column="8" selection-end-line="2426" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prueba_clase_web.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="554" column="82" lean-forward="true" selection-start-line="554" selection-start-column="82" selection-end-line="554" selection-end-column="88" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prueba_ejecucion_prueba_clase_web.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GetInfo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="466" selection-start-line="466" selection-end-line="466" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/interfazGrafica_copiaSeguridad.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="138" column="43" lean-forward="true" selection-start-line="138" selection-start-column="43" selection-end-line="138" selection-end-column="43" />
+        <state relative-caret-position="255">
+          <caret line="136" selection-start-line="136" selection-end-line="136" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib/python3.6/operator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="272" column="8" selection-start-line="272" selection-start-column="8" selection-end-line="272" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Similarities_in_between_class.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="534" column="21" selection-start-line="534" selection-start-column="21" selection-end-line="534" selection-end-column="21" />
+        <state relative-caret-position="825">
+          <caret line="455" column="88" lean-forward="true" selection-start-line="455" selection-start-column="88" selection-end-line="455" selection-end-column="88" />
         </state>
       </provider>
     </entry>

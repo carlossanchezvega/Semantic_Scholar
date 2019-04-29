@@ -126,15 +126,15 @@ def price():
 
 
     getInfo = GetInfo(url_connection,author, collection_authors, collection_publications)
-    result = getInfo.requestInfo()
+    result, best_similarity = getInfo.requestInfo()
     if result ==0 :
 
         option_selected = gui.state()
         if option_selected=='Grafo asociado':
-            grafo = Graph_class("data/allInfo.json", author, collection_authors, collection_publications)
+            grafo = Graph_class("data/allInfo.json", best_similarity, collection_authors, collection_publications)
             grafo.create_graph()
         else:
-            represent_similarities = Similarities_in_between(option_selected, author, url_connection,
+            represent_similarities = Similarities_in_between(option_selected, best_similarity, url_connection,
                                                             collection_authors, collection_publications,6)
             represent_similarities.create_similarity_plot()
     else:

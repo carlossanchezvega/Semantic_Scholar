@@ -486,7 +486,7 @@ class GetInfo:
                     self.set_reputations(self.collection_authors, self.collection_publications)
 
                 print("The execution took: {0:0.2f} seconds".format(time.time() - start_time))
-            return 0
+            return 0, best_coincidence
         else:
             return 1
 

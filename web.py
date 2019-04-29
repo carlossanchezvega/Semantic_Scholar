@@ -1,4 +1,5 @@
 import io
+import itertools
 import time
 
 import pymongo
@@ -315,6 +316,8 @@ def n_most_similar_for_each(corpus, tfidf_matrix):
             print([document_id, me[1], similar_document_id, title, score])
             print(str(([document_id, me[1], similar_document_id, title, score])))
             string_auxiliar = string_auxiliar + str([document_id, similar_document_id, score]) + '\n'
+            if string_auxiliar.count('\n')==5:
+                return string_auxiliar
     return string_auxiliar
 
 
@@ -409,33 +412,44 @@ def fill_information(fig):
     collection_authors = db.authors
     collection_publications= db.publications
 
-    ids_publications = collection_authors.find_one ({"name": 'Alberto Fernández-Isabel'},{'_id':False,'publications':True})['publications']
 
-    publications = list((collection_publications.find({"_id": {"$in": ids_publications}},{'_id':False,'title':True,'topicsId':True})))
+    #########################################
 
+    author = collection_authors.find_one({"_id": '3018657'})
 
-
-    twenty = [['documento1',['this', 'is', 'the', 'documento1', 'sentence']],
-              ['documento2',['this', 'is', 'the', 'documento2', 'sentence']],
-              ['documento3',['this', 'is', 'the', 'documento3', 'sentence']],
-              #              ['yet', 'another', 'sentence'],
-              ['documento4',['this', 'is', 'the', 'documento4', 'sentence']],
-              ['documento5',['this', 'is', 'the', 'documento5', 'sentence']],
-              ['documento6',['this', 'is', 'the', 'documento6', 'sentence']]]
-
-    #twenty = list((collection_publications.find({"_id": {"$in": ids_publications}},{'_id':False,'title':True,'topicsId':True})))
-
-    #
-    # corpus = []
-    #
-    # for paper in twenty:
-    #     sentence = ' '.join(paper['topicsId'])
-    #     corpus.append((paper['title'],sentence))
+    ids_coauthors = list(set(list(itertools.chain.from_iterable([coauthor['author_ids'] for coauthor in
+                                                                 (collection_publications.find({"_id": {"$in": author['publications']}},{'author_ids'}))]))))
 
     corpus = []
-    for file, content in twenty:
-        sentence = ' '.join(content)
-        corpus.append((file,sentence))
+    for id in ids_coauthors:
+        author = collection_authors.find_one({"_id": id})
+        for pub in author['publications']:
+            publication = collection_publications.find_one({"_id": pub},
+                                                                {'_id':False,'title':True,'topicsId':True})
+            if len(publication['topicsId'])>0 :
+                corpus.append((author['name']+': "'+publication['title']+'"', ' '.join(publication['topicsId'])))
+
+
+
+
+
+    #ids_publications = collection_authors.find_one ({"name": 'Alberto Fernández-Isabel'},{'_id':False,'publications':True})['publications']
+    #publications = list((collection_publications.find({"_id": {"$in": ids_publications}},{'_id':False,'title':True,'topicsId':True})))
+    #twenty = [['documento1',['this', 'is', 'the', 'documento1', 'sentence']],
+    #          ['documento2',['this', 'is', 'the', 'documento2', 'sentence']],
+    #          ['documento3',['this', 'is', 'the', 'documento3', 'sentence']],
+    #          #              ['yet', 'another', 'sentence'],
+    #          ['documento4',['this', 'is', 'the', 'documento4', 'sentence']],
+    #          ['documento5',['this', 'is', 'the', 'documento5', 'sentence']],
+    #          ['documento6',['this', 'is', 'the', 'documento6', 'sentence']]]
+
+
+
+
+    #corpus = []
+    #for file, content in twenty:
+    #    sentence = ' '.join(content)
+    #    corpus.append((file,sentence))
 
 
     # fit() function in order to learn a vocabulary from one or more documents
