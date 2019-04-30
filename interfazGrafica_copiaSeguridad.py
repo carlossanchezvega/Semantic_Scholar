@@ -12,7 +12,9 @@ from Graph_class import Graph_class
 
 root = Tk()
 root.geometry("1600x700+0+0")
+root.wm_title("Academic paper comparator")
 root.title("Academic paper comparator")
+
 
 Tops = Frame(root,bg="white",width = 1600,height=50,relief=SUNKEN)
 Tops.pack(side=TOP)
@@ -36,7 +38,6 @@ operator =""
 
 # txtdisplay = Entry(f2,font=('ariel' ,20,'bold'), textvariable=text_Input , bd=5 ,insertwidth=7 ,bg="white",justify='right')
 # txtdisplay.grid(columnspan=4)
-
 
 class Radiobar(Frame):
     def __init__(self, parent=None, picks=[], side=LEFT, anchor=W):
@@ -101,17 +102,17 @@ btnexit.grid(row=7, column=3)
 
 
 def price():
-    #root.geometry("1200x440+0+0")
-    root.geometry("1200x440+0+0")
-    root.title("Price List")
-    load = Image.open("/home/csanchez/IdeaProjects/proyectoDePrueba/distances1.jpg")
-    render = ImageTk.PhotoImage(load)
-    window = Toplevel(root)
-    window.minsize(width=100, height=100)
-    window.geometry('1000x920+0+0')
-    img = Label(window, image=render)
-    img.image = render
-    img.place(x=0, y=0)
+    # #root.geometry("1200x440+0+0")
+    # root.geometry("1200x440+0+0")
+    # root.title("Price List")
+    # load = Image.open("/home/csanchez/IdeaProjects/proyectoDePrueba/distances1.jpg")
+    # render = ImageTk.PhotoImage(load)
+    # window = Toplevel(root)
+    # window.minsize(width=100, height=100)
+    # window.geometry('1000x920+0+0')
+    # img = Label(window, image=render)
+    # img.image = render
+    # img.place(x=0, y=0)
 
 
     #get_info = GetInfo("mongodb://localhost","Alberto Fernández-Isabel" )
@@ -139,11 +140,10 @@ def price():
             represent_similarities.create_similarity_plot()
     else:
         messagebox.showerror("Error", "No existe ningún autor con ese nombre")
-
-    root.mainloop()
+    #root.destroy()
 
 btnprice=Button(f1,padx=16,pady=8, bd=10 ,fg="black",font=('ariel' ,16,'bold'),width=10, text="PRICE", bg="powder blue",command=price)
 btnprice.grid(row=7, column=0)
 
-root.mainloop()
 
+root.mainloop()

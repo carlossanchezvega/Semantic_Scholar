@@ -12,6 +12,7 @@ import tornado.httpserver
 import tornado.ioloop
 import tornado.websocket
 import itertools
+import threading
 
 from operator import itemgetter
 
@@ -58,6 +59,31 @@ import tornado.httpserver
 import tornado.ioloop
 import tornado.websocket
 
+
+
+class ConfigurationHandler(tornado.websocket.WebSocketHandler):
+    def open(self):
+        print ("Connection Opened")
+        self.write_message("connected")
+    def on_close(self):
+        print ("Connection Closed")
+    def on_message(self, message):
+        print (("Message received: {}").format(message))
+        self.write_message(message)
+    def check_origin(self, origin):
+        return True
+class myThread (threading.Thread):
+    def __init__(self,name):
+        threading.Thread.__init__(self)
+        self.name=name
+    def run(self):
+        application= tornado.web.Application([(r"/",ConfigurationHandler)])
+
+        if __name__ == "__main__":
+            app=tornado.httpserver.HTTPServer(application)
+            print("waiting")
+            app.listen(8000)
+            tornado.ioloop.IOLoop.instance().start()
 
 class Similarities_in_between:
 
@@ -571,12 +597,15 @@ class Similarities_in_between:
         start_time = time.time()
         figure = self.create_figure()
         application = self.MyApplication(figure)
-
         http_server = tornado.httpserver.HTTPServer(application)
-        http_server.listen(8080)
-        webbrowser.open('http://127.0.0.1:8080/', new=2)
+        #http_server.listen(8080)
+        http_server.bind(port=8080, reuse_port=True)
+        http_server.start()
+        #webbrowser.open('http://127.0.0.1:8080/', new=2)
+        webbrowser.open_new('http://127.0.0.1:8080/')
+
 
         print("http://127.0.0.1:8080/")
         print("Press Ctrl+C to quit")
         print("The execution took: {0:0.2f} seconds".format(time.time() - start_time))
-        tornado.ioloop.IOLoop.instance().start()
+        tornado.ioloop.IOLoop.current().start()

@@ -25,49 +25,40 @@ import six
 
 import nltk
 
+
 class GetInfo:
-    def __init__(self, url_connection,teacher, collection_authors, collection_publications):
+    def __init__(self, url_connection, teacher, collection_authors, collection_publications):
         self.url_connection = url_connection
         self.teacher = teacher
         self.collection_authors = collection_authors
         self.collection_publications = collection_publications
 
-
     def MAX_NUMBER_OF_ARTICLES(self):
         return 5
-
 
     def SUCCESS(self):
         return 200
 
-
     def FAILURE(code):
-        return code!=200
-
+        return code != 200
 
     def COEF_NUM_PAPERS(self):
         return 0.4
 
-
     def COEF_INFLUENTIAL_CITATIONS(self):
         return 0.1
-
 
     def COEF_SENIORITY(self):
         return 0.2
 
-
     def COEF_CITATIONS(self):
         return 0.3
-
 
     def COEF_AVG_REPUTATION_AUTHOR(self):
         return 0.5
 
-
     def COEF_CITATIONS_ARTICLE_REPUTATION(self):
         return 0.5
-
 
     def get_best_coincidence(self, data):
         """
@@ -104,7 +95,6 @@ class GetInfo:
                     best_similarity = new_similarity
             return best_concidence
 
-
     def get_coincidence_from_dblp(self, teacher):
         """
             We request the dblp api in search of the exact name of the author in dblp, based
@@ -122,7 +112,6 @@ class GetInfo:
         data = response.json()
         best_coincidence = self.get_best_coincidence(data)
         return best_coincidence
-
 
     def get_author_id(self, author_from_dblp, tidy_info):
         """
@@ -156,7 +145,6 @@ class GetInfo:
                         # we set the author  ID
                         return author['authorId']
 
-
     def get_paperIds(self, authorId, author_dict):
         """
             We request the Semantic Scholar API, based on the authorId, in search
@@ -173,9 +161,7 @@ class GetInfo:
         print('authorId===> ' + str(authorId))
         print('--------------------------------\n')
 
-
         url_semantic_by_author = 'https://api.semanticscholar.org/v1/author/' + authorId
-
 
         response = requests.get(url_semantic_by_author)
         if response.status_code == self.SUCCESS():
@@ -222,11 +208,10 @@ class GetInfo:
                 topicsId = [topic['topicId'] for topic in data['topics']]
                 publication_dict['topics'] = topics
                 publication_dict['topicsId'] = topicsId
-                collection_publications.replace_one ({"_id":publication_dict['_id']}, publication_dict, upsert=True)
+                collection_publications.replace_one({"_id": publication_dict['_id']}, publication_dict, upsert=True)
                 author_dict['topics'] = list(set(author_dict['topics']) | set(topics))
                 author_dict['topicsId'] = list(set(author_dict['topicsId']) | set(topicsId))
         return
-
 
     def get_dois_from_dblp(self, best_coincidence):
         """
@@ -253,8 +238,9 @@ class GetInfo:
                     if 'doi' in author['info'].keys():
                         list_of_dois_from_articles.append(author['info']['doi'])
             tidy_info_from_author['dois'] = list_of_dois_from_articles
-        return tidy_info_from_author
-
+            return tidy_info_from_author, True
+        else:
+            return None, False
 
     def get_all_paperIds(self, authorId):
         """
@@ -273,7 +259,6 @@ class GetInfo:
         data = response.json()
         return list(set([paper['paperId'] for paper in data['papers']]))
 
-
     def set_info_from_author(self, author_dict, author_id, collection_publications):
         """
             We set important information from a auhot
@@ -290,9 +275,7 @@ class GetInfo:
         print('authorId===> ' + str(author_id))
         print('--------------------------------\n')
 
-
         url_semantic_by_author = 'https://api.semanticscholar.org/v1/author/' + author_id
-
 
         response = requests.get(url_semantic_by_author)
         if response.status_code == self.SUCCESS():
@@ -333,8 +316,8 @@ class GetInfo:
                 print('id ----> ' + elem['_id'])
         return uniqueList
 
-
-    def set_total_author_info(self, isAuthor, best_coincidence, dois, author_dict,  collection_authors, collection_publications):
+    def set_total_author_info(self, isAuthor, best_coincidence, dois, author_dict, collection_authors,
+                              collection_publications):
         """
             Sets important information about and author and returns publications from that author
             Args:
@@ -357,9 +340,8 @@ class GetInfo:
         if author_id:
             # buscar por cada uno de esos Ids
             self.set_info_from_author(author_dict, author_id, collection_publications)
-            collection_authors.replace_one ({"_id":author_dict['_id']}, author_dict, upsert=True)
+            collection_authors.replace_one({"_id": author_dict['_id']}, author_dict, upsert=True)
             return
-
 
     def get_seniority(self, first_year_of_publication):
         """
@@ -371,7 +353,6 @@ class GetInfo:
         """
         return datetime.now().year - first_year_of_publication
 
-
     def get_influencial_citation_count(self, publications):
         """
             Get the total sum of the influential citations count from the publications argument
@@ -381,7 +362,6 @@ class GetInfo:
                 int: total sum of the influential citations count from the publications argument
         """
         return sum([publication['influentialCitationCount'] for publication in publications])
-
 
     def get_citations(self, publications):
         """
@@ -393,7 +373,6 @@ class GetInfo:
         """
         return sum([publication['citations'] for publication in publications])
 
-
     def get_author_reputation(self, author, collection_publications):
         """
             Gets an author reputations
@@ -404,15 +383,15 @@ class GetInfo:
             Returns:
                 int: author reputation calculation
         """
-        if author['_id']=='1895694':
+        if author['_id'] == '1895694':
             print('HOLA')
         publications = list(collection_publications.find({"_id": {"$in": author['publications']}}))
         return self.COEF_NUM_PAPERS() * len(author['publications']) + self.COEF_CITATIONS() * \
                self.get_citations(publications) + \
                self.COEF_INFLUENTIAL_CITATIONS() * self.get_influencial_citation_count(publications) + \
-               self.COEF_SENIORITY() * self.get_seniority(sorted ([publication['year']
-                                                for publication in publications if publication['year']])[0])
-
+               self.COEF_SENIORITY() * self.get_seniority(sorted([publication['year']
+                                                                  for publication in publications if
+                                                                  publication['year']])[0])
 
     def get_paper_reputation(self, publication, collection_authors):
         """
@@ -436,7 +415,6 @@ class GetInfo:
                            + self.COEF_AVG_REPUTATION_AUTHOR() * statistics.mean(paper_reputations)
         return paper_reputation
 
-
     def set_reputations(self, collection_authors, collection_publications):
         """
             Sets author and his/her paper reputations
@@ -452,42 +430,46 @@ class GetInfo:
 
         for author in list(collection_authors.find()):
             author_reputation = self.get_author_reputation(author, collection_publications)
-            collection_authors.update_one({"_id": author['_id']}, {"$set": {"reputation": author_reputation}}, upsert=False)
+            collection_authors.update_one({"_id": author['_id']}, {"$set": {"reputation": author_reputation}},
+                                          upsert=False)
 
         for publication in list(collection_publications.find()):
             publication_reputation = self.get_paper_reputation(publication, collection_authors)
-            collection_publications.update_one({"_id": publication['_id']}, {"$set": {"reputation": publication_reputation}},
+            collection_publications.update_one({"_id": publication['_id']},
+                                               {"$set": {"reputation": publication_reputation}},
                                                upsert=False)
-
 
     def requestInfo(self):
         start_time = time.time()
         best_coincidence = self.get_coincidence_from_dblp(self.teacher.strip())
 
-        if best_coincidence:
-            # result = collection_authors.update({"_id": "37318854"}, {"$set": {"patatas": "fritas"}})
-
-            if self.collection_authors.find_one({"name": best_coincidence}):
-                print('EXISTEEEEEEEEE\n')
-            else:
-                print('NO EXISTEEEEEE\n')
-                print('PROCESSINB AUTHOR----------->  ' + self.teacher + "\n")
-                author_dict = {}
-                dois = self.get_dois_from_dblp(best_coincidence)
-                self.set_total_author_info(True, self.teacher, dois, author_dict,self.collection_authors, self.collection_publications)
+        if self.collection_authors.find_one({"name": best_coincidence}):
+            print('EXISTEEEEEEEEE\n')
+            return 0, best_coincidence
+        else:
+            print('NO EXISTEEEEEE\n')
+            print('PROCESSINB AUTHOR----------->  ' + self.teacher + "\n")
+            author_dict = {}
+            dois, author_found = self.get_dois_from_dblp(best_coincidence)
+            if author_found:
+                self.set_total_author_info(True, self.teacher, dois, author_dict, self.collection_authors,
+                                           self.collection_publications)
 
                 ids_coauthors = list(set(list(itertools.chain.from_iterable([coauthor['author_ids'] for coauthor in
-                        (self.collection_publications.find({"_id": {"$in": author_dict['publications']}},{'author_ids'}))]))))
+                                            (self.collection_publications.find({
+                                                                                "_id": {
+                                                                                    "$in":
+                                                                                    author_dict['publications']}},
+                                                                                    {'author_ids'}))]))))
 
-                #ids_coauthors = ['1800967']
+                # ids_coauthors = ['1800967']
                 for teacher in ids_coauthors:
-                    self.set_total_author_info(False, teacher, dois, author_dict,self.collection_authors, self.collection_publications)
+                    self.set_total_author_info(False, teacher, dois, author_dict, self.collection_authors,
+                                               self.collection_publications)
 
                     self.set_reputations(self.collection_authors, self.collection_publications)
 
                 print("The execution took: {0:0.2f} seconds".format(time.time() - start_time))
-            return 0, best_coincidence
-        else:
-            return 1
-
-
+                return 0, best_coincidence
+            else:
+                return 1, None
