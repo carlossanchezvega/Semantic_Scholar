@@ -448,7 +448,7 @@ class GetInfo:
             return 0, best_coincidence
         else:
             print('NO EXISTEEEEEE\n')
-            print('PROCESSINB AUTHOR----------->  ' + self.teacher + "\n")
+            print('PROCESSING AUTHOR----------->  ' + self.teacher + "\n")
             author_dict = {}
             dois, author_found = self.get_dois_from_dblp(best_coincidence)
             if author_found:
