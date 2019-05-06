@@ -480,7 +480,7 @@ class myThread(threading.Thread):
         ax.set_title("Similarity representation by TSNE dimensionality reduction")
 
         filename = "distances.png"
-        pylab.savefig(os.path.join('/home/csanchez/PycharmProjects/Semantic_Scholar', filename), bbox_inches="tight")
+        #pylab.savefig(os.path.join('/home/csanchez/PycharmProjects/Semantic_Scholar', filename), bbox_inches="tight")
 
 
     def get_vocabulary_from_authors(self, author):
