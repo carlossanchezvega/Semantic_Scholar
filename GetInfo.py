@@ -2,7 +2,7 @@ import nltk.corpus
 import nltk.tokenize.punkt
 import nltk.stem.snowball
 import string
-from CheckBestAuthorSimilarity import CheckBestAuthorSimilarity
+from CheckBestAuthorSimilarity_class import CheckBestAuthorSimilarity_class
 import pymongo
 import sys, requests
 import time
@@ -24,6 +24,8 @@ from bson.raw_bson import RawBSONDocument
 import six
 
 import nltk
+import logging
+from colorlog import ColoredFormatter
 
 
 class GetInfo:
@@ -32,6 +34,8 @@ class GetInfo:
         self.teacher = teacher
         self.collection_authors = collection_authors
         self.collection_publications = collection_publications
+        logging.basicConfig(level=logging.DEBUG)
+        self.log = logging
 
     def MAX_NUMBER_OF_ARTICLES(self):
         return 5
@@ -85,7 +89,7 @@ class GetInfo:
 
             # we go over the author list from the second author on, calculating best similarity
             for x in range(0, len(data['result']['hits']['hit'])):
-                check_similarity = CheckBestAuthorSimilarity(data['result']['query'],
+                check_similarity = CheckBestAuthorSimilarity_class(data['result']['query'],
                                                              data['result']['hits']['hit'][x]['info']['author'])
                 new_similarity = check_similarity.getSimilarity()
 
@@ -157,15 +161,15 @@ class GetInfo:
                 set_of_ids_of_papers (set): we return a set of identifiers of all the papers
                 of the author in the Semantic Scholar database
         """
-        print('--------------------------------\n')
-        print('authorId===> ' + str(authorId))
-        print('--------------------------------\n')
+        self.log.debug('--------------------------------\n')
+        self.log.debug('authorId===> ' + str(authorId))
+        self.log.debug('--------------------------------\n')
 
         url_semantic_by_author = 'https://api.semanticscholar.org/v1/author/' + authorId
 
         response = requests.get(url_semantic_by_author)
         if response.status_code == self.SUCCESS():
-            print('STATUS CODE --->' + str(response.status_code) + "\n")
+            log.debug('STATUS CODE --->' + str(response.status_code) + "\n")
             data = response.json()
             author_dict['name'] = data['name']
             author_dict['_id'] = data['authorId']
@@ -271,15 +275,15 @@ class GetInfo:
             Returns:
                 author_dict (set): variable containing relevant information for next steps in our calculations
         """
-        print('--------------------------------\n')
-        print('authorId===> ' + str(author_id))
-        print('--------------------------------\n')
+        self.log.debug('--------------------------------\n')
+        self.log.debug('authorId===> ' + str(author_id))
+        self.log.debug('--------------------------------\n')
 
         url_semantic_by_author = 'https://api.semanticscholar.org/v1/author/' + author_id
 
         response = requests.get(url_semantic_by_author)
         if response.status_code == self.SUCCESS():
-            print('STATUS CODE --->' + str(response.status_code) + "\n")
+            self.log.debug('STATUS CODE --->' + str(response.status_code) + "\n")
             data = response.json()
             author_dict['name'] = data['name']
             author_dict['_id'] = data['authorId']
@@ -288,33 +292,6 @@ class GetInfo:
             self.set_topics_from_author(author_dict['publications'], author_dict, collection_publications)
         return
 
-    def removeDuplicates(self, listofElements):
-        """
-            Remove duplicate elements from list
-            This method is necessay since the API returns repeated publications in the same request
-            Args:
-
-                listofElements (list): list of elements ready to be inserted in database
-
-            Returns:
-                uniqueList (lit): same list from argument but for duplicate values
-        """
-
-        # Create an empty list to store unique elements
-        uniqueList = []
-        set_of_ids = set()
-
-        # Iterate over the original list and for each element
-        # add it to uniqueList, if its not already there.
-        for elem in listofElements:
-            if elem['_id'] not in set_of_ids:
-                uniqueList.append(elem)
-                set_of_ids.add(elem['_id'])
-                # Return the list of unique elements
-            else:
-                print('****** ELEMENTO QUE SE REPITE ************\n')
-                print('id ----> ' + elem['_id'])
-        return uniqueList
 
     def set_total_author_info(self, isAuthor, best_coincidence, dois, author_dict, collection_authors,
                               collection_publications):
@@ -383,8 +360,7 @@ class GetInfo:
             Returns:
                 int: author reputation calculation
         """
-        if author['_id'] == '1895694':
-            print('HOLA')
+
         publications = list(collection_publications.find({"_id": {"$in": author['publications']}}))
         return self.COEF_NUM_PAPERS() * len(author['publications']) + self.COEF_CITATIONS() * \
                self.get_citations(publications) + \
@@ -440,15 +416,22 @@ class GetInfo:
                                                upsert=False)
 
     def requestInfo(self):
+        """
+            Gets information regarding with an author
+            Args:
+
+            Returns:
+                int: 0 if information about the author is found
+                     1 if information abouy the author is not found
+                str: best coincidence in the dblp api corresponding to that name
+        """
         start_time = time.time()
         best_coincidence = self.get_coincidence_from_dblp(self.teacher.strip())
 
         if self.collection_authors.find_one({"name": best_coincidence}):
-            print('EXISTEEEEEEEEE\n')
             return 0, best_coincidence
         else:
-            print('NO EXISTEEEEEE\n')
-            print('PROCESSING AUTHOR----------->  ' + self.teacher + "\n")
+
             author_dict = {}
             dois, author_found = self.get_dois_from_dblp(best_coincidence)
             if author_found:
@@ -461,15 +444,14 @@ class GetInfo:
                                                                                     "$in":
                                                                                     author_dict['publications']}},
                                                                                     {'author_ids'}))]))))
-
-                # ids_coauthors = ['1800967']
+                # we must set the reputation of the author once the data is set in the database
                 for teacher in ids_coauthors:
                     self.set_total_author_info(False, teacher, dois, author_dict, self.collection_authors,
                                                self.collection_publications)
 
                     self.set_reputations(self.collection_authors, self.collection_publications)
 
-                print("The execution took: {0:0.2f} seconds".format(time.time() - start_time))
+                self.log.debug("The execution took: {0:0.2f} seconds".format(time.time() - start_time))
                 return 0, best_coincidence
             else:
                 return 1, None

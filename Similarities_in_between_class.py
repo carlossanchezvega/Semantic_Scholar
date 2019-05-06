@@ -1,4 +1,5 @@
 import io
+import sys
 import time
 
 import pymongo
@@ -14,6 +15,8 @@ import tornado.websocket
 import itertools
 import threading
 import asyncio
+import logging
+
 
 from operator import itemgetter
 
@@ -41,9 +44,6 @@ from sklearn import linear_model, manifold, decomposition, datasets
 from sklearn.feature_extraction.text import TfidfVectorizer
 from scipy.spatial import distance
 
-# colors = ['r', 'g', 'b', 'c','m','y','k']
-# markers = ['o', 6, '*', '^', 'h', 's']
-
 
 import numpy as np
 from sklearn import datasets, manifold
@@ -52,6 +52,7 @@ from scipy import spatial
 from sklearn.metrics import pairwise_distances
 import matplotlib as mpl
 import io
+import logging
 
 try:
     import tornado
@@ -61,72 +62,16 @@ import tornado.web
 import tornado.httpserver
 import tornado.ioloop
 import tornado.websocket
+import logging
+from colorlog import ColoredFormatter
 
 
 class myThread(threading.Thread):
     def __init__(self,  option_selected, teacher, id, collection_authors, collection_publications,
                  max_number_to_plot):
         threading.Thread.__init__(self)
+
         self.option_selected = option_selected
-
-        # The following is the content of the web page.  You would normally
-        # generate this using some sort of template facility in your web
-        # framework, but here we just use Python string formatting.
-
-        self.html_content = """<html>
-                                      <head>
-                                        <!-- TODO: There should be a way to include all of the required javascript
-                                                   and CSS so matplotlib can add to the set in the future if it
-                                                   needs to. -->
-                                        <link rel="stylesheet" href="_static/css/page.css" type="text/css">
-                                        <link rel="stylesheet" href="_static/css/boilerplate.css" type="text/css" />
-                                        <link rel="stylesheet" href="_static/css/fbm.css" type="text/css" />
-                                        <link rel="stylesheet" href="_static/jquery-ui-1.12.1/jquery-ui.min.css" >
-                                        <script src="_static/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
-                                        <script src="_static/jquery-ui-1.12.1/jquery-ui.min.js"></script>
-                                        <script src="mpl.js"></script>
-
-                                        <script>
-                                          /* This is a callback that is called when the user saves
-                                             (downloads) a file.  Its purpose is really to map from a
-                                             figure and file format to a url in the application. */
-                                          function ondownload(figure, format) {
-                                            window.open('download.' + format, '_blank');
-                                          };
-
-                                          $(document).ready(
-                                            function() {
-                                              /* It is up to the application to provide a websocket that the figure
-                                                 will use to communicate to the server.  This websocket object can
-                                                 also be a "fake" websocket that underneath multiplexes messages
-                                                 from multiple figures, if necessary. */
-                                              var websocket_type = mpl.get_websocket_type();
-                                              var websocket = new websocket_type("%(ws_uri)sws");
-
-                                              // mpl.figure creates a new figure on the webpage.
-                                              var fig = new mpl.figure(
-                                                  // A unique numeric identifier for the figure
-                                                  %(fig_id)s,
-                                                  // A websocket object (or something that behaves like one)
-                                                  websocket,
-                                                  // A function called when a file type is selected for download
-                                                  ondownload,
-                                                  // The HTML element in which to place the figure
-                                                  $('div#figure'));
-                                            }
-                                          );
-                                        </script>
-
-                                        <title>matplotlib</title>
-                                      </head>
-
-                                      <body>
-                                        <div id="figure">
-                                        </div>
-                                      </body>
-                                    </html>
-                                    """
-
         self.teacher = teacher
         self.collection_authors = collection_authors
         self.collection_publications = collection_publications
@@ -135,8 +80,9 @@ class myThread(threading.Thread):
         # We will be able to represent, at maximum, elements
         self.colors = ['r', 'g', 'b', 'c', 'm', 'y', 'k', 'r', 'g', 'b', 'c', 'm', 'y', 'k', 'r']
         self.markers = ['o', 'v', '^', '4', '>', '8', 's', 'p', '*', 'h', 'H', 'D', 'd', 'P', 'X', '>']
-
         self.id = id
+        logging.basicConfig(level=logging.DEBUG)
+        self.log= logging
 
 
     def create_figure(self):
@@ -144,12 +90,7 @@ class myThread(threading.Thread):
         Creates a simple example figure.
         """
         fig = Figure(figsize=(20, 8))
-        # a = fig.add_subplot(111)
-        # t = np.arange(0.0, 3.0, 0.01)
-        # s = np.sin(2 * np.pi * t)
-
-        self.fill_information(fig)
-        # a.plot(t, s)
+        self.plot_figure(fig)
         return fig
 
 
@@ -341,49 +282,33 @@ class myThread(threading.Thread):
                 (r'/download.([a-z0-9.]+)', self.Download),
             ])
 
-        #
-        # def find_similar(tfidf_matrix, index, top_n = 5):
-        #     # we calculare cosine similarity to know similarities between documents
-        #     cosine_similarities = linear_kernel(tfidf_matrix[index:index+1], tfidf_matrix).flatten()
-        #
-        #     # we order similarities in desc way (we do not include similarity corresponding to each sentence
-        #     # since its similarity is equal to "1"
-        #     related_docs_indices = [i for i in cosine_similarities.argsort()[::-1] if i != index]zº
-        #     # we return that order
-        #     return [(index, cosine_similarities[index]) for index in related_docs_indices][0:top_n]
-
-
     def find_similar(self, tfidf_matrix, index, top_n=5):
+
+        """
+            Find the "top_n" documents more similar to the document provided by the element in the "index" element
+            in the tfidf_matrix
+            Args:
+                tfidf_matrix (matrix): tf_idf matrix
+                index (int): element searched the similarity from
+                top_n (int): number of similar elements seached
+            Returns:
+                list(matrix): list of the similarity to the element in the "index" position in the tfidfmatrix
+        """
         cosine_similarities = linear_kernel(tfidf_matrix[index:index + 1], tfidf_matrix).flatten()
         related_docs_indices = [i for i in cosine_similarities.argsort()[::-1] if i != index]
         return [(index, cosine_similarities[index]) for index in related_docs_indices][0:top_n]
 
-
-    # if we want to show
-    # def find_similar(tfidf_matrix, index, top_n = 5):
-    #
-    #
-    #
-    #         # we calculare cosine similarity to know similarities between documents
-    #         cosine_similarities = linear_kernel(tfidf_matrix[index:index+1], tfidf_matrix).flatten()
-    #
-    #         # we order similarities in desc way (we do not include similarity corresponding to each sentence
-    #         # since its similarity is equal to "1"
-    #         related_docs_indices = [i for i in cosine_similarities.argsort()[::-1] if i != index]
-
-    #         related_docs_indices = [i for i in cosine_similarities.argsort()[::-1]]
-    #
-    #     # we return that order
-    #     return [(index, cosine_similarities[index]) for index in related_docs_indices][0:top_n]
-
-    # def find_similar(tfidf_matrix, index):
-    #     top_n=5
-    #     cosine_similarities = linear_kernel(tfidf_matrix[index:index+1], tfidf_matrix).flatten()
-    #     related_docs_indices = [i for i in cosine_similarities.argsort()[::-1] if i != index]
-    #     return [(index, cosine_similarities[index]) for index in related_docs_indices][0:top_n]
-    #
-
     def n_most_similar_for_each(self, corpus, tfidf_matrix):
+        """
+            Find the "top_n" documents more similar to the document provided by the element in the "index" element
+            in the tfidf_matrix
+            Args:
+                tfidf_matrix (matrix): tf_idf matrix
+                index (int): element searched the similarity from
+                top_n (int): number of similar elements seached
+            Returns:
+                list(matrix): list of the similarity to the element in the "index" position in the tfidfmatrix
+        """
         string_auxiliar = ''
         for me_index, item in enumerate(corpus):
             similar_documents = [(corpus[index], score) for index, score in
@@ -400,22 +325,42 @@ class myThread(threading.Thread):
 
 
     def most_similar(self, corpus, tfidf_matrix, param):
+        """
+            Find the most similar documents to the one provided by the element in the "index" element
+            in the tfidf_matrix
+            Args:
+                tfidf_matrix (matrix): tf_idf matrix
+                param (int): element searched the similarity from
+                corpus: list of terms
+            Returns:
+                str: string with the similarity scores to be represented in the plot
+        """
+
+
         string_auxiliar = ''
         for index, score in self.find_similar(tfidf_matrix, param, top_n=1):
-            # string_auxiliar = string_auxiliar + str(score) + ':' + corpus[index][1] + '\n'
             string_auxiliar = string_auxiliar + str(score) + ':' + corpus[index][0] + '\n'
         return string_auxiliar
 
 
     def plot(self, distance_matrix, corpus, tfidf_matrix, fig):
-        # -----------------------------     RANKING       -----------------------------
+        """
+            plot the similarity between documents
+            Args:
+                distance_matrix: matrix of the similarities betrween documents
+                corpus: corpus of the terms of the documents
+                tfidf_matrix (matrix): matrix of the tf_idf
+                fig: Figure object where we set the properties of the plot
+            Returns:
+        """
+
         ax = fig.add_subplot(221)
 
         similarities = self.n_most_similar_for_each(corpus, tfidf_matrix)
-        print(similarities)
+        self.log.debug(similarities)
 
         ax.axis('off')
-        ax.set_title("Ranking of the most similar document to each one")
+        ax.set_title("Ranking of similarity")
         left, width = .25, .5
         bottom, height = .25, .5
         right = left + width
@@ -426,24 +371,6 @@ class myThread(threading.Thread):
                 verticalalignment='center', color='green', fontsize=15)
         y = np.arange(len(distance_matrix))
 
-        # -----------------------------     MDS ON 3D       -----------------------------
-        # ax = fig.add_subplot(222, projection='3d')
-        # ax.set_facecolor('white')
-        #
-        # # using the precomputed dissimilarity to specify that we are passing a distance matrix:
-        # mds = manifold.MDS(n_components=3, dissimilarity='precomputed', random_state=1)
-        #
-        # # With the distance between every pair of points is preserved
-        # Xtrans = mds.fit_transform(distance_matrix)
-        #
-        # for label ,color, marker, document in zip( np.unique(y),colors, markers,corpus):
-        #     position=y==label
-        #     ax.scatter(Xtrans[position,0],Xtrans[position,1], Xtrans[position,2],label="target= {0}".format(document[0]),color=color, marker=marker, edgecolor='black')
-        #
-        #
-        # pylab.title("MDS on example data set in 3 dimensions")
-        # ax.view_init(10, -15)
-
         # -----------------------------     MDS ON 2D       -----------------------------
 
         mds = manifold.MDS(n_components=2, dissimilarity='precomputed', random_state=1)
@@ -451,19 +378,19 @@ class myThread(threading.Thread):
 
         ax = fig.add_subplot(223)
 
+        #we limit the number of element
         if len(corpus) > self.max_number_to_plot:
+
+            # we limit the number of elements to show
             corpus = corpus[:self.max_number_to_plot]
             colors = self.colors[:self.max_number_to_plot]
             markers = self.markers[:self.max_number_to_plot]
 
+        # we plot the points in the frame
         for label, color, marker, document in zip(np.unique(y), colors, markers, corpus):
             position = y == label
             ax.scatter(Xtrans[position, 0], Xtrans[position, 1], label=document[0], color=color, marker=marker,
                        edgecolor='black')
-
-        #    ax.legend(loc="best")
-        # ax.legend(loc=4)
-        # ax.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
 
         ax.set_title("Similarity representation by MDS dimensionality reduction")
 
@@ -479,24 +406,21 @@ class myThread(threading.Thread):
 
         ax.set_title("Similarity representation by TSNE dimensionality reduction")
 
-        filename = "distances.png"
-        #pylab.savefig(os.path.join('/home/csanchez/PycharmProjects/Semantic_Scholar', filename), bbox_inches="tight")
-
 
     def get_vocabulary_from_authors(self, author):
+        """
+            get the vocabulary corresponding to the abstract of all the documents from all the coauthors
+            Args:
+                author: author whose coathors we would like to extract the vocabulary from
+            Returns:
+                corpus: terms present in the vocabulary from the  author
+        """
         ids_coauthors = list(set(list(itertools.chain.from_iterable([coauthor['author_ids'] for coauthor in
                                                                      (self.collection_publications.find(
                                                                          {"_id": {"$in": author['publications']}},
                                                                          {'author_ids'}))]))))
         vocabulary_from_authors = []
         for id in ids_coauthors:
-            if id == '66582319':
-                print('HOLA')
-
-            print('------------- ID ------------------\n')
-            print(id)
-            print('------------- ID ------------------\n')
-
             author = self.collection_authors.find_one({"_id": id})
             list_from_author = [self.collection_authors.find_one({"_id": id}, {'_id': False, 'name': True})['name'],
                                 list(set(list(itertools.chain.from_iterable([topicId['topicsId'] for topicId in
@@ -508,10 +432,8 @@ class myThread(threading.Thread):
                                                                                  {
                                                                                      '_id': False,
                                                                                      'topicsId': True}))]))))]
+            # we might find publications whose abtract is empty
             if len(list_from_author[1]) > 0: vocabulary_from_authors.append(list_from_author)
-
-        # corpus = " ".join(list(set(list(itertools.chain.from_iterable([topics for author, topics
-        #                                                               in vocabulary_from_authors])))))
 
         corpus = []
         for author, topics in vocabulary_from_authors:
@@ -522,6 +444,15 @@ class myThread(threading.Thread):
 
 
     def get_vocabulary_all_pubs_by_1_author(self, author):
+        """
+            get the vocabulary corresponding to the abstract of all the documents from an author
+            Args:
+                author: author whom publications we would like to extract the abstract from
+            Returns:
+                corpus: terms present in the vocabulary from the  author
+        """
+
+
         vocabulary_from_author = list((self.collection_publications.find({"_id":
                                                                               {"$in": author['publications']}},
                                                                          {'_id': False, 'title': True,
@@ -535,11 +466,19 @@ class myThread(threading.Thread):
 
 
     def get_vocabulary_from_all_authors_and_pubs(self, author):
+        """
+            get the vocabulary corresponding to the all the coauthors and all their publications
+            Args:
+                author: author, whose coathors we would like to extract the vocabulary from
+                (all publications from all authors)
+            Returns:
+                corpus: terms present in the vocabulary from the  author
+        """
+
         ids_coauthors = list(set(list(itertools.chain.from_iterable([coauthor['author_ids'] for coauthor in
                                                                      (self.collection_publications.find(
                                                                          {"_id": {"$in": author['publications']}},
                                                                          {'author_ids'}))]))))
-
         corpus = []
         for id in ids_coauthors:
             author = self.collection_authors.find_one({"_id": id})
@@ -553,6 +492,14 @@ class myThread(threading.Thread):
 
 
     def get_corpus(self, optionSelected, id):
+        """
+            Get the corpus in the proper format corresponding to the option selected by "optionSelected"
+            Args:
+                optionSelected(str): option selected in the combo box of the options provided by the author
+            Returns:
+                corpus: terms of the vocabulary depending on the option selected
+        """
+
         author = self.collection_authors.find_one({"name": self.teacher})
 
         if optionSelected == 'Comparador del autor con otros coautores':
@@ -564,7 +511,14 @@ class myThread(threading.Thread):
         return corpus
 
 
-    def fill_information(self, fig):
+    def plot_figure(self, fig):
+        """
+            Plots the figure with the features of the fig argument
+            Args:
+                fig(Figure): Figure with the required features to represent the plot
+            Returns:
+                corpus: terms of the vocabulary depending on the option selected
+        """
         start_time = time.time()
         corpus = self.get_corpus(self.option_selected, self.id)
         # fit() function in order to learn a vocabulary from one or more documents
@@ -575,13 +529,11 @@ class myThread(threading.Thread):
 
         # Get the pairwise similarity matrix (n by n) (The result is the similarity matrix)
         cosine_similarities = linear_kernel(tfidf_matrix, tfidf_matrix)
-        print(cosine_similarities)
+        self.log.debug('---- COSINE SIMILARITIES ------\n')
+        self.log.debug(cosine_similarities)
 
         # TSNE needs distances in order to plot the points
-        # distance_matrix = pairwise_distances(tfidf_matrix, tfidf_matrix, "cosine").ravel()
         distance_matrix = pairwise_distances(tfidf_matrix, tfidf_matrix, "cosine")
-
-        # distance_matrix = pairwise_distances(tfidf_matrix, tfidf_matrix, metric='cosine', n_jobs=-1)
         self.plot(distance_matrix, corpus, tfidf_matrix, fig)
 
 
@@ -593,47 +545,13 @@ class myThread(threading.Thread):
         figure = self.create_figure()
         application = self.MyApplication(figure)
         http_server = tornado.httpserver.HTTPServer(application)
-        # http_server.listen(8080)
         http_server.bind(port=8080, reuse_port=True)
         http_server.start()
-        # webbrowser.open('http://127.0.0.1:8080/', new=2)
         webbrowser.open_new('http://127.0.0.1:8080/')
-        print("http://127.0.0.1:8080/")
-        print("Press Ctrl+C to quit")
-        print("The execution took: {0:0.2f} seconds".format(time.time() - start_time))
+        self.log.debug("http://127.0.0.1:8080/")
+        self.log.debug("Press Ctrl+C to quit")
+        self.log.debug("The execution took: {0:0.2f} seconds".format(time.time() - start_time))
         tornado.ioloop.IOLoop.current().start()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    class ConfigurationHandler(tornado.websocket.WebSocketHandler):
-        def open(self):
-            print("Connection Opened")
-            self.write_message("connected")
-
-        def on_close(self):
-            print("Connection Closed")
-
-        def on_message(self, message):
-            print(("Message received: {}").format(message))
-            self.write_message(message)
-
-        def check_origin(self, origin):
-            return True
-
 
 
 
@@ -649,6 +567,13 @@ class Similarities_in_between:
         self.id = id
 
     def create_similarity_plot(self):
+
+        """
+            Creates a thread every time the execution button is pressed. We do so to avoid the button to get stucked
+            flatten, what makes the execution unavailable
+            Args:
+            Returns:
+        """
         t = myThread(self.option_selected, self.teacher, self.id, self.collection_authors, self.collection_publications,
-                 self.max_number_to_plot)
+                     self.max_number_to_plot)
         t.start()
