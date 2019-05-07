@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="548c2264-2239-4ee6-a305-3fa92d1ad669" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Similarities_in_between_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/Similarities_in_between_class.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pantalla_presentacion.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pantalla_presentacion.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,8 +24,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Pantalla_presentacion.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="55" column="29" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="29" />
+            <state relative-caret-position="153">
+              <caret line="112" column="22" selection-start-line="112" selection-start-column="22" selection-end-line="112" selection-end-column="22" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -72,8 +71,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Similarities_in_between_class.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2934">
-              <caret line="573" column="17" lean-forward="true" selection-start-line="573" selection-start-column="17" selection-end-line="573" selection-end-column="17" />
+            <state relative-caret-position="324">
+              <caret line="399" column="53" lean-forward="true" selection-start-line="399" selection-start-column="53" selection-end-line="399" selection-end-column="53" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -190,9 +189,9 @@
         <option value="$PROJECT_DIR$/interfazGrafica_copiaSeguridad.py" />
         <option value="$PROJECT_DIR$/GetInfo.py" />
         <option value="$PROJECT_DIR$/prueba_waiting.py" />
-        <option value="$PROJECT_DIR$/Pantalla_presentacion.py" />
         <option value="$PROJECT_DIR$/Similarities_in_between_class_hilos.py" />
         <option value="$PROJECT_DIR$/Similarities_in_between_class.py" />
+        <option value="$PROJECT_DIR$/Pantalla_presentacion.py" />
       </list>
     </option>
   </component>
@@ -569,7 +568,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557159645598</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Solucionado problema concurrencia al pulsar ejecución">
+      <created>1557220098748</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1557220098748</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TodoView">
@@ -585,7 +591,7 @@
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7505112" visible="true" weight="0.19479801" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7505112" visible="true" weight="0.19479801" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -594,7 +600,7 @@
       <window_info id="Favorites" order="6" sideWeight="0.24948876" side_tool="true" weight="0.28389597" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4997233" weight="0.32937366" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.84117323" visible="true" weight="0.41576675" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.84117323" visible="true" weight="0.41576675" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.9203099" weight="0.47192225" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -668,7 +674,8 @@
     <MESSAGE value="FUNCIONA MAL" />
     <MESSAGE value="Eliminación de ficheros innecesarios" />
     <MESSAGE value="Intentando evitar condiciones de carrera con el hilo que se crea" />
-    <option name="LAST_COMMIT_MESSAGE" value="Intentando evitar condiciones de carrera con el hilo que se crea" />
+    <MESSAGE value="Solucionado problema concurrencia al pulsar ejecución" />
+    <option name="LAST_COMMIT_MESSAGE" value="Solucionado problema concurrencia al pulsar ejecución" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -995,8 +1002,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Similarities_in_between_class.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2934">
-          <caret line="573" column="17" lean-forward="true" selection-start-line="573" selection-start-column="17" selection-end-line="573" selection-end-column="17" />
+        <state relative-caret-position="324">
+          <caret line="399" column="53" lean-forward="true" selection-start-line="399" selection-start-column="53" selection-end-line="399" selection-end-column="53" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -1005,8 +1012,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Pantalla_presentacion.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="55" column="29" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="29" />
+        <state relative-caret-position="153">
+          <caret line="112" column="22" selection-start-line="112" selection-start-column="22" selection-end-line="112" selection-end-column="22" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>

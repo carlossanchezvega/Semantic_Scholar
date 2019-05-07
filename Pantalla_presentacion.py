@@ -64,21 +64,19 @@ class Pantalla_presentacion:
         self.txtauthor = Entry(self.f1, font=('ariel', 16, 'bold'), textvariable=self.Author, bd=6, insertwidth=4, bg="powder blue",
                           justify='right')
         self.txtauthor.grid(row=4, column=1, pady=50)
-
-        self.lblTotal = Label(self.f1, text="---------------------", fg="white")
-        self.lblTotal.grid(row=6, columnspan=3)
+        self.btnEjecutar = Button(self.f1, padx=16, pady=8, bd=10, fg="black", font=('ariel', 16, 'bold'), width=10, text="EJECUTAR",
+                                  bg="powder blue", command=self.ejecutar)
+        self.btnEjecutar.grid(row=7, column=1)
 
         self.btnreset = Button(self.f1, padx=16, pady=8, bd=10, fg="black", font=('ariel', 16, 'bold'), width=10, text="RESET",
                           bg="powder blue", command=self.reset)
-        self.btnreset.grid(row=7, column=1)
+        self.btnreset.grid(row=7, column=2)
 
         self.btnexit = Button(self.f1, padx=16, pady=8, bd=10, fg="black", font=('ariel', 16, 'bold'), width=10, text="EXIT",
                          bg="powder blue", command=self.qexit)
         self.btnexit.grid(row=7, column=3)
 
-        self.btnEjecutar = Button(self.f1, padx=16, pady=8, bd=10, fg="black", font=('ariel', 16, 'bold'), width=10, text="EJECUTAR",
-                          bg="powder blue", command=self.ejecutar)
-        self.btnEjecutar.grid(row=7, column=0)
+
 
 
 
@@ -112,7 +110,7 @@ class Pantalla_presentacion:
             self.master.destroy()
 
     def reset(self):
-        self.Funcionalidad.set("")
+        self.txtauthor.set("")
 
     def ejecutar(self):
         url_connection = "mongodb://localhost"
