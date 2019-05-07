@@ -82,13 +82,14 @@ class myThread(threading.Thread):
         self.markers = ['o', 'v', '^', '4', '>', '8', 's', 'p', '*', 'h', 'H', 'D', 'd', 'P', 'X', '>']
         self.id = id
         logging.basicConfig(level=logging.DEBUG)
-        self.log= logging
+        self.log=logging
 
 
     def create_figure(self):
         """
         Creates a simple example figure.
         """
+
         fig = Figure(figsize=(20, 8))
         self.plot_figure(fig)
         return fig
@@ -491,7 +492,7 @@ class myThread(threading.Thread):
         return corpus
 
 
-    def get_corpus(self, optionSelected, id):
+    def get_corpus(self, optionSelected):
         """
             Get the corpus in the proper format corresponding to the option selected by "optionSelected"
             Args:
@@ -520,7 +521,7 @@ class myThread(threading.Thread):
                 corpus: terms of the vocabulary depending on the option selected
         """
         start_time = time.time()
-        corpus = self.get_corpus(self.option_selected, self.id)
+        corpus = self.get_corpus(self.option_selected)
         # fit() function in order to learn a vocabulary from one or more documents
         # transform() function on one or more documents as needed to encode each as a vector.
         # if you want to extract count features and apply TF-IDF normalization and row-wise euclidean normalization you can do it in one operation
@@ -552,8 +553,7 @@ class myThread(threading.Thread):
         self.log.debug("Press Ctrl+C to quit")
         self.log.debug("The execution took: {0:0.2f} seconds".format(time.time() - start_time))
         tornado.ioloop.IOLoop.current().start()
-
-
+        figure.clear()
 
 class Similarities_in_between:
 

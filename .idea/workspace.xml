@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="548c2264-2239-4ee6-a305-3fa92d1ad669" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/CheckBestAuthorSimilarity_class.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/betweenness_all_nodes_reputation.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CheckBestAuthorSimilarity.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GetInfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/GetInfo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graph_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/Graph_class.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Similarities_in_between_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/Similarities_in_between_class.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/allInfo.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/allInfo.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/allInfo_copia_seguridad.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/interfazGrafica_copiaSeguridad.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pantalla_presentacion.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,11 +22,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Pantalla_presentacion.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="100" column="2" selection-start-line="99" selection-start-column="14" selection-end-line="100" selection-end-column="2" />
+            <state relative-caret-position="60">
+              <caret line="55" column="29" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="29" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -43,27 +35,9 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/proyectoDePrueba.iml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GetInfo.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-255">
-              <caret line="91" column="56" lean-forward="true" selection-start-line="91" selection-start-column="56" selection-end-line="91" selection-end-column="56" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Graph_class.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="92" column="19" selection-start-line="92" selection-start-column="17" selection-end-line="92" selection-end-column="19" />
+            <state>
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -74,7 +48,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/insertRecords.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
+            <state relative-caret-position="405">
               <caret line="27" column="88" selection-end-line="27" selection-end-column="88" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
@@ -86,8 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CheckBestAuthorSimilarity_class.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+            <state relative-caret-position="227">
+              <caret line="34" selection-start-line="34" selection-end-line="34" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -95,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Similarities_in_between_class.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="576" column="12" selection-start-line="576" selection-start-column="12" selection-end-line="576" selection-end-column="12" />
+            <state relative-caret-position="2934">
+              <caret line="573" column="17" lean-forward="true" selection-start-line="573" selection-start-column="17" selection-end-line="573" selection-end-column="17" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -128,7 +102,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/prueba_waiting.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
+            <state relative-caret-position="1230">
               <caret line="84" selection-start-line="84" selection-end-line="87" selection-end-column="19" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
@@ -149,13 +123,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>html_content</find>
-      <find>MyApplication</find>
-      <find>run+</find>
-      <find>colors</find>
-      <find>ids_coauthors</find>
-      <find>greet</find>
-      <find>similarity</find>
       <find>price</find>
       <find>btnclick</find>
       <find>reset</find>
@@ -175,10 +142,17 @@
       <find>prin</find>
       <find>print</find>
       <find>each</find>
-      <find>run</find>
       <find>main</find>
       <find>log</find>
       <find>thread</find>
+      <find>multiprocessing</find>
+      <find>run</find>
+      <find>process</find>
+      <find>info</find>
+      <find>corpus</find>
+      <find>get_corpus</find>
+      <find>show</find>
+      <find>open</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -217,6 +191,7 @@
         <option value="$PROJECT_DIR$/GetInfo.py" />
         <option value="$PROJECT_DIR$/prueba_waiting.py" />
         <option value="$PROJECT_DIR$/Pantalla_presentacion.py" />
+        <option value="$PROJECT_DIR$/Similarities_in_between_class_hilos.py" />
         <option value="$PROJECT_DIR$/Similarities_in_between_class.py" />
       </list>
     </option>
@@ -231,8 +206,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -587,7 +562,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557130098758</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Intentando evitar condiciones de carrera con el hilo que se crea">
+      <created>1557159645598</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1557159645598</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TodoView">
@@ -603,7 +585,7 @@
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7505112" visible="true" weight="0.1925844" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7505112" visible="true" weight="0.19479801" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -612,14 +594,14 @@
       <window_info id="Favorites" order="6" sideWeight="0.24948876" side_tool="true" weight="0.28389597" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4997233" weight="0.32937366" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.84117323" visible="true" weight="0.41576675" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.84117323" visible="true" weight="0.41576675" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.9203099" weight="0.47192225" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4986165" weight="0.32937366" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4975097" weight="0.32937366" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.07969009" side_tool="true" weight="0.47192225" />
-      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49584946" weight="0.32937366" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49584946" weight="0.07343412" />
       <window_info anchor="bottom" id="Messages" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -685,7 +667,8 @@
     <MESSAGE value="Ultimando la interfaz gráfica" />
     <MESSAGE value="FUNCIONA MAL" />
     <MESSAGE value="Eliminación de ficheros innecesarios" />
-    <option name="LAST_COMMIT_MESSAGE" value="Eliminación de ficheros innecesarios" />
+    <MESSAGE value="Intentando evitar condiciones de carrera con el hilo que se crea" />
+    <option name="LAST_COMMIT_MESSAGE" value="Intentando evitar condiciones de carrera con el hilo que se crea" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -716,39 +699,34 @@
           <option name="timeStamp" value="268" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/CheckBestAuthorSimilarity_class.py</url>
-          <line>35</line>
-          <option name="timeStamp" value="270" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/CheckBestAuthorSimilarity_class.py</url>
-          <line>20</line>
-          <option name="timeStamp" value="271" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
-          <line>576</line>
-          <option name="timeStamp" value="272" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
-          <line>562</line>
+          <line>556</line>
           <option name="timeStamp" value="273" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
-          <line>540</line>
-          <option name="timeStamp" value="274" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
-          <line>91</line>
+          <line>90</line>
           <option name="timeStamp" value="275" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
-          <line>502</line>
-          <option name="timeStamp" value="276" />
+          <line>505</line>
+          <option name="timeStamp" value="278" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
+          <line>523</line>
+          <option name="timeStamp" value="279" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
+          <line>465</line>
+          <option name="timeStamp" value="280" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
+          <line>357</line>
+          <option name="timeStamp" value="281" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -836,23 +814,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/tornado/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/tornado/httpserver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="143" column="8" selection-start-line="143" selection-start-column="8" selection-end-line="143" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python3.6/threading.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13875">
-          <caret line="931" column="24" selection-start-line="931" selection-start-column="24" selection-end-line="931" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/prueba_clase_web.py" />
     <entry file="file://$PROJECT_DIR$/aux.py" />
     <entry file="file://$PROJECT_DIR$/aux3.py" />
@@ -899,13 +860,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/matplotlib/figure.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="423" column="42" selection-start-line="423" selection-start-column="39" selection-end-line="423" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/lib/python3.6/asyncio/streams.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
@@ -942,6 +896,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/proyectoDePrueba.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GetInfo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="960">
+          <caret line="91" column="56" selection-start-line="91" selection-start-column="56" selection-end-line="91" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/matplotlib/cbook/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5670">
@@ -956,30 +923,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CheckBestAuthorSimilarity_class.py">
+    <entry file="file://$PROJECT_DIR$/prueba_waiting.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+        <state relative-caret-position="1230">
+          <caret line="84" selection-start-line="84" selection-end-line="87" selection-end-column="19" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GetInfo.py">
+    <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/sklearn/datasets/twenty_newsgroups.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-255">
-          <caret line="91" column="56" lean-forward="true" selection-start-line="91" selection-start-column="56" selection-end-line="91" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-61">
+          <caret line="156" column="4" selection-start-line="156" selection-start-column="4" selection-end-line="156" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Graph_class.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="92" column="19" selection-start-line="92" selection-start-column="17" selection-end-line="92" selection-end-column="19" />
+        <state>
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
@@ -988,7 +951,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/insertRecords.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
+        <state relative-caret-position="405">
           <caret line="27" column="88" selection-end-line="27" selection-end-column="88" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
@@ -996,35 +959,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Pantalla_presentacion.py">
+    <entry file="file://$APPLICATION_PLUGINS_DIR$/python-ce/helpers/typeshed/stdlib/3/multiprocessing/__init__.pyi">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="100" column="2" selection-start-line="99" selection-start-column="14" selection-end-line="100" selection-end-column="2" />
+        <state relative-caret-position="163">
+          <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Similarities_in_between_class_hilos.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="89" selection-start-line="89" selection-end-line="94" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/proyectoDePrueba.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prueba_waiting.py">
+    <entry file="file://$PROJECT_DIR$/CheckBestAuthorSimilarity_class.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="84" selection-start-line="84" selection-end-line="87" selection-end-column="19" />
+        <state relative-caret-position="227">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/matplotlib/figure.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="279" column="8" selection-start-line="279" selection-start-column="8" selection-end-line="279" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Similarities_in_between_class.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="576" column="12" selection-start-line="576" selection-start-column="12" selection-end-line="576" selection-end-column="12" />
+        <state relative-caret-position="2934">
+          <caret line="573" column="17" lean-forward="true" selection-start-line="573" selection-start-column="17" selection-end-line="573" selection-end-column="17" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pantalla_presentacion.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="55" column="29" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
