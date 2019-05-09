@@ -87,7 +87,7 @@ class myThread(threading.Thread):
 
     def create_figure(self):
         """
-        Creates a simple example figure.
+        Creates a simple figure.
         """
 
         fig = Figure(figsize=(20, 8))
