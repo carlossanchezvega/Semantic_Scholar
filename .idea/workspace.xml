@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="548c2264-2239-4ee6-a305-3fa92d1ad669" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GetInfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/GetInfo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pantalla_presentacion.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pantalla_presentacion.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Similarities_in_between_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/Similarities_in_between_class.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/insertRecords.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prueba_waiting.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -395,7 +388,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557402228443</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="We limit the number of characters to show when plotting and we delete junk files">
+      <created>1561993643493</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1561993643493</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TodoView">
@@ -450,7 +450,8 @@
     <MESSAGE value="Intentando evitar condiciones de carrera con el hilo que se crea" />
     <MESSAGE value="Solucionado problema concurrencia al pulsar ejecución" />
     <MESSAGE value="Solucionado problema botón reset" />
-    <option name="LAST_COMMIT_MESSAGE" value="Solucionado problema botón reset" />
+    <MESSAGE value="We limit the number of characters to show when plotting and we delete junk files" />
+    <option name="LAST_COMMIT_MESSAGE" value="We limit the number of characters to show when plotting and we delete junk files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
