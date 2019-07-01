@@ -23,6 +23,8 @@ from operator import itemgetter
 from matplotlib.backends.backend_webagg_core import (
     FigureManagerWebAgg, new_figure_manager_given_figure)
 from matplotlib.figure import Figure
+import matplotlib.pyplot as plt
+
 import webbrowser
 
 import numpy as np
@@ -320,7 +322,7 @@ class myThread(threading.Thread):
             for ((raw_similar_document_id, title), score) in similar_documents:
                 similar_document_id = raw_similar_document_id
                 string_auxiliar = string_auxiliar + str(
-                    [(document_id)[0:40], (similar_document_id)[0:40], "%.4f" % round(score, 4)]) + '\n'
+                    [(document_id)[0:30], (similar_document_id)[0:30], "%.4f" % round(score, 4)]) + '\n'
                 if string_auxiliar.count('\n') == self.max_number_to_plot: return string_auxiliar
         return string_auxiliar
 
@@ -401,7 +403,7 @@ class myThread(threading.Thread):
         ax = fig.add_subplot(224)
         for label, color, marker, document in zip(np.unique(y), colors, markers, corpus):
             position = y == label
-            ax.scatter(Xtrans[position, 0], Xtrans[position, 1], label=document[0], color=color, marker=marker,
+            ax.scatter(Xtrans[position, 0], Xtrans[position, 1], label=document[0][0:30], color=color, marker=marker,
                        edgecolor='black')
         ax.legend(loc=9, bbox_to_anchor=(0.5, 2))
 
@@ -542,7 +544,7 @@ class myThread(threading.Thread):
         asyncio.set_event_loop(asyncio.new_event_loop())
 
         start_time = time.time()
-
+        plt.close('all')
         figure = self.create_figure()
         application = self.MyApplication(figure)
         http_server = tornado.httpserver.HTTPServer(application)
@@ -554,6 +556,9 @@ class myThread(threading.Thread):
         self.log.debug("The execution took: {0:0.2f} seconds".format(time.time() - start_time))
         tornado.ioloop.IOLoop.current().start()
         figure.clear()
+        figure.clf()
+        plt.cla()
+        plt.clf
 
 class Similarities_in_between:
 

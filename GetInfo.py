@@ -169,7 +169,7 @@ class GetInfo:
 
         response = requests.get(url_semantic_by_author)
         if response.status_code == self.SUCCESS():
-            log.debug('STATUS CODE --->' + str(response.status_code) + "\n")
+            logging.log.debug('STATUS CODE --->' + str(response.status_code) + "\n")
             data = response.json()
             author_dict['name'] = data['name']
             author_dict['_id'] = data['authorId']
@@ -217,7 +217,7 @@ class GetInfo:
                 author_dict['topicsId'] = list(set(author_dict['topicsId']) | set(topicsId))
         return
 
-    def get_dois_from_dblp(self, best_coincidence):
+    def     get_dois_from_dblp(self, best_coincidence):
         """
             We request the DBLP api, in search of the doi of the first title found, based on
             the name of the author od the argument
@@ -435,7 +435,7 @@ class GetInfo:
             author_dict = {}
             dois, author_found = self.get_dois_from_dblp(best_coincidence)
             if author_found:
-                self.set_total_author_info(True, self.teacher, dois, author_dict, self.collection_authors,
+                self.set_total_author_info(True, best_coincidence, dois, author_dict, self.collection_authors,
                                            self.collection_publications)
 
                 ids_coauthors = list(set(list(itertools.chain.from_iterable([coauthor['author_ids'] for coauthor in

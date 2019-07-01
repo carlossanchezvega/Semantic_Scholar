@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/GetInfo.py" line="4" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="548c2264-2239-4ee6-a305-3fa92d1ad669" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GetInfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/GetInfo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pantalla_presentacion.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pantalla_presentacion.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Similarities_in_between_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/Similarities_in_between_class.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/betweenness_all_nodes_reputation.html" beforeDir="false" afterPath="$PROJECT_DIR$/betweenness_all_nodes_reputation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/insertRecords.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prueba_waiting.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,123 +17,14 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="Semantic_Scholar" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Pantalla_presentacion.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2130">
-              <caret line="142" column="19" lean-forward="true" selection-start-line="142" selection-start-column="19" selection-end-line="142" selection-end-column="19" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/requests/api.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="74" selection-start-line="74" selection-end-line="74" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/GetInfo.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5130">
-              <caret line="51" column="8" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="8" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/betweenness_all_nodes_reputation.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="36" lean-forward="true" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/insertRecords.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="27" column="88" selection-end-line="27" selection-end-column="88" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CheckBestAuthorSimilarity_class.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Similarities_in_between_class.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8385">
-              <caret line="563" column="52" selection-start-line="563" selection-end-line="564" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/matplotlib/cbook/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5670">
-              <caret line="406" selection-start-line="406" selection-end-line="406" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/matplotlib/backends/backend_agg.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7545">
-              <caret line="520" selection-start-line="520" selection-end-line="520" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/prueba_waiting.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1230">
-              <caret line="84" selection-start-line="84" selection-end-line="87" selection-end-column="19" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -141,115 +34,10 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>btnprice</find>
-      <find>plot</find>
-      <find>find_similar</find>
-      <find>get</find>
-      <find>fill_fin</find>
-      <find>removeDuplicates</find>
-      <find>bur</find>
-      <find>init</find>
-      <find>ConfigurationHandler</find>
-      <find>debug</find>
-      <find>logger</find>
-      <find>eacg</find>
-      <find>prin</find>
-      <find>print</find>
-      <find>each</find>
-      <find>main</find>
-      <find>log</find>
-      <find>thread</find>
-      <find>multiprocessing</find>
-      <find>process</find>
-      <find>info</find>
-      <find>corpus</find>
-      <find>get_corpus</find>
-      <find>show</find>
-      <find>open</find>
-      <find>run</find>
-      <find>funci</find>
-      <find>reputation</find>
-      <find>get_paper_reputation</find>
-      <find>get_author_reputation</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/pruebaPyQT.py" />
-        <option value="$PROJECT_DIR$/descargar_nltk.py" />
-        <option value="$PROJECT_DIR$/pymongo_pruebas.py" />
-        <option value="$PROJECT_DIR$/CheckSimilarity.py" />
-        <option value="$PROJECT_DIR$/MDS_prueba_copiada.py" />
-        <option value="$PROJECT_DIR$/CheckSimilarity2.py" />
-        <option value="$PROJECT_DIR$/web2.py" />
-        <option value="$PROJECT_DIR$/data/allInfo.json" />
-        <option value="$PROJECT_DIR$/grafo.py" />
-        <option value="$PROJECT_DIR$/interfazGrafica2.py" />
-        <option value="$PROJECT_DIR$/interfazGrafica.py" />
-        <option value="$PROJECT_DIR$/tika_aplicacion.py" />
-        <option value="$PROJECT_DIR$/tika_aplicacion_class.py" />
-        <option value="$PROJECT_DIR$/graph_class.py" />
-        <option value="$PROJECT_DIR$/web.py" />
-        <option value="$PROJECT_DIR$/prueba_ejecucion_prueba_clase_web.py" />
-        <option value="$PROJECT_DIR$/prueba_clase_web.py" />
-        <option value="$PROJECT_DIR$/animacion.py" />
-        <option value="$PROJECT_DIR$/COPIA_SEGURIDAD.html" />
-        <option value="$PROJECT_DIR$/tika_aplicacion_OLD.py" />
-        <option value="$PROJECT_DIR$/MDS.py" />
-        <option value="$PROJECT_DIR$/pruebaTkinter.py" />
-        <option value="$PROJECT_DIR$/CheckBestAuthorSimilarity.py" />
-        <option value="$PROJECT_DIR$/CheckBestAuthorSimilarity_class.py" />
-        <option value="$PROJECT_DIR$/interfazGrafica_copiaSeguridad.py" />
-        <option value="$PROJECT_DIR$/prueba_waiting.py" />
-        <option value="$PROJECT_DIR$/Similarities_in_between_class_hilos.py" />
-        <option value="$PROJECT_DIR$/Pantalla_presentacion.py" />
-        <option value="$PROJECT_DIR$/Similarities_in_between_class.py" />
-        <option value="$PROJECT_DIR$/Graph_class.py" />
-        <option value="$PROJECT_DIR$/GetInfo.py" />
-        <option value="$PROJECT_DIR$/betweenness_all_nodes_reputation.html" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="width" value="975" />
-    <option name="height" value="1048" />
-  </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Semantic_Scholar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Semantic_Scholar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Semantic_Scholar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Semantic_Scholar" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Semantic_Scholar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
-  </component>
+  <component name="ProjectId" id="1MmD5x9kIGQKZVxDDN5C8MiTQg4" />
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -259,7 +47,8 @@
     <property name="project.structure.last.edited" value="Facets" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -279,8 +68,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.interfazGrafica_copiaSeguridad">
-    <configuration name="Similarities_in_between_class" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.Pantalla_presentacion">
+    <configuration name="Pantalla_presentacion" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Semantic_Scholar" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/../computer-science-papers/venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Pantalla_presentacion.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Similarities_in_between_class" type="PythonConfigurationType" factoryName="Python">
       <module name="Semantic_Scholar" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -364,27 +174,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="interfazGrafica_copiaSeguridad" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Semantic_Scholar" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="$PROJECT_DIR$/../computer-science-papers/venv/bin/python" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Pantalla_presentacion.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="prueba_ejecucion_prueba_clase_web" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Semantic_Scholar" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -428,20 +217,16 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.Unnamed" />
-      <item itemvalue="Python.interfazGrafica_copiaSeguridad" />
-      <item itemvalue="Python.prueba_ejecucion_prueba_clase_web" />
-      <item itemvalue="Python.animacion" />
       <item itemvalue="Python.Similarities_in_between_class" />
+      <item itemvalue="Python.Unnamed" />
+      <item itemvalue="Python.animacion" />
+      <item itemvalue="Python.Pantalla_presentacion" />
+      <item itemvalue="Python.prueba_ejecucion_prueba_clase_web" />
       <item itemvalue="Python.prueba_waiting" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.interfazGrafica_copiaSeguridad" />
-        <item itemvalue="Python.prueba_waiting" />
-        <item itemvalue="Python.Similarities_in_between_class" />
-        <item itemvalue="Python.animacion" />
-        <item itemvalue="Python.prueba_ejecucion_prueba_clase_web" />
+        <item itemvalue="Python.Pantalla_presentacion" />
       </list>
     </recent_temporary>
   </component>
@@ -603,7 +388,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557220304068</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Solucionado problema botón reset">
+      <created>1557402228443</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1557402228443</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TodoView">
@@ -615,64 +407,6 @@
       <is-autoscroll-to-source value="true" />
     </todo-panel>
   </component>
-  <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7505112" visible="true" weight="0.19701162" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" sideWeight="0.24948876" side_tool="true" weight="0.28389597" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4997233" weight="0.32937366" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.84117323" visible="true" weight="0.41576675" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.9203099" weight="0.47192225" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4986165" weight="0.32937366" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4975097" weight="0.32937366" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.07969009" side_tool="true" weight="0.47192225" />
-      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49584946" weight="0.07343412" />
-      <window_info anchor="bottom" id="Messages" order="10" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Maven" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-    </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7505112" visible="true" weight="0.2905368" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" sideWeight="0.24948876" side_tool="true" weight="0.28389597" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4997233" weight="0.32937366" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.84117323" visible="true" weight="0.41576675" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.9203099" weight="0.47192225" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4986165" weight="0.32937366" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4975097" weight="0.32937366" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.07969009" side_tool="true" weight="0.47192225" />
-      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49584946" weight="0.32937366" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Maven" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-    </layout-to-restore>
-  </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
       <list>
@@ -681,6 +415,19 @@
         <option value="3" />
         <option value="1" />
       </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
@@ -709,349 +456,12 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/GetInfo.py</url>
-          <line>232</line>
-          <option name="timeStamp" value="246" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
-          <line>147</line>
-          <option name="timeStamp" value="263" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
-          <line>417</line>
-          <option name="timeStamp" value="266" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
-          <line>481</line>
-          <option name="timeStamp" value="267" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
-          <line>287</line>
-          <option name="timeStamp" value="268" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
-          <line>556</line>
-          <option name="timeStamp" value="273" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
-          <line>90</line>
-          <option name="timeStamp" value="275" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
-          <line>505</line>
-          <option name="timeStamp" value="278" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
-          <line>523</line>
-          <option name="timeStamp" value="279" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
-          <line>465</line>
-          <option name="timeStamp" value="280" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Similarities_in_between_class.py</url>
-          <line>357</line>
-          <option name="timeStamp" value="281" />
+          <line>326</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="y" language="Python" />
-        <watch expression="distance_matrix" language="Python" />
-        <watch expression="data['result']['query'],                                                              data['result']['hits']['hit']" language="Python" />
-        <watch expression="data['result']['query'],                                                              data['result']['hits']['hit'][x][" language="Python" />
-        <watch expression="data['result']['query'],                                                              data['result']['hits']['hit'][x]" language="Python" />
-        <watch expression="data['result']['query'],                                                              data['result']['hits']['hit'][x]['info']['author']" language="Python" />
-        <watch expression="data['result']['query'],                                                              data['result']['hits']['hit'][x]['info']['author']" language="Python" />
-        <watch expression="data['result']['query']" language="Python" />
-        <watch expression="data['result']['hits']['hit'][x]['info']['author']" language="Python" />
-        <watch expression="self.gui.state()" language="Python" />
-      </configuration>
-    </watches-manager>
-  </component>
-  <component name="debuggerHistoryManager">
-    <expressions id="breakpointCondition">
-      <expression>
-        <expression-string>teacher=='65747240'</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-    </expressions>
-    <expressions id="watch">
-      <expression>
-        <expression-string>self.gui.state()</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>elf.gui.state()</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>data['result']['hits']['hit'][x]['info']['author']</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>data['result']['query']</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>data['result']['query'],                                                              data['result']['hits']['hit'][x]['info']['author']</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>'])):                 check_similarity = CheckBestAuthorSimilarity(data['result']['query'],                                                              data['result']['hits']['hit'][x]['info']['author']</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>data['result']['query'],                                                              data['result']['hits']['hit'][x]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>data['result']['query'],                                                              data['result']['hits']['hit'][x][</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>data['result']['query'],                                                              data['result']['hits']['hit']</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>distance_matrix</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-    </expressions>
-    <expressions id="evaluateExpression">
-      <expression>
-        <expression-string>Xpr</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-    </expressions>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/aux3.py" />
-    <entry file="file://$PROJECT_DIR$/COPIA_SEGURIDAD.html" />
-    <entry file="file://$PROJECT_DIR$/CheckSimilarity2.py" />
-    <entry file="file://$PROJECT_DIR$/descargar_nltk.py" />
-    <entry file="file://$PROJECT_DIR$/cosine.png" />
-    <entry file="file://$PROJECT_DIR$/distances.png" />
-    <entry file="file://$PROJECT_DIR$/interfazGrafica_nosetoca.py" />
-    <entry file="file://$PROJECT_DIR$/web2.py" />
-    <entry file="file://$PROJECT_DIR$/web.py" />
-    <entry file="file://$PROJECT_DIR$/TSNE_copia_seguridad.py" />
-    <entry file="file://$PROJECT_DIR$/tokenize_authors_dblp_.py" />
-    <entry file="file://$PROJECT_DIR$/tika_aplicacion_OLD.py" />
-    <entry file="file://$PROJECT_DIR$/MDS.py" />
-    <entry file="file://$PROJECT_DIR$/tika_aplicacion.py" />
-    <entry file="file://$PROJECT_DIR$/pruebaTkinter.py" />
-    <entry file="file://$PROJECT_DIR$/pruebaPyQT.py" />
-    <entry file="file://$PROJECT_DIR$/prueba_nombre_fichero.py" />
-    <entry file="file://$PROJECT_DIR$/get_pdf_text.py" />
-    <entry file="file://$PROJECT_DIR$/get_author_information.py" />
-    <entry file="file://$PROJECT_DIR$/get_all_papers.py" />
-    <entry file="file://$PROJECT_DIR$/interfazGrafica.py" />
-    <entry file="file://$PROJECT_DIR$/plot_similarities.py" />
-    <entry file="file://$PROJECT_DIR$/prueba_ejecucion_prueba_clase_web.py" />
-    <entry file="file://$PROJECT_DIR$/grafo.py" />
-    <entry file="file://$PROJECT_DIR$/Similarities_in_between_class2.py" />
-    <entry file="file://$PROJECT_DIR$/CheckSimilarity.py" />
-    <entry file="file://$PROJECT_DIR$/distinguish_authors.py" />
-    <entry file="file://$PROJECT_DIR$/animacion.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="21" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/sklearn/metrics/pairwise.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="694" lean-forward="true" selection-start-line="694" selection-end-line="694" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python3.6/asyncio/streams.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="219" column="6" selection-start-line="219" selection-start-column="6" selection-end-line="219" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_PLUGINS_DIR$/python-ce/helpers/typeshed/stdlib/3/asyncio/__init__.pyi">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="10" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Similarity_class.py" />
-    <entry file="file:///usr/lib/python3.6/tkinter/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19185">
-          <caret line="1282" selection-start-line="1282" selection-end-line="1282" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python3.6/selectors.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6750">
-          <caret line="454" column="43" selection-start-line="454" selection-start-column="43" selection-end-line="454" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/proyectoDePrueba.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/sklearn/datasets/twenty_newsgroups.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-61">
-          <caret line="156" column="4" selection-start-line="156" selection-start-column="4" selection-end-line="156" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_PLUGINS_DIR$/python-ce/helpers/typeshed/stdlib/3/multiprocessing/__init__.pyi">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Similarities_in_between_class_hilos.py" />
-    <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/matplotlib/figure.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="279" column="8" selection-start-line="279" selection-start-column="8" selection-end-line="279" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python3.6/threading.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="827" column="8" selection-start-line="827" selection-start-column="8" selection-end-line="827" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Graph_class.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1875">
-          <caret line="131" column="11" selection-start-line="131" selection-start-column="11" selection-end-line="131" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/insertRecords.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="27" column="88" selection-end-line="27" selection-end-column="88" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CheckBestAuthorSimilarity_class.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Similarities_in_between_class.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8385">
-          <caret line="563" column="52" selection-start-line="563" selection-end-line="564" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/matplotlib/cbook/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5670">
-          <caret line="406" selection-start-line="406" selection-end-line="406" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/matplotlib/backends/backend_agg.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7545">
-          <caret line="520" selection-start-line="520" selection-end-line="520" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prueba_waiting.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1230">
-          <caret line="84" selection-start-line="84" selection-end-line="87" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/betweenness_all_nodes_reputation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="36" lean-forward="true" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../computer-science-papers/venv/lib/python3.6/site-packages/requests/api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="74" selection-start-line="74" selection-end-line="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Pantalla_presentacion.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2130">
-          <caret line="142" column="19" lean-forward="true" selection-start-line="142" selection-start-column="19" selection-end-line="142" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GetInfo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5130">
-          <caret line="51" column="8" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
   </component>
   <component name="masterDetails">
     <states>

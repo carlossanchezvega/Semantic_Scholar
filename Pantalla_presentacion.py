@@ -129,7 +129,7 @@ class Pantalla_presentacion:
                 grafo.create_graph()
             else:
                 represent_similarities = Similarities_in_between(option_selected, best_similarity, url_connection,
-                                                                collection_authors, collection_publications,6)
+                                                                collection_authors, collection_publications,10)
                 self.btnEjecutar.config(relief=RAISED, state=ACTIVE)
 
                 status_execution = represent_similarities.create_similarity_plot()
